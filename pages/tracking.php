@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>****TITLE**** - Drop Deliveries</title>
+        <title>****TITLE**** - drop.it</title>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -15,7 +15,7 @@
 			<div id="wrapper">
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php">SIGN IN</a>
-					<a id="header" class="intro intro_blue" href="../index.html">drop</a>
+					<a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
 					<a id="new" class="menu menu_blue" href="new.php">NEW</a>	

@@ -186,7 +186,7 @@ header{
 	color: rgb(44, 70, 98);}
 .intro:hover
 {
-	color: #dddddd;
+    color: rgb(44, 70, 98);
 }
 /*/END////////////////////////////////////////		HEADER(<div id="header"><img/></>)	////////////////////////////////////////////////////////////////////*/
 
@@ -298,12 +298,25 @@ header{
 	width: 100%;
 	position: absolute;
 	left: 0px;
-	top: 0px;
+	top: 0px;    
 }
-
+//#content_start::after
+{
+    content: " ";
+    background: rgba(255,255,255, 0.3);
+    display: block;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px; 
+    z-index: 0;
+}
 #by_start
 {
 	color: #ddd;
+    z-index: 99;
+    position: relative;
 }
 /*/START////////////////////////////////////////		PAGE CONTENT(<div id="content">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 #text_start
@@ -313,6 +326,8 @@ header{
 	font-weight: bold;
 	font-size: 2vw;
 	margin-top: 50vh;
+    z-index: 99;
+    position: relative;
 }
 
 @media only screen and (max-width: 1080px) {

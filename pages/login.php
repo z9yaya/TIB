@@ -2,7 +2,7 @@
 <html>
     <head>
     <!--TITLE GOES HERE-->
-        <title>Sign in - Drop Deliveries</title>
+        <title>Sign in -  drop.it</title>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -15,8 +15,8 @@
         <div id="back_nav">
 			<div id="wrapper">
 				<header>
-					<a id="login_blue" class="menu menu_blue selected" href="pages/login.php">SIGN IN</a>
-                    <a id="header" class="intro intro_blue" href="../index.html">drop</a>
+                    <a id="login_blue" class="menu menu_blue selected" href="pages/login.php">SIGN IN</a>
+                    <a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
 					<a id="new" class="menu menu_blue" href="new.php">NEW</a>	
@@ -43,7 +43,7 @@
                                     <span id="password_error" class="error_signup"></span>
                                     <br/>
                                     <input type="tel" name="contact" size="12" maxlength="10" class="input_text" placeholder="Mobile phone"/>
-                                <span id="contact_error" class="error_signup"></span>
+                                    <span id="contact_error" class="error_signup"></span>
 								</div>
 								<div id="right">
                                     <input type="text" name="f_name" size="10" maxlength="50" class="input_text" placeholder="First name"/>
