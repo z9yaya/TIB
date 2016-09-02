@@ -1,0 +1,432 @@
+/* * {
+	border : 1px solid black;
+	
+} */
+
+ 
+/*/START////////////////////////////////////////		BODY SECTION(<body>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+body
+{
+	margin: 0 auto;
+	z-index: -99;
+    background: rgb(248, 249, 250);
+}
+
+/*/START////////////////////////////////////////		NAV MENU BACKGROUND(<div id="back_nav" />)	////////////////////////////////////////////////////////////////////*/
+body #back_nav
+{
+	position: relative;
+	width: 100%;
+	background: white;
+	height: 100px;
+	z-index: 98;
+}
+/*/END////////////////////////////////////////		NAV MENU BACKGROUND(<div id="back_nav" />)	////////////////////////////////////////////////////////////////////*/
+
+/*/START////////////////////////////////////////		CONTENT WRAPPER(<div id="wrapper">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+#wrapper
+{
+	margin: 0 auto;
+    font-family: Helvetica;
+    font-size: 12px;	
+	min-width: 800px;
+	max-width: 1080px;
+	background-color: rgb(248, 249, 250);
+}
+
+/*/START////////////////////////////////////////		HEADER(<div id="header"><img/></>)	////////////////////////////////////////////////////////////////////*/
+header{
+	padding-top: 25px;
+	height: 75px;
+	background-color: white;
+}
+.intro
+{
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	display: inline-block;
+    font-family: 'Baloo Tamma', cursive;
+	color: white;
+	height:49px;
+	text-align:center;
+    font-size: 28pt;
+	width: 100px;
+	text-decoration: none;
+	z-index: 99;
+	//margin: 0 0 0 50%;
+	//top: 2px;
+	left: 15px;
+	//border-radius: 25px;
+	overflow: hidden;
+	//animation-name: bump;
+	//animation-duration: 1s;
+	//animation-delay: 30s;
+	//animation-iteration-count: 2;
+	
+
+}
+.intro_blue{
+	color: rgba(44, 70, 98, 0.77);
+}
+
+@keyframes bump{
+	0%{
+		height:49px;
+	}
+	25%
+	{
+		height: 28px;
+		padding-top:12px;
+		
+	}
+	50%
+	{
+		height: 28px;
+		top: 14px;
+		
+	}
+	85%
+	{
+		height: 28px;
+		padding-bottom:24px;
+		
+	}
+	100%
+	{
+		top: 2px
+		height:49px;
+		padding-bottom: 0;
+	}
+}
+
+@keyframes appear {
+    0% 
+	{
+		height: 0px;
+		width: 0px;
+		font-size: 0pt;
+	}
+	 75% 
+	 {
+		 height: 55px;
+		width: 106px;
+		font-size: 43px;
+	}
+    100% 
+	{
+		height: 49px;
+		width: 100px;
+		font-size: 28pt;
+	}
+}
+//.header_moved
+{
+	top: 20px;
+	margin:0 0 0 0;
+	left: auto;
+	right: 5px;
+	height: 49px;
+	width: 100px;
+	animation-name: appear;
+    animation-duration: 0.5s;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+}
+
+@keyframes tab{
+	0%{
+		opacity: 0.3;
+	}
+	30%{
+		opacity: 1;
+		-moz-box-shadow: 0 0 20px #fff;
+		-webkit-box-shadow: 0 0 20px #fff;
+		box-shadow: 0px 0px 20px #fff;
+	}
+	50%{
+		opacity: 0.3;
+	}
+	70%{
+		opacity: 1;
+		-moz-box-shadow: 0 0 20px #fff;
+		-webkit-box-shadow: 0 0 20px #fff;
+		box-shadow: 0px 0px 20px #fff;
+	}
+	100%{
+		opacity: 0.5;
+	}
+}
+
+
+
+.tab_appear
+{
+	display: inline-block !important;
+	animation-name: tab;
+    animation-duration: 3.5s;
+	animation-timing-function: linear;
+}
+
+#new_tab
+{
+	display: none;
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	z-index: 99;
+	text-decoration: none;
+	color: #333;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Helvetica;
+	border: 2px solid #333;
+	border-radius: 11px;
+	padding: 0 5px 2px 5px;
+	background-color: #f2f2f2;
+	opacity: 0.5;
+	text-align: center;
+}
+#new_tab:hover
+{
+	opacity: 1;
+}
+
+.intro_blue:hover {
+	color: rgb(44, 70, 98);}
+.intro:hover
+{
+	color: #dddddd;
+}
+/*/END////////////////////////////////////////		HEADER(<div id="header"><img/></>)	////////////////////////////////////////////////////////////////////*/
+
+/*/START////////////////////////////////////////		NAVIGATION MENU(<div id="nav"><a/></>)	////////////////////////////////////////////////////////////////////*/
+#nav 
+{
+	position: relative;
+	background-color: #374969;
+	width: 100%;
+	height: 44px;
+	z-index: 98;
+}
+
+#nav a:hover/* , #nav a[id="current"] */ {
+	color: white;
+	background-color: #ec3e41;
+}
+#nav a:not([id="current"]):hover{
+	width: 134px;
+}
+#nav a[id="current"]{
+	width: 70px;
+}
+
+.menu{
+	position: relative;
+	right: 15px;
+	float: right;
+	padding-right: 20px;
+	margin-top: 22px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	z-index: 99;
+	padding-left: 12px;
+	padding-right: 12px;
+	line-height: 30px;
+}
+.menu_blue
+{
+	color: rgba(44, 70, 98, 0.55);
+}
+.menu:hover{
+	color: #dddddd;
+	text-decoration: underline;
+}
+.menu_blue:hover
+{
+	color: rgb(44, 70, 98);
+}
+
+#login
+{
+	border:1px solid white;
+    border-radius: 4px;
+    margin-top: 21px;
+    line-height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+	margin-left: 12px;
+}
+#login_blue
+{
+	border:1px solid rgba(44, 70, 98, 0.55);
+    border-radius: 4px;
+    margin-top: 21px;
+    line-height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+	margin-left: 12px;
+}
+#login:hover{
+	background: white;
+	text-decoration: none;
+	color: black;
+	
+}
+#login_blue:hover{
+	background: rgba(44, 70, 98, 0.55);
+	text-decoration: none;
+	color: white;
+	
+}
+
+
+/*/END////////////////////////////////////////		NAVIGATION MENU(<div id="nav"><a/></>)	////////////////////////////////////////////////////////////////////*/
+
+/*/START////////////////////////////////////////		CONTENT BACKGROUND(<div id="content_base">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+#content_base
+{
+
+	min-height:600px;
+	height: 100%;
+	margin: auto auto;
+	width: 100%;
+
+}
+#content_start
+{
+	background-image: url("../background2.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 70%;
+	display: block;
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#by_start
+{
+	color: #ddd;
+}
+/*/START////////////////////////////////////////		PAGE CONTENT(<div id="content">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+#text_start
+{
+	font-family: 'Montserrat', sans-serif;
+	color: white;
+	font-weight: bold;
+	font-size: 2vw;
+	margin-top: 50vh;
+}
+
+@media only screen and (max-width: 1080px) {
+	#text_start
+	{
+	font-size: 21.5px;
+	}
+}
+
+@media only screen and (min-width: 1920px)
+{
+	#text_start
+	{
+		font-size: 38.34px;
+	}
+}
+#content
+{
+    
+	height: 100%;
+	text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#form
+{
+    margin-top: 10vh;
+}
+#signin_form
+{
+    text-align: center;
+    float: left;
+}
+
+#signup_form
+{
+    float: right;
+    text-align: right;
+}
+#separator
+{
+    position: absolute;
+    left: 50%;
+    height:300px;
+    display: block;
+    width: 2px;
+    background: #dddddd;
+     width : 2px;
+  background-image: -webkit-linear-gradient(top, #f8f9fa, #dddddd, #f8f9fa);
+  background-image: -moz-linear-gradient(top, #f8f9fa, #dddddd, #f8f9fa);
+  background-image: -ms-linear-gradient(top, #f8f9fa, #ddddddd, #f8f9fa);
+  background-image: -o-linear-gradient(top, #f8f9fa, #dddddd, #f8f9fa);
+  background-image: linear-gradient(top, #f8f9fa, #dddddd, #f8f9fa);
+}
+#username_input, #password_input
+{
+    position: relative;
+	margin-top: 20px;
+    margin-bottom: 20px;
+    clear: both;
+}
+
+/*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+
+/*/END////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+/*/START////////////////////////////////////////		WHITE BOX PICTURES/TOP LAYER(<label>&nbsp;</>)	////////////////////////////////////////////////////////////////////*/
+
+
+
+
+/*/END////////////////////////////////////////		WHITE BOX PICTURES/TOP LAYER(<label>&nbsp;</>)	////////////////////////////////////////////////////////////////////*/
+
+
+
+/*/END////////////////////////////////////////		STAR RATING(<div id="rating"> <input type="radio"/><label/> </div>)	////////////////////////////////////////////////////////////////////*/
+
+/*/END////////////////////////////////////////		PAGE CONTENT(<div id="content">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+/*/END////////////////////////////////////////		CONTENT BACKGROUND(<div id="content_base">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+/*/START////////////////////////////////////////		FOOTER SECTION(<div id="footer"><p/></>)	////////////////////////////////////////////////////////////////////*/
+#footer
+{
+	position: absolute;
+	clear: both;
+	text-align: right;
+	display:block;
+	width: 100%;
+	background-color: #374969;
+	color: #b3b3b3;
+	z-index: 98;
+	left: 0px;
+	top: 100vh;
+}
+#footer p
+{
+	margin: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin-right: 20px;
+}
+/*/END////////////////////////////////////////		FOOTER SECTION(<div id="footer"><p/></>)	////////////////////////////////////////////////////////////////////*/
+
+/*/END////////////////////////////////////////		CONTENT WRAPPER(<div id="wrapper">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+/*/END////////////////////////////////////////		BODY SECTION(<body>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
