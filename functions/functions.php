@@ -26,7 +26,7 @@ function registerUser()
                          $password = $_POST['password'];
                          $phone = $_POST['phone'];
                          $a = date_parse_from_format('Y-m-d', $_POST['dob']);
-                         $dob = mktime(0, 0, 0, $a['month']-1, $a['day'], $a['year']);
+                         $dob = mktime(0, 0, 0, $a['month'], $a['day'], $a['year']);
                          $salt = rand( 0000000000, 9999999999);
                          try
                          {
