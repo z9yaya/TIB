@@ -471,6 +471,16 @@ header{
     color: red;
     white-space: nowrap;
 }
+
+.php_error
+{
+    font-family: Arial;
+    position: relative;
+    top: 286px;
+    left: 50%;
+    color: red;
+    z-index: 99;
+}
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 
