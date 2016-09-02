@@ -286,7 +286,7 @@ header{
 }
 #content_start
 {
-	background-image: url("../background2.gif");
+	background-image: url("../images/background2.gif");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 70%;
@@ -401,6 +401,16 @@ header{
 }
 
 .button
+{
+    background: #568FCF;
+    margin: 0;
+    color: white;
+    border-color: #568FCF;
+    font-family: arial;
+    cursor: pointer;
+    position: relative;
+}
+#signup_form .button
 {
     background: #568FCF;
     margin: 0;
