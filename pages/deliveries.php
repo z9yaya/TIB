@@ -18,6 +18,7 @@
 					<a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
 					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+                    <<a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 					<a id="new" class="menu menu_blue" href="new.php">NEW</a>	
 				</header>
 					<div id="content">

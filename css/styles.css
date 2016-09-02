@@ -353,6 +353,25 @@ header{
     margin: 0 auto;
     margin-top: 10px;
 }
+#content2
+{
+    
+	height: 100%;
+	text-align: center;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+#content3
+{
+    
+	height: 100%;
+	text-align: center;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
 
 #form
 {
@@ -411,11 +430,21 @@ header{
     float: left;
     width: 24%;
 }
+#left2
+{
+    float: left;
+    width: 60%;
+}
 
 #right
 {
     float: right;
     width: 24%;
+}
+#right2
+{
+    float: right;
+    width: 40%;
 }
 
 .button
