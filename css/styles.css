@@ -463,6 +463,14 @@ header{
 {
     right: 0;
 }
+
+.error_signup
+{
+    margin-left: 5px;
+    display: none;
+    color: red;
+    white-space: nowrap;
+}
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 

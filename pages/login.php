@@ -32,27 +32,26 @@
                             
                         <div id="separator">&nbsp;</div>
                             
-                            <form class="form" id="signup_form">
+                            <form class="form" id="signup_form" onsubmit="return passwordsMatch()">
                                 <span class="sign_title">Register for an account</span>
 							<div id="signup_text">
                                 <div id="left">
-									<input type="email" name="email" class="input_text" placeholder="Email address"/>
+									<input type="email" name="email" class="input_text" placeholder="Email address" required/>
                                     <span id="email_error" class="error_signup"></span>
                                     <br/>
-									<input type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password"/>
-                                    <span id="password_error" class="error_signup"></span>
+									<input id="password" type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password" required/>
                                     <br/>
-                                    <input type="tel" name="contact" size="12" maxlength="10" class="input_text" placeholder="Mobile phone"/>
-                                    <span id="contact_error" class="error_signup"></span>
+                                    <input id="password2" type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password" required/>
+                                    <span id="password_error" class="error_signup"></span>
 								</div>
 								<div id="right">
-                                    <input type="text" name="f_name" size="10" maxlength="50" class="input_text" placeholder="First name"/>
-                                    <span id="fn_error" class="error_signup"></span>
+                                    <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="First name" required/>
+                                    <span id="name_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="text" name="l_name" size="10" maxlength="50" class="input_text" placeholder="Last name"/>
-                                    <span id="ln_error" class="error_signup"></span>
+                                    <input type="tel" name="contact" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" required/>
+                                    <span id="contact_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="date" name="dob" placeholder="dd/mm/yyyy" class="input_text" placeholder="Date of birth"/>
+                                    <input type="date" name="dob" placeholder="dd/mm/yyyy" class="input_text" placeholder="Date of birth" required/>
                                     <span id="dob_error" class="error_signup"></span>
                                     <br/>
                                     <input id='signup_button' type="submit" value="REGISTER" class="button">
