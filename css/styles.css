@@ -46,7 +46,7 @@ header{
 	float: left;
 	margin-top: 10px;
 	display: inline-block;
-    font-family: 'Baloo Tamma', cursive;
+    font-family: 'Fredoka One', cursive;
 	color: white;
 	height:49px;
 	text-align:center;
@@ -54,17 +54,7 @@ header{
 	width: 100px;
 	text-decoration: none;
 	z-index: 99;
-	//margin: 0 0 0 50%;
-	//top: 2px;
 	left: 15px;
-	//border-radius: 25px;
-	overflow: hidden;
-	//animation-name: bump;
-	//animation-duration: 1s;
-	//animation-delay: 30s;
-	//animation-iteration-count: 2;
-	
-
 }
 .intro_blue{
 	color: rgba(44, 70, 98, 0.77);
@@ -258,7 +248,7 @@ header{
     padding-right: 15px;
 	margin-left: 12px;
 }
-#login_blue
+#login_blue, .button
 {
 	border:1px solid rgba(44, 70, 98, 0.55);
     border-radius: 4px;
@@ -354,19 +344,21 @@ header{
 {
     text-align: center;
     float: left;
+    width: 200px;
 }
 
 #signup_form
 {
     float: right;
-    text-align: right;
+    text-align: center;
+    width: 290px;
 }
 #separator
 {
-    position: absolute;
-    left: 50%;
+    position: relative;
+    bottom: 45px;
     height:300px;
-    display: block;
+    display: inline-block;
     width: 2px;
     background: #dddddd;
      width : 2px;
@@ -379,11 +371,70 @@ header{
 #username_input, #password_input
 {
     position: relative;
-	margin-top: 20px;
     margin-bottom: 20px;
     clear: both;
 }
 
+.input_text
+{
+    margin-bottom: 20px;
+    width: 140px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+.input_label
+{
+    white-space: nowrap;
+}
+
+#left
+{
+    float: left;
+    width: 24%;
+}
+
+#right
+{
+    float: right;
+    width: 24%;
+}
+
+.button
+{
+    background: #568FCF;
+    margin: 0;
+    color: white;
+    border-color: #568FCF;
+    font-family: arial;
+    cursor: pointer;
+    position: relative;
+    left: 87%;
+}
+#signin_form .button
+{
+    left: 0;
+}
+.button:hover
+{
+    background: #387bc7;
+    border-color: #387bc7;
+}
+
+.sign_title
+{
+    font-size: 20px;
+    font-family: Arial;
+    position: relative;
+    bottom: 30px;
+    right: 40px;
+    color: #607489;
+}
+
+#signin_form .sign_title
+{
+    right: 0;
+}
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 
