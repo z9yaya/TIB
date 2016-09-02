@@ -15,11 +15,11 @@
         <div id="back_nav">
 			<div id="wrapper">
 				<header>
-					<a id="login_blue" class="menu menu_blue" href="pages/login.php">SIGN IN</a>
-					<a id="header" class="intro intro_blue" href="../index.html">drop</a>
-					<a id="deliveries" class="menu menu_blue" href=deliveries.php>DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue" href=deliveries.php>TRACKING</a>
-					<a id="new" class="menu menu_blue" href=deliveries.php>NEW</a>	
+					<a id="login_blue" class="menu menu_blue selected" href="pages/login.php">SIGN IN</a>
+                    <a id="header" class="intro intro_blue" href="../index.html">drop</a>
+					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
+					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					<a id="new" class="menu menu_blue" href="new.php">NEW</a>	
 				</header>
 					<div id="content">
                         <div id="form">

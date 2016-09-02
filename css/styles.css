@@ -270,7 +270,10 @@ header{
 	color: white;
 	
 }
-
+.selected
+{
+    color: rgb(44, 70, 98);
+}
 
 /*/END////////////////////////////////////////		NAVIGATION MENU(<div id="nav"><a/></>)	////////////////////////////////////////////////////////////////////*/
 
@@ -473,8 +476,8 @@ header{
 	text-align: right;
 	display:block;
 	width: 100%;
-	background-color: #374969;
-	color: #b3b3b3;
+	background-color: white;
+	color: rgba(44, 70, 98, 0.77);
 	z-index: 98;
 	left: 0px;
 	top: 100vh;
