@@ -401,6 +401,11 @@ header{
     border-radius: 5px;
     padding: 10px;
 }
+
+.input_text[type="date"]
+{
+    height: 15px;
+}
 .input_label
 {
     white-space: nowrap;

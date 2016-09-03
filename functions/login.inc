@@ -58,9 +58,7 @@
                                     <br/>
                                     <input id='signup_button' type="submit" value="REGISTER" class="button">
 								</div>
-                                
 							</div>
-							
 						</form>
                         </div>
                         <footer id="footer">

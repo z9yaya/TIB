@@ -12,7 +12,6 @@ function registerUser()
     {
         if (CheckExist('email', 'users', 'email', $_POST))
         {
-            //include '../functions/login.inc';
             return false;
         }
         else
@@ -54,7 +53,7 @@ function registerUser()
                             $_SESSION['position'] = "customer";
                             $_SESSION['email'] = $email;
                             $_SESSION['password'] = GrabData('users', 'password', 'email', $email);
-                            header("Location: ../index.html");
+                            header("Location: ../index.php");
                          }
                          catch (PDOException $e)
                          {
@@ -100,7 +99,7 @@ function authenticateUser()
             $_SESSION['position'] = $data[0]['position'];
             $_SESSION['email'] = $data[0]['email'];
             $_SESSION['password'] = $data[0]['password'];
-            header("Location: ../index.html");
+            header("Location: ../index.php");
             
         }
         else
@@ -174,15 +173,15 @@ function GrabData($table, $column, $where_column, $where)
                          
 }
 
-function writeError()
+function writeError($method)
 {
     if (!empty($_POST))
-    {   
-        if ($_POST['method'] == 'login' && !authenticateUser())
+    {
+        if ($_POST['method'] == 'login' && !authenticateUser() && $method == "login")
         {
             echo "<span class='php_error' id='login_error_php'>The email or password is incorrect</span>";
         }
-        else if ($_POST['method'] == 'signup' && !registerUser())
+        else if ($_POST['method'] == 'signup' && !registerUser() && $method == "signup")
         {
             echo "<span class='php_error'>This email is already in use</span>";
         }
