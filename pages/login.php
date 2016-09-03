@@ -33,7 +33,7 @@
                             
                         <div id="separator">&nbsp;</div>
                             
-                            <form class="form" id="signup_form" onsubmit="return passwordsMatch()">
+                            <form class="form" id="signup_form" onsubmit="return Checkstuff()">
                                 <span class="sign_title">Register for an account</span>
 							<div id="signup_text">
                                 <div id="left">
@@ -42,14 +42,14 @@
                                     <br/>
 									<input id="password" type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password" required/>
                                     <br/>
-                                    <input id="password2" type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password" required/>
+                                    <input id="password2" type="password" name="reg_password" size="15" maxlength="30" class="input_text" placeholder="Password" onkeyup="return passwordsMatch()" required/>
                                     <span id="password_error" class="error_signup"></span>
 								</div>
 								<div id="right">
                                     <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="First name" required/>
                                     <span id="name_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="tel" name="contact" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" required/>
+                                    <input type="tel" name="contact" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(signup_form.contact.value, 'contact_error', 'Only numbers allowed')" required/>
                                     <span id="contact_error" class="error_signup"></span>
                                     <br/>
                                     <input type="date" name="dob" placeholder="dd/mm/yyyy" class="input_text" placeholder="Date of birth" required/>
