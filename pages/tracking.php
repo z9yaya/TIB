@@ -14,8 +14,16 @@
         <div id="back_nav">
 			<div id="wrapper">
 				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php">SIGN IN</a>
-					<a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
+					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
+                                                                        if (session_id() == '')
+                                                                        {
+                                                                            session_start();
+                                                                        }
+                                                                        if(isset($_SESSION['email']))
+                                                                            echo 'SIGN OUT</a>';
+                                                                        else 
+                                                                            echo 'SIGN IN</a>';?>
+					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>

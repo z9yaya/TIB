@@ -1,27 +1,3 @@
-<?php include '../functions/functions.php';
-if (session_id() == '')
-{
-    session_start();
-}
-if(isset($_SESSION['email']))
-{
-    unset($_SESSION["email"]);
-    unset($_SESSION['position']);
-    unset($_SESSION['password']);
-    header("Location: ../index.php");
-}
-
-if (!empty($_POST))
-{
-    if ($_POST['method'] == 'login')
-    {
-       authenticateUser(); 
-    }
-    else if ($_POST['method'] == 'signup')
-    {
-        registerUser();
-    }
-}?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,10 +16,9 @@ if (!empty($_POST))
 			<div id="wrapper">
 				<header>
                     <a id="login_blue" class="menu menu_blue selected" href="pages/login.php">SIGN IN</a>
-                    <a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
+                    <a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-                    <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 					<a id="new" class="menu menu_blue" href="new.php">NEW</a>	
 				</header>
 					<div id="content">
@@ -54,7 +29,6 @@ if (!empty($_POST))
 								<input id="password_input" type="password" name="password" class="input_text" size="15" maxlength="30" placeholder="Password"/>
                                 <input type="hidden" name="method" value="login"><br>
 								<button type="submit" id="sign_in_button" class="button">SIGN IN</button>
-                                <?php writeError("login");?>
 							</form>
                             
                         <div id="separator">&nbsp;</div>
@@ -70,7 +44,6 @@ if (!empty($_POST))
                                     <br/>
                                     <input id="password2" type="password" size="15" maxlength="30" class="input_text" placeholder="Repeat password" onchange="passwordsMatch()" required/>
                                     <span id="password_error" class="error_signup"></span>
-                                    <?php writeError("signup");?>
 								</div>
 								<div id="right">
                                     <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="First name" required/>
@@ -79,13 +52,13 @@ if (!empty($_POST))
                                     <input type="tel" name="phone" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(signup_form.contact.value, 'contact_error', 'Only numbers allowed')" required/>
                                     <span id="contact_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="text" name="dob" class="input_text" placeholder="Date of birth" onfocus="(this.type='date')" required/>
+                                    <input type="date" name="dob" placeholder="dd/mm/yyyy" class="input_text" placeholder="Date of birth" required/>
                                     <input type="hidden" name="method" value="signup">
                                     <span id="dob_error" class="error_signup"></span>
                                     <br/>
                                     <input id='signup_button' type="submit" value="REGISTER" class="button">
 								</div>
-                                </div>
+							</div>
 						</form>
                         </div>
                         <footer id="footer">

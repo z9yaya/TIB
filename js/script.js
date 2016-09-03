@@ -56,10 +56,15 @@ function passwordsMatch() {
     if(isEmpty(document.getElementById("password2").value)) {
 		printEmptyFieldError("password_error");
 	} else if (document.getElementById("password").value != document.getElementById("password2").value) {
+        console.log(document.getElementById("password").value);
+        console.log(document.getElementById("password2").value);
         document.getElementById("password_error").style.display = "inline";
 		document.getElementById("password_error").innerHTML = "Passwords do not match";
         return false;
     } else {
+        document.getElementById("password_error").style.display = "none";
+        console.log(document.getElementById("password").value);
+        console.log(document.getElementById("password2").value);
         return true;
     }
 }
@@ -74,12 +79,15 @@ function checkField(obj, id, msg) {
     var rgx= new RegExp(/[0-9]{10}/);
 	if (isEmpty(obj)) {
 		printEmptyFieldError(id);
+        return false;
 	} else if (!rgx.test(obj)) {
         document.getElementById(id).style.display="inline";
 		document.getElementById(id).innerHTML = msg;
+        return false;
 	} else {
         document.getElementById(id).style.display="none";
 		document.getElementById(id).innerHTML = "";
+        return true;
 	}
 }//end chedkField
 
@@ -90,6 +98,8 @@ function Checkstuff()
     if (!numb || !pass)
         {
             console.log("false");
+            console.log(numb);
+            console.log(pass);
             return false;
         }
     else

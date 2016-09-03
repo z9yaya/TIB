@@ -420,6 +420,11 @@ header{
     border-radius: 5px;
     padding: 10px;
 }
+
+.input_text[type="date"]
+{
+    height: 15px;
+}
 .input_label
 {
     white-space: nowrap;
@@ -499,6 +504,16 @@ header{
     display: none;
     color: red;
     white-space: nowrap;
+}
+
+.php_error
+{
+    font-family: Arial;
+    color: red;
+    z-index: 99;
+    white-space: nowrap;
+    position: relative;
+    top: 16px;
 }
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
