@@ -12,8 +12,8 @@ function registerUser()
     {
         if (CheckExist('email', 'users', 'email', $_POST))
         {
-            include '../pages/login.php';
-            echo "<span class='php_error'>This email is already in use</span>";
+            //include '../functions/login.inc';
+            return false;
         }
         else
         {
@@ -23,7 +23,7 @@ function registerUser()
                     {
                          $email = $_POST['email'];
                          $name = $_POST['name'];
-                         $password = $_POST['password'];
+                         $password = $_POST['password_signup'];
                          $phone = $_POST['phone'];
                          $a = date_parse_from_format('Y-m-d', $_POST['dob']);
                          $dob = mktime(0, 0, 0, $a['month'], $a['day'], $a['year']);
@@ -41,6 +41,20 @@ function registerUser()
                              $prepare -> bindValue(':dob', $dob);  
                              $prepare -> bindValue(':salt', $salt);
                              $prepare->execute();
+                            if (session_id() == '')
+                            {
+                                session_start();
+                            }
+                            else if(isset($_SESSION['email']))
+                            {
+                                unset($_SESSION["email"]);
+                                unset($_SESSION['position']);
+                                unset($_SESSION['password']);
+                            }
+                            $_SESSION['position'] = "customer";
+                            $_SESSION['email'] = $email;
+                            $_SESSION['password'] = GrabData('users', 'password', 'email', $email);
+                            header("Location: ../index.html");
                          }
                          catch (PDOException $e)
                          {
@@ -49,6 +63,58 @@ function registerUser()
                  }
             }
         }
+}
+
+function authenticateUser()
+{
+    if (CheckExist('email', 'users', 'email', $_POST))
+    {
+        try
+        {
+            $pdo = connect();
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $query = $pdo->prepare("SELECT * FROM users WHERE email = :email AND password = SHA2(CONCAT(:password, salt), 0)");
+            $query -> bindValue(':email', $email);
+            $query -> bindValue(':password', $password);
+            $query -> execute();
+            
+        }
+        catch (PDOException $e) 
+        {
+            echo $e -> getMessage();
+        }
+        if ($query -> rowCount() == 1)
+        {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+            if (session_id() == '')
+            {
+                session_start();
+            }
+            else if(isset($_SESSION['email']))
+            {
+                unset($_SESSION["email"]);
+                unset($_SESSION['position']);
+                unset($_SESSION['password']);
+            }
+            $_SESSION['position'] = $data[0]['position'];
+            $_SESSION['email'] = $data[0]['email'];
+            $_SESSION['password'] = $data[0]['password'];
+            header("Location: ../index.html");
+            
+        }
+        else
+        {
+            return false;
+        }
+        
+        
+        
+    }
+    else
+    {
+       return false;
+    }
 }
 function CheckExist($attribute, $table, $column, $getOrpost)
 {
@@ -69,8 +135,7 @@ function CheckExist($attribute, $table, $column, $getOrpost)
                          {
                              echo $e -> getMessage();
                          }
-                         $data = $prepare->fetchAll(PDO::FETCH_ASSOC);
-                         if (countResults($data) != 0)
+                         if ($prepare -> rowCount() != 0)
                          {
                              return true;
                          }
@@ -82,14 +147,45 @@ function CheckExist($attribute, $table, $column, $getOrpost)
                     }  
             }
 }
-function countResults($resultsItems)
+function GrabData($table, $column, $where_column, $where)
+{
+                         $input = $where;
+                         try
+                         {
+                             $pdo = connect();
+                             $sql= 'SELECT ' . $column . ' FROM ' . $table . ' where ' . $where_column . ' = :attribute';
+                             $prepare = $pdo->prepare($sql);
+                             $prepare->bindValue(':attribute', $input);
+                             $prepare->execute();
+                         }
+                         catch (PDOException $e)
+                         {
+                             echo $e -> getMessage();
+                         }
+                         if ($prepare -> rowCount() != 0)
+                         {
+                             $data = $prepare->fetchAll(PDO::FETCH_ASSOC);
+                             return $data;
+                         }
+                         else
+                         {
+                             return false;
+                         }
+                         
+}
+
+function writeError()
+{
+    if (!empty($_POST))
+    {   
+        if ($_POST['method'] == 'login' && !authenticateUser())
         {
-            $num_rows=0;
-            for ($i=0;$i < count($resultsItems); $i++) 
-            {
-                $num_rows++;
-            }
-            return $num_rows;
+            echo "<span class='php_error' id='login_error_php'>The email or password is incorrect</span>";
         }
-registerUser();
+        else if ($_POST['method'] == 'signup' && !registerUser())
+        {
+            echo "<span class='php_error'>This email is already in use</span>";
+        }
+    }
+}
 ?>

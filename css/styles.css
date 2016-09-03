@@ -475,11 +475,11 @@ header{
 .php_error
 {
     font-family: Arial;
-    position: relative;
-    top: 286px;
-    left: 50%;
     color: red;
     z-index: 99;
+    white-space: nowrap;
+    position: relative;
+    top: 16px;
 }
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 

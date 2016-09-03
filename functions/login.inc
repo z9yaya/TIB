@@ -1,15 +1,3 @@
-<?php include '../functions/functions.php';
-if (!empty($_POST))
-{
-    if ($_POST['method'] == 'login')
-    {
-       authenticateUser(); 
-    }
-    else if ($_POST['method'] == 'signup')
-    {
-        registerUser();
-    }
-}?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +29,6 @@ if (!empty($_POST))
 								<input id="password_input" type="password" name="password" class="input_text" size="15" maxlength="30" placeholder="Password"/>
                                 <input type="hidden" name="method" value="login"><br>
 								<button type="submit" id="sign_in_button" class="button">SIGN IN</button>
-                                <?php writeError();?>
 							</form>
                             
                         <div id="separator">&nbsp;</div>
@@ -57,7 +44,6 @@ if (!empty($_POST))
                                     <br/>
                                     <input id="password2" type="password" size="15" maxlength="30" class="input_text" placeholder="Repeat password" onchange="passwordsMatch()" required/>
                                     <span id="password_error" class="error_signup"></span>
-                                    <?php writeError();?>
 								</div>
 								<div id="right">
                                     <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="First name" required/>
@@ -72,7 +58,9 @@ if (!empty($_POST))
                                     <br/>
                                     <input id='signup_button' type="submit" value="REGISTER" class="button">
 								</div>
-                                </div>
+                                
+							</div>
+							
 						</form>
                         </div>
                         <footer id="footer">
