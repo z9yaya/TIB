@@ -419,11 +419,29 @@ header{
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 10px;
+    font-family: Arial;
 }
 
-.input_text[type="date"]
+.input_text[type="date"], .input_text[type="time"]
 {
     height: 15px;
+}
+
+.textarea
+{
+    resize: none;
+    height: 15px;
+    width: 200px;
+    transition: height 0.1s linear;
+}
+
+.textarea:focus
+{
+    height: 60px;
+}
+
+.text_long{
+    height: 60px;
 }
 .input_label
 {
@@ -435,6 +453,16 @@ header{
     float: left;
     width: 24%;
 }
+#left_wide
+{
+    float: left;
+    width: 60%;
+}
+
+.left
+{
+    float: left;
+}
 #left2
 {
     float: left;
@@ -445,6 +473,13 @@ header{
 {
     float: right;
     width: 24%;
+}
+
+.right
+{
+    float: right;
+    position: relative;
+    bottom: 13px;
 }
 #right2
 {

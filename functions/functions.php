@@ -57,7 +57,7 @@ function registerUser()
                          }
                          catch (PDOException $e)
                          {
-                             echo $e -> getMessage();
+                             echo "There was an error, contact the system adminstrator and copy this error: " . $e -> getMessage();
                          }
                  }
             }

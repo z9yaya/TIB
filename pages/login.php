@@ -72,7 +72,7 @@ if (!empty($_POST))
                                     <?php writeError("signup");?>
 								</div>
 								<div id="right">
-                                    <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="First name" required/>
+                                    <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="Full name" required/>
                                     <span id="name_error" class="error_signup"></span>
                                     <br/>
                                     <input type="tel" name="phone" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(signup_form.contact.value, 'contact_error', 'Only numbers allowed')" required/>
