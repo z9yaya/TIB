@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2016 at 02:02 PM
+-- Generation Time: Sep 04, 2016 at 02:44 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -29,19 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `delivery` (
   `ID` int(10) NOT NULL,
   `user` varchar(64) NOT NULL,
-  `driver` varchar(64) NOT NULL,
+  `driver` varchar(64) DEFAULT NULL,
   `origin` varchar(150) NOT NULL,
   `destination` varchar(150) NOT NULL,
-  `name` varchar(64) NOT NULL,
+  `name` varchar(64) DEFAULT NULL,
   `pickup` bigint(20) NOT NULL,
   `dropoff` bigint(20) NOT NULL,
-  `cost` decimal(6,2) NOT NULL,
-  `type` enum('first','standard') NOT NULL,
-  `paid` tinyint(1) NOT NULL,
-  `date_paid` bigint(20) NOT NULL,
-  `fragile` tinyint(1) NOT NULL,
-  `special` varchar(300) NOT NULL,
-  `status` enum('In Transit','Delivered') NOT NULL
+  `cost` decimal(6,2) DEFAULT NULL,
+  `type` enum('first','standard') NOT NULL DEFAULT 'standard',
+  `paid` tinyint(1) NOT NULL DEFAULT '0',
+  `date_paid` bigint(20) DEFAULT NULL,
+  `fragile` tinyint(1) NOT NULL DEFAULT '0',
+  `special` varchar(300) DEFAULT NULL,
+  `status` enum('In Transit','Delivered','Awaiting Pick Up') NOT NULL DEFAULT 'Awaiting Pick Up'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
