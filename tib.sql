@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2016 at 08:35 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Generation Time: Sep 04, 2016 at 02:02 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -80,9 +80,18 @@ CREATE TABLE `users` (
   `name` varchar(64) NOT NULL,
   `password` varchar(90) NOT NULL,
   `phone` int(10) NOT NULL,
+  `dob` bigint(20) NOT NULL,
   `position` enum('manager','customer','driver') NOT NULL DEFAULT 'customer',
   `salt` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`email`, `name`, `password`, `phone`, `dob`, `position`, `salt`) VALUES
+('ze_yaya@msn.com', 'Yannick Mansuy', '507e2259057eb61d2d83b33034b83dbab7789eac857d9bae2e3873aa18ae9f1e', 415142510, 778543200, 'customer', '1273138280'),
+('ze_yaya@yahoo.fr', 'Yannick Mansuy', 'fb3a7713706fbc11339c0b2b86ac11395a001e20bf4ba7e17ce5aa9250c7855c', 415142510, 923608800, 'customer', '1072825338');
 
 --
 -- Indexes for dumped tables
