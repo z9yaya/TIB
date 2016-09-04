@@ -33,7 +33,7 @@
 <h1><?php echo '<center><b>Package Tracking</b></center>'; ?></h1> 
 
 <?php 
-echo "<center><table border=2 width=60%>";
+echo "<center><table border=2 width=100%>";
 {
 		echo "<tr>";
 		echo "<td>Packagge ID</td>";
@@ -42,6 +42,25 @@ echo "<center><table border=2 width=60%>";
 		echo "<td>Time</td>";
 	    echo "</tr>";
 		
+		echo "<td>10</td>";
+		echo "<td>Pizza</td>";
+		echo "<td>Brisbane</td>";
+		echo "<td>12pm</td>";
+		echo "</tr>";
+				
+		echo "<td>20</td>";
+		echo "<td>Computer</td>";
+		echo "<td>Melbourne</td>";
+		echo "<td>2pm</td>";
+		echo "</tr>";
+		
+		echo "<td>10</td>";
+		echo "<td>Pizza</td>";
+		echo "<td>Brisbane</td>";
+		echo "<td>12pm</td>";
+		echo "</tr>";
+		
+				
 		echo "<td>10</td>";
 		echo "<td>Pizza</td>";
 		echo "<td>Brisbane</td>";
