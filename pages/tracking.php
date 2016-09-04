@@ -29,21 +29,39 @@
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 				</header>
 					<div id="content">
-                        *****PUT YOUR CONTENT HERE*****
-                        TEMPLATE INPUTS:<br/>
-                        Text input example: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Text template"/><br>
-                        
-                        Date input example: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Date template"/><br>
-                        
-                        Password input example: <input id="password_input" type="password" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" placeholder="Password template"/><br>
-                        
-                        Mobile phone input example:  <input type="tel" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Number input example: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Email input example: <input type="email" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" placeholder="Email template" required/><br>
-                        
-                        Submit input example: <input id='signup_button' type="submit" value="SUBMIT" class="button">
+                 
+<h1><?php echo '<center><b>Package Tracking</b></center>'; ?></h1> 
+
+<?php 
+echo "<center><table border=2 width=30%>";
+{
+		echo "<tr>";
+		echo "<td>Packagge ID</td>";
+		echo "<td>Package Content</td>";
+	    echo "<td>Location</td>";
+		echo "<td>Time</td>";
+	    echo "</tr>";
+		
+		echo "<td>10</td>";
+		echo "<td>Pizza</td>";
+		echo "<td>Brisbane</td>";
+		echo "<td>12pm</td>";
+		echo "</tr>";
+				
+		echo "<td>20</td>";
+		echo "<td>Computer</td>";
+		echo "<td>Melbourne</td>";
+		echo "<td>2pm</td>";
+		echo "</tr>";
+		
+		echo "<td>10</td>";
+		echo "<td>Pizza</td>";
+		echo "<td>Brisbane</td>";
+		echo "<td>12pm</td>";
+		echo "</tr>";
+}
+echo "</table></center>";
+?>
                         <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
 					</footer>
@@ -52,3 +70,5 @@
 			</div>
     </body>
 </html>
+
+
