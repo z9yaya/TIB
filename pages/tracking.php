@@ -33,7 +33,7 @@
 <h1><?php echo '<center><b>Package Tracking</b></center>'; ?></h1> 
 
 <?php 
-echo "<center><table border=2 width=30%>";
+echo "<center><table border=2 width=60%>";
 {
 		echo "<tr>";
 		echo "<td>Packagge ID</td>";
