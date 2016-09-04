@@ -15,7 +15,7 @@
 			<div id="wrapper">
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php">SIGN IN</a>
-					<a id="header" class="intro intro_blue" href="../index.html">drop.it</a>
+					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue selected" href="request.php">REQUEST</a>
