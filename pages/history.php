@@ -41,6 +41,43 @@
 	  
 	  if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);}	  
+<<<<<<< HEAD
+=======
+
+      //execute the SQL query and return records
+	  $sql = "SELECT delivery_id, time, location FROM history";
+	  $result = $conn->query($sql);
+      ?>
+	  <h1>Package History</h1>
+      <table border="2" style= "background-color: #84ed86; color: black; margin: 0 auto;" >
+      <thead>
+        <tr>
+          <th>Delivery ID</th>
+          <th>Time Arrived</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+		if ($result->num_rows > 0) 
+		{
+          while( $row = $result->fetch_assoc()){
+            echo
+            "<tr>
+              <td>$row[delivery_id]</td>
+			  <td>$row[time]</td>
+			  <td>$row[location]</td>
+            </tr>\n";
+          }
+		}
+		else {
+				echo "No Results Found";} 
+        ?>
+      </tbody>
+    </table>
+     <?php $conn->close(); ?>
+					
+>>>>>>> 6223e82d20b90fbfce485141534e58bc4261b863
 
       //execute the SQL query and return records
 	  $sql = "SELECT delivery_id, time, location FROM history";
