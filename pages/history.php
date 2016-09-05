@@ -41,8 +41,6 @@
 	  
 	  if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);}	  
-<<<<<<< HEAD
-=======
 
       //execute the SQL query and return records
 	  $sql = "SELECT delivery_id, time, location FROM history";
@@ -75,8 +73,8 @@
         ?>
       </tbody>
     </table>
-     <?php $conn->close(); ?>
-					
+    <?php $conn->close(); ?>
+	
 	<br>
 	<form method="get" action="complaints.php">
 		<button type="submit">Report an Issue</button>
