@@ -11,18 +11,38 @@ function registerRequest()
                 {
                      if (!empty($_POST) && !empty($_POST['pickUp']))
                         {
-                             
+                         
                              $pickUp = $_POST['pickUp'];
                              $dropOff = $_POST['dropOff'];
                              $recipient = $_POST['recipient'];
-                             $premium = $_POST['premium'];
-                             $fragile = $_POST['fragile'];
-                             $special = $_POST['special'];
+                             if (isset($_POST['fragile']))
+                                 {
+                                    $fragile = $_POST['fragile'];
+                                 }
+                             else
+                                 {
+                                    $fragile = 0; 
+                                 }
+                             if (isset($_POST['premium']))
+                                 {
+                                     $premium = $_POST['premium'];
+                                 }
+                             else
+                                 {
+                                      $premium = 'standard';
+                                 }
+                             if (isset($_POST['special']))
+                                 {
+                                     $special = $_POST['special'];
+                                 }
+                             else
+                                 {
+                                      $special = 'None.';
+                                 }
                              $email = $_SESSION['email'];
                              $contents = $_POST['contents'];
                              $weight = $_POST['weight'];
                              $track = count($weight);
-
                              $a = date_parse_from_format('Y-m-d', $_POST['pickDate']);
                              $pickTime = date_parse_from_format('H:i', $_POST['pickTime']);
 
@@ -33,10 +53,9 @@ function registerRequest()
                              $dropDate = mktime($dropTime['hour'], $dropTime['minute'], 0, $b['month'], $b['day'], $b['year']);
                              try
                              {
-                                 echo "stuff";
                                  $pdo = connect();
-                                 $query= "INSERT INTO delivery(origin, destination, user, driver, name, pickup, dropoff, type, fragile, special)
-                                 VALUES(:pickUp, :dropOff, :user, 'dad', :recipient, :pickTime, :dropTime, :first, :fragile, :special);";
+                                 $query= "INSERT INTO delivery(origin, destination, user, name, pickup, dropoff, type, fragile, special)
+                                 VALUES(:pickUp, :dropOff, :user, :recipient, :pickTime, :dropTime, :first, :fragile, :special);";
                                  $prepare = $pdo->prepare($query);
                                  $prepare -> bindValue(':pickUp', $pickUp);
                                  $prepare -> bindValue(':pickTime', $pickDate);
@@ -65,7 +84,7 @@ function registerRequest()
                              {
                                  echo $e -> getMessage();
                              }
-                         print_r($_POST);
+                         header("Location: ../pages/tracking.php");
                      }
                 }
             }
