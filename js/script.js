@@ -1,3 +1,4 @@
+var packageNumber = 1;
 function isEmpty(obj) {
 	if (obj.length === 0) {
 		return true;
@@ -105,4 +106,37 @@ function Checkstuff()
     else
         console.log("true");
         return true;
+}
+
+
+
+function AddPackage()
+{
+    if (packageNumber < 5)
+       {
+            var div = document.createElement('div');
+            packageNumber++;
+            div.className="package";
+            div.innerHTML='<input type="button" class="exit" onclick="Exit(this);" value="x" title="Remove package"><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
+            document.getElementById("packages_container").appendChild(div);  
+       }
+    else
+        {
+             document.getElementById("button_new_package").style.display="none";
+            var div = document.createElement('div');
+            packageNumber++;
+            div.className="package";
+            div.innerHTML='<span class="exit" onclick="Exit(this);">x</span><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
+            document.getElementById("packages_container").appendChild(div);  
+        }
+}
+function Exit(Element)
+{
+    Element.parentElement.style.display = 'none';
+    packageNumber--;
+    if (packageNumber < 6 && document.getElementById("button_new_package").style.display=="none")
+        {
+            document.getElementById("button_new_package").style.display="inline-block";
+        }
+        
 }

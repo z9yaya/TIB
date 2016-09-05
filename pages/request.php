@@ -56,37 +56,28 @@ registerRequest();
                                     <input id="date_input" type="text" name="dropDate" min=<?php echo date('Y-m-d', mktime(0, 0, 0,date('m'), date('d') + 1, date('Y')));?> class="input_text right" size="15" maxlength="30" placeholder="Drop off date" onfocus="(this.type='date')" required/><br>
                                 </div>
                                 
-                                <div id="right">
+                                <div id="right_wide">
                                     <input id="text_input" type="text" name="recipient" class="input_text" size="15" maxlength="30" autofocus placeholder="Name of recipient"/><br>
                                     
-                                    <input type="checkbox" name="premium" value="first"> Premium
-                                    <input type="checkbox" name="fragile" value="1"> Fragile &emsp;&emsp;&emsp;&emsp;
-                                    <label for="id">Number of packages</label> <select>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    </select><br><br>
-                                    
-                                    <input type="number" name="weight" size="12" maxlength="10" class="input_text" placeholder="Weight in Kg"/><br>
+                                    <input type="checkbox" name="premium" value="first" id="check_premium" class="check_request">  
+                                    <input type="checkbox" name="fragile" value="1" id="check_fragile" class="check_request">
+                                    <label for="check_premium" class="button button_white">FIRST CLASS</label>
+                                    <label for="check_fragile" class="button button_white">FRAGILE</label>
+                                </div>
+                                <div id="bottom_wide">
+                                    <div id="packages_container">
+                                    <div class="package">
+                                    <span class="title" id="first_title">PACKAGE 1</span>
+                                    <input type="number" step="0.01" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br>
 
-                                    <textarea rows="4" cols="50" name="contents" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=' input_text textarea text_long'"></textarea>
-
+                                    <textarea rows="4" cols="50" name="contents[]" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=' input_text textarea text_long'" required></textarea>
+                                    </div>
+                                    </div>
+                                    <input type="button" id="button_new_package" class="button" onclick="AddPackage()" value="ADD A PACKAGE">
+                                          
+                                </div>
                                     <textarea rows="4" cols="50" name="special" class="input_text textarea" placeholder="Special instructions" onkeyup="this.className='input_text textarea text_long'"></textarea>
-
-                                <input id='signup_button' type="submit" value="SUBMIT" class="button">
-                                    
-
-                                   
-
-                                    
-                                    
+                                    <input id='signup_button' type="submit" value="SUBMIT" class="button">
                                 </div>
                         </form>
                             

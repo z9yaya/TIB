@@ -375,7 +375,7 @@ header{
 
 #form
 {
-    margin-top: 10vh;
+    margin-top: 91px;
 }
 #signin_form
 {
@@ -431,7 +431,7 @@ header{
 {
     resize: none;
     height: 15px;
-    width: 200px;
+    width: 175px;
     transition: height 0.1s linear;
 }
 
@@ -456,17 +456,12 @@ header{
 #left_wide
 {
     float: left;
-    width: 60%;
+    width: 360px;
 }
 
 .left
 {
     float: left;
-}
-#left2
-{
-    float: left;
-    width: 60%;
 }
 
 #right
@@ -475,18 +470,25 @@ header{
     width: 24%;
 }
 
+#right_wide
+{
+    float: right;
+    width: 240px;
+    height: 185px;
+}
+
 .right
 {
     float: right;
     position: relative;
-    bottom: 13px;
-}
-#right2
-{
-    float: right;
-    width: 40%;
+    bottom: 14px;
 }
 
+#bottom_wide
+{
+    width: 633px;
+    margin-left: -36px;
+}
 .button
 {
     background: #568FCF;
@@ -496,6 +498,7 @@ header{
     font-family: arial;
     cursor: pointer;
     position: relative;
+    font-weight: bold;
 }
 #signup_form .button
 {
@@ -512,20 +515,106 @@ header{
 {
     left: 0;
 }
+
+
 .button:hover
 {
     background: #387bc7;
     border-color: #387bc7;
 }
+.button_white
+{
+    border: 1px solid rgba(44, 70, 98, 0.55);
+    border-radius: 4px;
+    line-height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 12px;
+    background-color: white;
+    color: rgba(44, 70, 98, 0.55);
+}
 
+label.button_white 
+{
+    height: 35px;
+    display: block;
+    line-height: 35px;
+    position: relative;
+    bottom: 114px;
+    width: 130px;
+    margin: 0px auto 20px auto;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgb(169, 169, 169);
+    
+}
+label.button_white::after
+{
+    content: "☐";
+    font-size: 30px;
+    line-height: 0px;
+    position: relative;
+    top: 18px;
+    float: right;
+    left: 10px;
+    opacity: 0.5;
+    font-weight: normal;
+}
+label.button_white:hover, 
+.check_request[id="check_premium"]:hover ~ label.button_white[for="check_premium"]
+{
+    background-color: white;
+    color: rgb(169, 169, 169);
+}
+
+
+label.button_white:hover > label.button_white[for="check_premium"]::after, 
+.check_request[id="check_premium"]:hover ~ label.button_white[for="check_premium"]:after
+{
+    content: "☑";
+} 
+.check_request[id="check_premium"]:checked ~ label.button_white[for="check_premium"]::after
+{
+    opacity: 1;
+    content: "☑";
+}
+
+
+label.button_white:hover
+.check_request[id="check_fragile"]:hover ~ label.button_white[for="check_fragile"]
+{
+    background-color: white;
+} 
+
+
+
+label.button_white:hover > label.button_white[for="check_fragile"]::after , 
+.check_request[id="check_fragile"]:hover ~ label.button_white[for="check_fragile"]::after
+{
+    content: "☑";
+} 
+.check_request[id="check_fragile"]:checked ~ label.button_white[for="check_fragile"]::after
+{
+    opacity: 1;
+    content: "☑";
+}
+
+.check_request
+{
+    width: 162px;
+    height: 37px;
+    opacity: 1;
+    display: block;
+    margin: 0px auto 20px auto;
+}
 .sign_title
 {
     font-size: 20px;
     font-family: Arial;
+    color: #607489;
     position: relative;
     bottom: 30px;
     right: 40px;
-    color: #607489;
 }
 
 #signin_form .sign_title
@@ -548,7 +637,66 @@ header{
     z-index: 99;
     white-space: nowrap;
     position: relative;
-    top: 16px;
+    top: 10px;
+}
+
+.package, #button_new_package
+{
+    display: inline-block;
+    height: 199px;
+    width: 199px;
+    padding-top: 5px;
+    float: left;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    background-color: rgb(245, 245, 245);
+    margin: 0px 5px 20px 5px;
+}
+
+#button_new_package
+{
+    height: 206px;
+    width: 201px;
+    color: rgb(169, 169, 169);
+}
+#button_new_package:hover
+{
+    background: rgba(44, 70, 98, 0.55);
+    color: white;
+}
+.package .title
+{
+    position: relative;
+    top: 15px;
+    right: 11px;
+    color: rgb(169, 169, 169);
+    font-weight: bold;
+    font-size: 17px;
+    font-family: arial;
+}
+#first_title
+{
+    right: 0;
+}
+.exit
+{
+    position: relative;
+    left: 140px;
+    bottom: 7px;
+    color: darkgrey;
+    font-weight: bold;
+    border: none;
+    background: none;
+    opacity: 0.5;
+    cursor: default;
+}
+.exit:hover, .exit:focus
+{
+    opacity: 1;
+}
+.package #weight
+{
+    margin-top: 39px;
 }
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
