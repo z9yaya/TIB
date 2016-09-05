@@ -31,6 +31,7 @@
 				</header>
 					<div id="content">
 					
+<<<<<<< HEAD
       <?php
 	  $servername = "localhost";
 	  $username = "edit";
@@ -42,23 +43,49 @@
 	  if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);}	  
 
+=======
+
+					
+      <?php
+	  $servername = "localhost";
+	  $username = "edit";
+	  $password = "editme";
+	  $dbname = "tib";
+
+	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  
+	  if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);}	  
+
+>>>>>>> bda89006b273e819eb5bd8813f73d254cc756f88
       //execute the SQL query and return records
 	  $sql = "SELECT delivery_id, time, location FROM history";
 	  $result = $conn->query($sql);
       ?>
 	  <h1>Package History</h1>
+<<<<<<< HEAD
       <table border="2" style= "background-color: #84ed86; color: black; margin: 0 auto;" >
       <thead>
         <tr>
           <th>Delivery ID</th>
           <th>Time Arrived</th>
+=======
+      <table border="2" style= "background-color: #84ed86; color: #761a9b; margin: 0 auto;" >
+      <thead>
+        <tr>
+          <th>Delivery ID</th>
+          <th>Time</th>
+>>>>>>> bda89006b273e819eb5bd8813f73d254cc756f88
           <th>Location</th>
         </tr>
       </thead>
       <tbody>
         <?php
+<<<<<<< HEAD
 		if ($result->num_rows > 0) 
 		{
+=======
+>>>>>>> bda89006b273e819eb5bd8813f73d254cc756f88
           while( $row = $result->fetch_assoc()){
             echo
             "<tr>
@@ -67,9 +94,12 @@
 			  <td>$row[location]</td>
             </tr>\n";
           }
+<<<<<<< HEAD
 		}
 		else {
 				echo "No Results Found";} 
+=======
+>>>>>>> bda89006b273e819eb5bd8813f73d254cc756f88
         ?>
       </tbody>
     </table>
