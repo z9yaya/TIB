@@ -34,18 +34,12 @@
 				<h2>Driver Form</h2>
 					  <div id="form">
 					  <form>
-					    <label for="full_name">Full Name:</label>
-						<input id="text_input" type="text" name="full_name" class="input_text" size="15" maxlength="30" autofocus placeholder="Full Name"><br><br>
-					    <label for="package_id">Package ID:</label>
-						<input id="text_input" type="text" name="package_id" class="input_text" size="15" maxlength="30" autofocus placeholder="Package ID"><br><br>
-						<label for="package_content">Package Content:</label>
-						<input id="time_input" type="time" name="package_content" class="input_text" size="15" maxlength="30" autofocus placeholder="Package Content"><br><br>
 						<label for="location">Location:</label>
-						<input id="text_input" type="text" name="location" class="input_text" size="15" maxlength="30" autofocus placeholder="Location"><br><br>
+						<input id="text_input" type="text" name="location" class="input_text" size="15" maxlength="30" autofocus placeholder="Location">&nbsp;&nbsp;&nbsp;
 						<label for="time">Time:</label>
 						<input id="time_input" type="time" name="time" class="input_text" size="15" maxlength="30" autofocus placeholder="Time"><br><br>
-						<input id='submit_button' type="submit" value="SUBMIT" class="button">&nbsp;&nbsp;&nbsp;
-						<input id='reset_button' type="reset" value="RESET" class="button">
+						<input id='submit_button' type="submit" value="SUBMIT" class="button">
+	
 						</form>
                         <footer id="footer">
                         <p>Done by Elias Mehari - 2016</p>
