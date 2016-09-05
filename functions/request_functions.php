@@ -11,7 +11,7 @@ function registerRequest()
                 {
                      if (!empty($_POST) && !empty($_POST['pickUp']))
                         {
-
+                             
                              $pickUp = $_POST['pickUp'];
                              $dropOff = $_POST['dropOff'];
                              $recipient = $_POST['recipient'];
@@ -19,6 +19,9 @@ function registerRequest()
                              $fragile = $_POST['fragile'];
                              $special = $_POST['special'];
                              $email = $_SESSION['email'];
+                             $contents = $_POST['contents'];
+                             $weight = $_POST['weight'];
+                             $track = count($weight);
 
                              $a = date_parse_from_format('Y-m-d', $_POST['pickDate']);
                              $pickTime = date_parse_from_format('H:i', $_POST['pickTime']);
@@ -45,6 +48,18 @@ function registerRequest()
                                  $prepare -> bindValue(':special', $special);
                                  $prepare -> bindValue(':user', $email);
                                  $prepare -> execute();
+                                 $ID = $pdo->lastInsertId();
+                                 
+                                 for($i=0; $i < $track; $i++)
+                                 {
+                                 $query= "INSERT INTO package(delivery_ID,weight, content)
+                                 VALUES(:delivery_ID, :weight, :contents);";
+                                 $prepare = $pdo->prepare($query);
+                                 $prepare -> bindValue(':delivery_ID', $ID);
+                                 $prepare -> bindValue(':contents', $contents[$i]);
+                                 $prepare -> bindValue(':weight', $weight[$i]);
+                                 $prepare -> execute();
+                                    }
                              }
                              catch (PDOException $e)
                              {
