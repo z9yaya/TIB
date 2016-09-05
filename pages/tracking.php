@@ -28,7 +28,7 @@
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 					<a id="driverform" class="menu menu_blue" href="driverform.php">DRIVER</a>
-					<a id="new" class="menu menu_blue selected" href="new.php">NEW</a>
+					
 				</header>
 					<div id="content">                 
 				       <?php include '../functions/functions.php';
