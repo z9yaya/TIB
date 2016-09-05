@@ -27,26 +27,29 @@
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
-					<a id="new" class="menu menu_blue selected" href="new.php">NEW</a>	
+					<a id="new" class="menu menu_blue selected" href="new.php">NEW</a>
+					<a id="driverform" class="menu menu_blue" href="driverform.php">DRIVER</a>					
 				</header>
 					<div id="content">
-                        *****PUT YOUR CONTENT HERE*****
-                        TEMPLATE INPUTS:<br/>
-                        Text input example: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Text template"/><br>
-                        
-                        Date input example: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Date template"/><br>
-                        
-                        Password input example: <input id="password_input" type="password" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" placeholder="Password template"/><br>
-                        
-                        Mobile phone input example:  <input type="tel" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Number input example: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Email input example: <input type="email" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" placeholder="Email template" required/><br>
-                        
-                        Submit input example: <input id='signup_button' type="submit" value="SUBMIT" class="button">
-                        <footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
+                      <h3>New Deliveries Order</h3>
+					<div id="left">
+                        <input id="text_input" type="text" name="pickup_address" class="input_text" size="15" maxlength="30" autofocus placeholder="Pick up address"><br><br>
+						<input id="time_input" type="time" name="pickup_time" class="input_text" size="15" maxlength="30" autofocus placeholder="Pick up time"><br><br>
+                        <input id="date_input" type="date" name="pickup_date" class="input_text" size="15" maxlength="30" autofocus placeholder="Pick up date"><br><br>
+                    </div>
+						  
+					<div id="right">
+						<input id="text_input" type="text" name="dropoff_address" class="input_text" size="15" maxlength="30" autofocus placeholder="Destination address"><br><br>
+						<input id="time_input" type="time" name="dropoff_time" class="input_text" size="15" maxlength="30" autofocus placeholder="Drop off time"><br><br>
+                        <input id="date_input" type="date" name="dropoff_date" class="input_text" size="15" maxlength="30" autofocus placeholder="Drop off date"><br><br>
+					</div>
+						
+                        <input type="number" name="package_content" size="12" maxlength="10" class="input_text" placeholder="Package Content"><br><br>
+						<textarea>Special construction</textarea><br><br><br><br>
+                        <input id='submit_button' type="submit" value="SUBMIT" class="button">
+						<input id='reset_button' type="reset" value="RESET" class="button">
+                        <footer id="footer"></center>
+                        <p>Done by Elias Gebre</p>
 					</footer>
 					</div>
 				</div>
