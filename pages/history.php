@@ -31,32 +31,47 @@
 				</header>
 					<div id="content">
 					
-					<?php
-					$servername = "localhost";
-					$username = "edit";
-					$password = "editme";
-					$dbname = "tib";
 
-					// Create connection
-					$conn = new mysqli($servername, $username, $password, $dbname);
-					// Check connection
-					if ($conn->connect_error) {
-						die("Connection failed: " . $conn->connect_error);
-					}
+					
+      <?php
+	  $servername = "localhost";
+	  $username = "edit";
+	  $password = "editme";
+	  $dbname = "tib";
 
-					$sql = "SELECT delivery_id, time, location FROM history";
-					$result = $conn->query($sql);
+	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  
+	  if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);}	  
 
-					if ($result->num_rows > 0) {
-						// output data of each row
-						while($row = $result->fetch_assoc()) {
-							echo "id: " . $row["delivery_id"]. " - Time: " . $row["time"]. " - Location: " . $row["location"]. "<br>";
-						}
-					} else {
-						echo "0 results";
-					}
-					$conn->close();
-					?> 
+      //execute the SQL query and return records
+	  $sql = "SELECT delivery_id, time, location FROM history";
+	  $result = $conn->query($sql);
+      ?>
+	  <h1>Package History</h1>
+      <table border="2" style= "background-color: #84ed86; color: #761a9b; margin: 0 auto;" >
+      <thead>
+        <tr>
+          <th>Delivery ID</th>
+          <th>Time</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+          while( $row = $result->fetch_assoc()){
+            echo
+            "<tr>
+              <td>$row[delivery_id]</td>
+			  <td>$row[time]</td>
+			  <td>$row[location]</td>
+            </tr>\n";
+          }
+        ?>
+      </tbody>
+    </table>
+     <?php $conn->close(); ?>
+					
 
                     <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
