@@ -174,7 +174,7 @@ function GrabData($table, $column, $where_column, $where)
 }
 
 ///$query is the basic mySQL query eg: "SELECT * FROM users WHERE email = :email AND password = :password".
-///$bind is a array, can have nested arrays I think, must be in pairs, eg: ':email', 'ze_yaya@msn.com'
+///$bind is a array, can have nested arrays I think, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
 function GrabMoreData($query, $bind)
 {
                          try
