@@ -173,6 +173,37 @@ function GrabData($table, $column, $where_column, $where)
                          
 }
 
+///$query is the basic mySQL query eg: "SELECT * FROM users WHERE email = :email AND password = :password".
+///$bind is a array, can have nested arrays I think, must be in pairs, eg: ':email', 'ze_yaya@msn.com'
+function GrabMoreData($query, $bind)
+{
+                         try
+                         {
+                             $pdo = connect();
+                             $sql= $query;
+                             $prepare = $pdo->prepare($sql);
+                             foreach ($bind as $attribute)
+                             {
+                                $prepare->bindValue($attribute[0], $attribute[1]); 
+                             }
+                             $prepare->execute();
+                         }
+                         catch (PDOException $e)
+                         {
+                             echo $e -> getMessage();
+                         }
+                         if ($prepare -> rowCount() != 0)
+                         {
+                             $data = $prepare->fetchAll(PDO::FETCH_ASSOC);
+                             return $data;
+                         }
+                         else
+                         {
+                             return false;
+                         }
+                         
+}
+
 function writeError($method)
 {
     if (!empty($_POST))
