@@ -50,6 +50,9 @@
       //execute the SQL query and return records
 	  $sql = "SELECT delivery_id, time, location FROM history";
 	  $result = $conn->query($sql);
+	  $time = "SELECT time FROM history";
+	  $timeresult = $conn->query($time); 
+	  $timestamp = date("Y-m-d\H:i:s", $timeresult)
       ?>
 	  <h1>Package History</h1>
       <table border="2" style= "background-color: #84ed86; color: black; margin: 0 auto;" >
@@ -68,7 +71,7 @@
             echo
             "<tr>
               <td>$row[delivery_id]</td>
-			  <td>$row[time]</td>
+			  <td>" . date('d-m-Y',$row[time]) . "</td>
 			  <td>$row[location]</td>
             </tr>\n";
           }
