@@ -1,3 +1,5 @@
+<?php include '../functions/functions.php';?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +23,11 @@
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else 																			
+																		 {
+                                                                            //header("Location: login.php");
+                                                                            echo 'SIGN IN</a>';}?>
+					
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
@@ -63,7 +68,7 @@
             echo
             "<tr>
               <td>$row[delivery_id]</td>
-			  <td>$row[time]</td>
+			  <td>$row[date('Y-m-d h:i:s',time->timestamp)]</td>;
 			  <td>$row[location]</td>
             </tr>\n";
           }
