@@ -31,23 +31,11 @@
 					<a id="new" class="menu menu_blue selected" href="new.php">NEW</a>
 				</header>
 					<div id="content">  
-
 				<?php include '../functions/functions.php';
-	  $servername = "localhost";
-	  $username = "edit";
-	  $password = "editme";
-	  $dbname = "tib";
-
-	  $conn = new mysqli($servername, $username, $password, $dbname);
-	  
-	  if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);}	  
-
-      //execute the SQL query and return records
 	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
-	  $sql = "SELECT delivery_id, weight, content FROM package";
-	  $results = $conn->query($sql);
-      ?>	   
+	  $sql = "SELECT ID, delivery_id, weight, content FROM package";
+      ?>
+	   
 
 
 	  
@@ -71,7 +59,7 @@
             "<tr>
               <td>$row[delivery_ID]</td>
 			  <td>$row[location]</td>
-			  <td>" . date('d-m-Y',$row[time]) . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[time]) . "</td>
             </tr>\n";
           }
 		}
@@ -79,8 +67,7 @@
 				echo "No Results Found";} 
         ?>
       </tbody>
-    </table>
-    <?php $conn->close(); ?>				 
+    </table>				 
 <h1><?php echo '<center><b></b></center>'; ?></h1> 
                         <footer id="footer">
                         <p> Done by Elias Gebre - 2016</p>
