@@ -28,17 +28,35 @@
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 					<a id="driverform" class="menu menu_blue" href="driverform.php">DRIVER</a>
-					
+					<a id="new" class="menu menu_blue selected" href="new.php">NEW</a>
 				</header>
-					<div id="content">                 
-				       <?php include '../functions/functions.php';
-	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', '1');
-      ?>
+					<div id="content">  
+
+				<?php include '../functions/functions.php';
+	  $servername = "localhost";
+	  $username = "edit";
+	  $password = "editme";
+	  $dbname = "tib";
+
+	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  
+	  if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);}	  
+
+      //execute the SQL query and return records
+	     //$results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
+	  $sql = "SELECT delivery_id, time, location FROM history";
+	  $results = $conn->query($sql);
+      ?>	   
+
+
+	  
+	  
 	  <h1>Package Tracking</h1>
       <table border="3" width="500" style= "background-color: #ffb3b3; color: black; margin: 0 auto;">
       <thead>
         <tr>
-          <th>Package ID</th>
+          <th>Delivery ID</th>
           <th>Location</th>
           <th>Time</th>
         </tr>
@@ -48,7 +66,8 @@
 		if ($results) 
 		{
           foreach($results as $row){
-            echo
+            
+			echo
             "<tr>
               <td>$row[delivery_ID]</td>
 			  <td>$row[location]</td>
