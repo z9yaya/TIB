@@ -44,7 +44,7 @@
 		die("Connection failed: " . $conn->connect_error);}	  
 
       //execute the SQL query and return records
-	     //$results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
+	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
 	  $sql = "SELECT delivery_id, time, location FROM history";
 	  $results = $conn->query($sql);
       ?>	   
