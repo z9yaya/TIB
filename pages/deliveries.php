@@ -86,8 +86,8 @@
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
-			  <td>$row[pickup]</td>
-			  <td>$row[dropoff]</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
 			  <td>$row[cost]</td>
 			  <td>$row[type]</td>
 			  <td>$row[paid]</td>
