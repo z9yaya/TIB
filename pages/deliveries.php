@@ -1,3 +1,5 @@
+<?php include '../functions/functions.php';?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,100 +23,71 @@
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else 																			
+																		 {
+                                                                            //header("Location: login.php");
+                                                                            echo 'SIGN IN</a>';}?>
+					
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
+					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
+					<a id="request" class="menu menu_blue" href="history.php">HISTORY</a>
 				</header>
 					<div id="content">
-						<div id="address_map_results">
-							<div id="address_map_left_results">
-							<div id="table_title">select a spot</div>
-							<table div id="results_table">
-<!-- 								<thead>
-									<tr>
-										<th><a>Wifi Hotspot Name</a></th>
-										<th>Address</th>
-										<th>Suburb</th>
-									</tr>
-								</thead> -->
-								<tbody>
-									<tr onclick="document.location = 'example.php';">
-										<td>A</td>
-										<td title="Name"><a href="example.php" id="A">7th Brigade Park, Chermside</a></td>
-										<td title="Address">Delaware St</td>
-										<td title="Suburb">Chermside,4032</td>
-										<td>-27.37893</td>
-										<td>153.04461</td>
-										<td title="Average user rating"><span class="results_rating">5</span><span class="star">&#9733;</span></td>
-									</tr>
-									<tr>
-										<td>B</td>
-										<td title="Name"><a href="" id="B">Annerley Library Wifi</a></td>
-										<td title="Address">450 Ipswich Road</td>
-										<td title="Suburb">Annerley, 4103</td>
-										<td>-27.50942285</td>
-										<td>153.0333218</td>
-										<td title="Average user rating"><span class="results_rating">4</span><span class="star">&#9733;</span></td>
-									</tr>
-									<tr>
-										<td>C</td>
-										<td title="Name"><a href="" id="C">Ashgrove Library Wifi</a></td>
-										<td title="Address">87 Amarina Avenue</td>
-										<td title="Suburb">Ashgrove, 4060</td>
-										<td>-27.44394629</td>
-										<td>152.9870981</td>
-										<td title="Average user rating"><span class="results_rating">1</span><span class="star">&#9733;</span></td>
-									</tr>
-									<!-- -->
-									<tr>
-										<td>D</td>
-										<td title="Name"><a href="" id="D">Garden City Library Wifi</a></td>
-										<td title="Address">Garden City Shopping Centre, Corner Logan and Kessels Road</td>
-										<td title="Suburb">Upper Mount Gravatt, 4122</td>
-										<td>-27.56244221</td>
-										<td>153.0809183</td>
-										<td title="Average user rating"><span class="results_rating">3</span><span class="star">&#9733;</span></td>
-									</tr>
-									<tr>
-										<td>E</td>
-										<td title="Name"><a href="" id="E">Banyo Library Wifi</a></td>
-										<td title="Address">284 St. Vincents Road</td>
-										<td title="Suburb">Banyo, 4014</td>
-										<td>-27.37396641</td>
-										<td>153.0783234</td>
-										<td title="Average user rating"><span class="results_rating">4</span><span class="star">&#9733;</span></td>
-									</tr>
-									<tr>
-										<td>F</td>
-										<td title="Name"><a href="" id="F">Booker Place Park</a></td>
-										<td title="Address">Birkin Rd & Sugarwood St</td>
-										<td title="Suburb">Bellbowrie</td>
-										<td>-27.56353</td>
-										<td>152.89372</td>
-										<td title="Average user rating"><span class="results_rating">2</span><span class="star">&#9733;</span></td>
-									</tr>
-									<tr>
-										<td>G</td>
-										<td title="Name"><a href="" id="G">Bracken Ridge Library Wifi</a></td>
-										<td title="Address">Corner Bracken and Barrett Street</td>
-										<td title="Suburb">Bracken Ridge, 4017</td>
-										<td>-27.31797261</td>
-										<td>153.0378735</td>
-										<td title="Average user rating"><span class="results_rating">4</span><span class="star">&#9733;</span></td>
-									</tr>
-									
-								</tbody>
-							</table>
-							</div>
-							<div id="address_map_right">
-							</div>
-						</div>
 					
-					<footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
+      <?php
+	  $servername = "localhost";
+	  $username = "edit";
+	  $password = "editme";
+	  $dbname = "tib";
+
+	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  
+	  if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);}	  
+
+      //execute the SQL query and return records
+	  $sql = "SELECT delivery_id, time, location FROM history";
+	  $result = $conn->query($sql);
+	  $time = "SELECT time FROM history";
+	  $timeresult = $conn->query($time); 
+	  $timestamp = date("Y-m-d\H:i:s", $timeresult)
+      ?>
+	  <h1>Package History</h1>
+      <table border="2" style= "background-color: #84ed86; color: black; margin: 0 auto;" >
+      <thead>
+        <tr>
+          <th>Delivery ID</th>
+          <th>Time Arrived</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+		if ($result->num_rows > 0) 
+		{
+          while( $row = $result->fetch_assoc()){
+            echo
+            "<tr>
+              <td>$row[delivery_id]</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[time]) . "</td>
+			  <td>$row[location]</td>
+			  <td><a href='complaints.php?id=".$row['delivery_id']."'>Report an Issue</a></td>
+            </tr>\n";
+          }
+		}
+		else {
+				echo "No Results Found";} 
+        ?>
+      </tbody>
+    </table>
+    <?php $conn->close(); ?>
+	
+	<br>
+
+                    <footer id="footer">
+                        <p> Designed by Michael Phong - 2016</p>
 					</footer>
 					</div>
 				</div>
