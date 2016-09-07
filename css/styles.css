@@ -344,12 +344,13 @@ header{
 		font-size: 38.34px;
 	}
 }
+
 #content
 {
     
 	height: 100%;
 	text-align: center;
-    width: 600px;
+    width: auto;
     margin: 0 auto;
     margin-top: 10px;
 }
