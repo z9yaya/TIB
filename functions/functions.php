@@ -224,7 +224,7 @@ function writeError($method)
 //NOT tested for data collected from GrabData
 function generateForm($data){
 	$dat = $data;
-	echo "<table border=2 width=100%>><tr>";
+	echo "<table border=2 width=100%><tr>";
 	while ($id = current($dat[0])) {
 		if($id){
 			echo "<th>".key($data[0])."</th>";
