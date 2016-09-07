@@ -32,14 +32,13 @@
 				</header>
 					<div id="content">  
 				<?php include '../functions/functions.php';
+      //execute the SQL query and return records
 	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
-	  $sql = "SELECT ID, delivery_id, weight, content FROM package";
-      ?>
-	   
-
-
-	  
-	  
+	  $sql = "SELECT delivery_id, weight, content FROM package";
+	  //$results = $conn->query($sql);
+      ?>	   
+				
+	    
 	  <h1>Package Tracking</h1>
       <table border="3" width="500" style= "background-color: #ffb3b3; color: black; margin: 0 auto;">
       <thead>
@@ -67,7 +66,8 @@
 				echo "No Results Found";} 
         ?>
       </tbody>
-    </table>				 
+    </table>
+	
 <h1><?php echo '<center><b></b></center>'; ?></h1> 
                         <footer id="footer">
                         <p> Done by Elias Gebre - 2016</p>
