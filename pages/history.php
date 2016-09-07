@@ -71,8 +71,9 @@
             echo
             "<tr>
               <td>$row[delivery_id]</td>
-			  <td>" . date('d-m-Y',$row[time]) . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[time]) . "</td>
 			  <td>$row[location]</td>
+			  <td><a href='complaints.php?id=".$data['delivery_id']."'>Report an Issue</a></td>
             </tr>\n";
           }
 		}
@@ -84,10 +85,7 @@
     <?php $conn->close(); ?>
 	
 	<br>
-	<form method="get" action="complaints.php">
-		<button type="submit">Report an Issue</button>
-	</form>
-	
+
                     <footer id="footer">
                         <p> Designed by Michael Phong - 2016</p>
 					</footer>
