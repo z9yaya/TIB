@@ -32,8 +32,7 @@
 				</header>
 					<div id="content">  
 				<?php include '../functions/functions.php';
-      //execute the SQL query and return records
-	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
+	  //$results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 1);
 	  $sql = "SELECT delivery_id, weight, content FROM package";
 	  //$results = $conn->query($sql);
       ?>	   
