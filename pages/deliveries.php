@@ -17,21 +17,23 @@
 			<div id="wrapper">
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
-                                                                        if (session_id() == '')
-                                                                        {
-                                                                            session_start();
-                                                                        }
-                                                                        if(isset($_SESSION['email']))
-                                                                            echo 'SIGN OUT</a>';
-                                                                        else 																			
-																		 {
-                                                                            //header("Location: login.php");
-                                                                            echo 'SIGN IN</a>';}?>
+																			if (session_id() == '')
+																			{
+																				session_start();
+																			}
+																			if(isset($_SESSION['email']))
+																				echo 'SIGN OUT</a>';
+																			else
+																			{
+																				header("Location: login.php?error=deliveries");
+																				echo 'SIGN IN</a>';
+																			}?>
 					
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
+				
 				</header>
 					<div id="content">
 					
@@ -48,12 +50,13 @@
 	  ?>
 	  
 	  <?php
-	  $delivery = "SELECT * FROM delivery";
+	  $delivery = "SELECT * FROM delivery WHERE user = '" . $_SESSION['email'] . "'"; 
 	  $deliveryresult = $conn->query($delivery);	  
-	  ?>	  
+	  ?>	
 	  
 	  <h1>Deliveries</h1>
-      <table border="2" style= "background-color: #84ed86; color: black; margin: 0 auto;" >
+	  
+      <table border="2" style= "background-color: #FBF5E6; color: black; margin: 0 auto;" >
       <thead>
         <tr>
           <th>ID</th>
@@ -95,7 +98,8 @@
 			  <td>$row[fragile]</td>
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
+			  <td><a href='deliveries.php?id=".$row['ID']."'>More Info</a></td>
+			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>			  
             </tr>\n";
           }
 		}
@@ -103,16 +107,15 @@
 				echo "No Results Found";} 
         ?>
       </tbody>
-    </table>	  
+    </table>	
 
     <?php $conn->close(); ?>
-	
-	<br>
 
-                    <footer id="footer">
+	<br>            
+					</div>
+					        <footer id="footer">
                         <p> Designed by Michael Phong - 2016</p>
 					</footer>
-					</div>
 				</div>
 			</div>
     </body>
