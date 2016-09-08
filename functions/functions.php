@@ -174,7 +174,7 @@ function GrabData($table, $column, $where_column, $where)
 }
 
 ///$query is the basic mySQL query eg: "SELECT * FROM users WHERE email = :email AND password = :password".
-///$bind is a array, can have nested arrays I think, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
+///$bind is a nested array, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
 function GrabMoreData($query, $bind)
 {
                          try
@@ -215,6 +215,31 @@ function writeError($method)
         else if ($_POST['method'] == 'signup' && !registerUser() && $method == "signup")
         {
             echo "<span class='php_error'>This email is already in use</span>";
+        }
+    }
+    if ($method == 'request')
+    {
+        echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to request a delivery</span>";
+    }
+}
+
+function trackPackages()
+{
+    if (CheckExist('email', 'delivery', 'user', $_SESSION))
+    {
+        $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit")', array(array(':email', $_SESSION['email'])));
+        if (!$tracking)
+        {
+            echo "You do not have any packages in transit at the moment..<br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
+        }
+        else
+        {
+            foreach ($tracking as $step)
+            {
+                echo $step['location'];
+                echo date('h:i a',$step['time']);
+                echo date('d-m-Y',$step['time']);
+            }
         }
     }
 }

@@ -344,35 +344,21 @@ header{
 		font-size: 38.34px;
 	}
 }
-
 #content
 {
     
 	height: 100%;
 	text-align: center;
-    width: auto;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-#content2
-{
-    
-	height: 100%;
-	text-align: center;
-    width: 350px;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-#content3
-{
-    
-	height: 100%;
-	text-align: center;
-    width: 400px;
+    width: 600px;
     margin: 0 auto;
     margin-top: 10px;
 }
 
+#delivery_text
+{
+   position: relative;
+    right: 20px;
+}
 
 #form
 {
@@ -433,16 +419,27 @@ header{
     resize: none;
     height: 15px;
     width: 175px;
-    transition: height 0.1s linear;
+    font-size: 12px;
+    transition: height 0.1s linear,
+                width 0.1s linear;
 }
 
-.textarea:focus
+.textarea_height:focus
 {
     height: 60px;
+}
+.textarea_width
+{
+    width: 442px;
 }
 
 .text_long{
     height: 60px;
+}
+
+.textarea_short
+{
+    width: 140px;
 }
 .input_label
 {
@@ -458,6 +455,7 @@ header{
 {
     float: left;
     width: 360px;
+    height: 230px;
 }
 
 .left
@@ -475,7 +473,7 @@ header{
 {
     float: right;
     width: 240px;
-    height: 185px;
+    height: 230px;
 }
 
 .right
@@ -485,10 +483,21 @@ header{
     bottom: 14px;
 }
 
+.right_no_bottom
+{
+    float: right;
+    top: 2px;
+}
+
+#bottom
+{
+    width: 562px;
+}
 #bottom_wide
 {
     width: 633px;
-    margin-left: -36px;
+    margin-left: -37px;
+    overflow: hidden;
 }
 .button
 {
@@ -541,7 +550,7 @@ label.button_white
     display: block;
     line-height: 35px;
     position: relative;
-    bottom: 114px;
+    bottom: 117px;
     width: 130px;
     margin: 0px auto 20px auto;
     text-align: left;
@@ -607,6 +616,8 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     opacity: 1;
     display: block;
     margin: 0px auto 20px auto;
+    position: relative;
+    bottom: 3px;
 }
 .sign_title
 {
