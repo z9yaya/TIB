@@ -1,4 +1,6 @@
-<?php include '../functions/functions.php';?>
+<?php 
+include '../functions/functions.php';
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +12,11 @@
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
          <link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
+		 <link async href="../css/deliveriescss.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+		<script type="text/javascript">
+
+</script>
     </head>
     <body>
         <div id="back_nav">
@@ -61,7 +67,7 @@
         <tr>
           <th>ID</th>
           <th>User</th>
-          <th>Driver</th>
+          <th class='moreinfo' id='moreinfo'>Driver</th>
 		  <th>Origin</th>
 		  <th>Destination</th>
 		  <th>Name</th>
@@ -98,8 +104,10 @@
 			  <td>$row[fragile]</td>
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
-			  <td><a href='deliveries.php?id=".$row['ID']."'>More Info</a></td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>			  
+			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
+			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>	
+			  
+			 
             </tr>\n";
           }
 		}
@@ -110,6 +118,20 @@
     </table>	
 
     <?php $conn->close(); ?>
+	
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementByClassName(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
+
 
 	<br>            
 					</div>
