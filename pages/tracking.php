@@ -43,9 +43,9 @@
 	die("Connection failed: " . $conn->connect_error);}	  
 
       //execute the SQL query and return records
-	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', 2);
-	  //$sql = "SELECT ID, delivery_id, weight, content FROM package";
-	  //$results = $conn->query($sql);
+	  //$id = GrabMoreData('SELECT ID, user, status FROM delivery');
+	  $id = GrabMoreData('SELECT ID FROM delivery WHERE user = :email and status = "In Transit"', array(array(':email', $id)));
+	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', $id);
       ?>	   	   
 				
 	    
