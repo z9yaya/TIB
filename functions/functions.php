@@ -221,6 +221,10 @@ function writeError($method)
     {
         echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to request a delivery</span>";
     }
+     if ($method == 'deliveries')
+    {
+        echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to request a delivery</span>";
+    }
 }
 
 function trackPackages()
