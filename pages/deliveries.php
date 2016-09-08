@@ -67,7 +67,7 @@ include '../functions/functions.php';
         <tr>
           <th>ID</th>
           <th>User</th>
-          <th class='moreinfo' id='moreinfo'>Driver</th>
+          <th>Driver</th>
 		  <th>Origin</th>
 		  <th>Destination</th>
 		  <th>Name</th>
