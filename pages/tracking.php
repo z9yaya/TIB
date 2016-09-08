@@ -21,8 +21,11 @@
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else
+                                                                        {
+                                                                            header("Location: login.php?error=tracking");
+                                                                            echo 'SIGN IN</a>';
+                                                                        }?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
