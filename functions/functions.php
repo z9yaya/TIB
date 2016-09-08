@@ -227,23 +227,68 @@ function writeError($method)
     }
 }
 
+function countResults($resultsItems)
+        {
+            $num_rows=0;
+            for ($i=0;$i < count($resultsItems); $i++) 
+            {
+                $num_rows++;
+            }
+            return $num_rows;
+
+        }
+
 function trackPackages()
 {
     if (CheckExist('email', 'delivery', 'user', $_SESSION))
     {
-        $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit")', array(array(':email', $_SESSION['email'])));
-        if (!$tracking)
+        $ID = GrabMoreData('SELECT ID FROM delivery WHERE user = :email AND status = "In Transit"', array(array(':email', $_SESSION['email'])));
+        $selected = 1;
+        if(countResults($ID) > 1)
+        {
+            echo "<form id='packageNumber' method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
+                    <select name='ID' onchange='(document.getElementById(\"packageNumber\").submit())'>";
+            if (!empty($_POST['ID']))
+            {
+                $selected = $_POST['ID'];
+            }
+            for ($i = 1; $i <= countResults($ID); $i++)
+            {
+                echo "<option value=" . $i;
+                if($i == $selected)
+                {echo " selected";}
+                echo ">" . $i . "</option>";
+            }
+            echo "</select></form>";
+        }
+        else
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit")', array(array(':email', $_SESSION['email'])));
+        }
+        if (!empty($_POST['ID']))
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id', array(array(':id', $_POST['ID'])));
+        }
+        if (!isset($tracking) || !$tracking)
         {
             echo "You do not have any packages in transit at the moment..<br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
         }
         else
         {
+            echo '<table><tbody>
+                            <thead><tr>
+                                     <th>Location</th>
+                                     <th>Time</th>
+                                     <th>Date</th>
+                                  </tr>
+                            </thead>';
             foreach ($tracking as $step)
             {
-                echo $step['location'];
-                echo date('h:i a',$step['time']);
-                echo date('d-m-Y',$step['time']);
+                echo '<td title="Location" class="delivery_location">' . $step['location'] . '</td>';
+                echo '<td title="Suburb" class="delivery_time">' . date('h:i a',$step['time']) . '</td>';
+                echo '<td title="Suburb" class="delivery_date">' . date('d-m-Y',$step['time']) . '</td>';
             }
+            echo '</tbody></table>';
         }
     }
 }

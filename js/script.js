@@ -1,3 +1,10 @@
+//window.addEventListener("scroll", forceFooter);
+
+function forceFooter()
+{
+    var element = document.getElementById('footer');
+    element.style.top = document.documentElement.offsetHeight + 'px';
+}
 var packageNumber = 1;
 function isEmpty(obj) {
 	if (obj.length === 0) {
