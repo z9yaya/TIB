@@ -21,7 +21,8 @@ if (!empty($_POST))
     {
         registerUser();
     }
-}?>
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -39,7 +40,7 @@ if (!empty($_POST))
         <div id="back_nav">
 			<div id="wrapper">
 				<header>
-                    <a id="login_blue" class="menu menu_blue selected" href="pages/login.php">SIGN IN</a>
+                    <a id="login_blue" class="menu menu_blue selected" href="login.php">SIGN IN</a>
                     <a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
@@ -53,7 +54,11 @@ if (!empty($_POST))
 								<input id="password_input" type="password" name="password" class="input_text" size="15" maxlength="30" placeholder="Password"/>
                                 <input type="hidden" name="method" value="login"><br>
 								<button type="submit" id="sign_in_button" class="button">SIGN IN</button>
-                                <?php writeError("login");?>
+                                <?php writeError("login");
+                                        if (!empty($_GET['error']))
+                                        {
+                                            writeError($_GET['error']);
+                                        }?>
 							</form>
                             
                         <div id="separator">&nbsp;</div>
