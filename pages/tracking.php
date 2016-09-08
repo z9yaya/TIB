@@ -44,7 +44,7 @@
 
       //execute the SQL query and return records
 	  //$id = GrabMoreData('SELECT ID, user, status FROM delivery');
-	  $id = GrabMoreData('SELECT ID FROM delivery WHERE user = :email and status = "In Transit"', array(array(':email', ID)));
+	  $id = GrabMoreData('SELECT ID FROM delivery WHERE user = :email and status = "In Transit"', array(array(':email', user)));
 	  $results = GrabData('history', 'delivery_ID, time, location', 'delivery_ID', $id);
       ?>	   	   
 				
