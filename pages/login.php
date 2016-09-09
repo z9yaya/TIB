@@ -67,7 +67,7 @@ if (!empty($_POST))
                                 <span class="sign_title">Register for an account</span>
 							<div id="signup_text">
                                 <div id="left">
-									<input type="email" name="email" class="input_text" placeholder="Email address" required/>
+									<input type="email" android:inputType="textEmailAddress"  name="email" class="input_text" placeholder="Email address" required/>
                                     <span id="email_error" class="error_signup"></span>
                                     <br/>
 									<input id="password" type="password" name="password_signup" size="15" maxlength="30" class="input_text" placeholder="Password" onchange="passwordsMatch()" required/>

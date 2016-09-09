@@ -247,11 +247,11 @@ function trackPackages()
     if (CheckExist('email', 'delivery', 'user', $_SESSION))
     {
         $ID = GrabMoreData('SELECT ID FROM delivery WHERE user = :email AND status = "In Transit"', array(array(':email', $_SESSION['email'])));
-        $selected = 1;
         if(countResults($ID) > 1)
         {
+            $selected = 1;
             echo "<form id='packageNumber' method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
-                    <select name='ID' onchange='(document.getElementById(\"packageNumber\").submit())'>";
+                    <label for='select_id' style='font-weight: bold;color: rgba(44, 70, 98, 0.55);'>DELIVERY NUMBER: </label><select id='select_id' name='ID' class='dropdown_number' onchange='(document.getElementById(\"packageNumber\").submit())'>";
             if (!empty($_POST['ID']))
             {
                 $selected = $_POST['ID'];
@@ -267,33 +267,45 @@ function trackPackages()
         }
         else
         {
-             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit")', array(array(':email', $_SESSION['email'])));
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit") ORDER BY time DESC', array(array(':email', $_SESSION['email'])));
         }
-        if (!empty($_POST['ID']))
+        if (!empty($selected))
         {
-             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id', array(array(':id', $_POST['ID'])));
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $selected)));
         }
         if (!isset($tracking) || !$tracking)
         {
-            echo "You do not have any packages in transit at the moment..<br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
+            echo "<br/>You do not have any packages in transit at the moment..<br/><br/><br/><input type='button' onclick='(window.location.href = \"deliveries.php\")' value='VIEW YOUR DELIVERIES' class='button'/> ";
         }
         else
         {
-            echo '<table><tbody>
+            echo '<div id="table_holder">
+                    <table>
                             <thead><tr>
-                                     <th>Location</th>
+                                     <th style="text-align: left;padding-left: 10px;
+	                                   padding-right: 5px;">Location</th>
                                      <th>Time</th>
                                      <th>Date</th>
                                   </tr>
-                            </thead>';
+                            </thead>
+                            <tbody>
+                            ';
             foreach ($tracking as $step)
             {
-                echo '<td title="Location" class="delivery_location">' . $step['location'] . '</td>';
-                echo '<td title="Suburb" class="delivery_time">' . date('h:i a',$step['time']) . '</td>';
-                echo '<td title="Suburb" class="delivery_date">' . date('d-m-Y',$step['time']) . '</td>';
+                echo '<tr>
+                <td class="delivery_location">' . ucfirst($step['location']) . '</td>
+                ';
+                echo '<td class="delivery_time">' . date('h:i a',$step['time']) . '</td>
+                ';
+                echo '<td class="delivery_date">' . date('D j M',$step['time']) . '</td></tr>
+                ';
             }
-            echo '</tbody></table>';
+            echo '</tbody></table></div>';
         }
     }
+    else
+        {
+            echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
+        }
 }
 ?>

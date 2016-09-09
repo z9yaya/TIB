@@ -34,12 +34,12 @@
 					<div id="content">
                         <div id="form">
                         <span class="sign_title">Delivery Tracking</span><br>
-                        <div id="delivery_text">
-                        <div id="table_holder">
+                        <div id="tracking_text">
+                        
                         
                             <?php include "../functions/functions.php";
                                 trackPackages();?>
-                            </div>
+                            
                             </div>
                         </div>
                         <footer id="footer">

@@ -357,7 +357,7 @@ header{
 #delivery_text
 {
    position: relative;
-    right: 20px;
+   left: 23px;
 }
 
 #form
@@ -409,6 +409,22 @@ header{
     font-family: Arial;
 }
 
+.dropdown_number
+{
+    text-align-last: center;
+    margin-bottom: 20px;
+    width: 70px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial;
+    margin-left: 0;
+}
+
+#packageNumber
+{
+    text-align: right;
+}
 .input_text[type="date"], .input_text[type="time"]
 {
     height: 15px;
@@ -626,7 +642,7 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     color: #607489;
     position: relative;
     bottom: 30px;
-    right: 40px;
+    //right: 40px;
 }
 
 #signin_form .sign_title
@@ -717,21 +733,22 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 #table_holder
 {
 	margin-top: 0;
-	width: 100%;
-	min-height: 326px;/* 326px; */
-    max-height: 465px;
-	overflow-y: scroll;
+	width: 600px;
 	min-width: 311px;
     position: static;
-    background: white;
     color: #2c4662;
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    padding: 0px 200px 0px 200px;
+    margin-left: -200px;
+    
+    
 }
 
 #table_holder table 
 {
 	border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
+    width: 600px;
+      
 }
 
 #table_holder a{
@@ -747,39 +764,43 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 #table_holder .delivery_location
 {
 	font-weight: bold;
+   
 
 }
 #table_holder .delivery_location
 {
     padding-left: 10px;
 	padding-right: 5px;
-    width: 70%;
+    width: 500px;
+    text-align: left;
 }
 #table_holder .delivery_time,
 #table_holder .delivery_date
 {
 	padding-left: 10px;
 	padding-right: 5px;
-    width: 15%;
+    width: 100px;
 
 }
 #table_holder tr
 {
     height: 50px;
-    border-bottom: 2px solid #f1f1f1;
+    //border-bottom: 2px solid #f1f1f1; 
+     color: rgba(44, 70, 98, 0.66);
 }
 
 #table_holder thead tr
 {
     height: 30px;
-    border-bottom: 2px solid rgb(169, 169, 169);
+    //border-bottom: 2px solid rgb(169, 169, 169);
+    color: rgba(44, 70, 98, 0.4);
 }
 
-#address_map_left_results .item_time
+tbody tr:first-of-type
 {
-	padding-left: 5px;
-
+    color: #2c4662 !important;
 }
+
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 
