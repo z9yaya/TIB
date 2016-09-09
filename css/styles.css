@@ -771,7 +771,7 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 {
     padding-left: 10px;
 	padding-right: 5px;
-    width: 500px;
+    width: 67.5%;
     text-align: left;
 }
 #table_holder .delivery_time,

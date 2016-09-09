@@ -249,7 +249,8 @@ function trackPackages()
         $ID = GrabMoreData('SELECT ID FROM delivery WHERE user = :email AND status = "In Transit"', array(array(':email', $_SESSION['email'])));
         if(countResults($ID) > 1)
         {
-            $selected = 1;
+            $IDval = $ID[0]['ID'];
+            $selected = $IDval;
             echo "<form id='packageNumber' method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
                     <label for='select_id' style='font-weight: bold;color: rgba(44, 70, 98, 0.55);'>DELIVERY NUMBER: </label><select id='select_id' name='ID' class='dropdown_number' onchange='(document.getElementById(\"packageNumber\").submit())'>";
             if (!empty($_POST['ID']))
@@ -258,8 +259,8 @@ function trackPackages()
             }
             for ($i = 1; $i <= countResults($ID); $i++)
             {
-                echo "<option value=" . $i;
-                if($i == $selected)
+                echo "<option value=" . $ID[$i - 1]['ID'];
+                if($ID[$i - 1]['ID'] == $selected)
                 {echo " selected";}
                 echo ">" . $i . "</option>";
             }
@@ -269,9 +270,12 @@ function trackPackages()
         {
              $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit") ORDER BY time DESC', array(array(':email', $_SESSION['email'])));
         }
-        if (!empty($selected))
+        if (!empty($_POST['ID']))
         {
-             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $selected)));
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $_POST['ID'])));
+        }if (empty($_POST['ID']) && !empty($IDval))
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $IDval)));
         }
         if (!isset($tracking) || !$tracking)
         {
