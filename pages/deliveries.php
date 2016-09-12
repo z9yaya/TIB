@@ -1,5 +1,6 @@
 <?php 
 include '../functions/functions.php';
+include '../functions/change.php';
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +106,8 @@ include '../functions/functions.php';
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>	
+			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
+              <td><a href='deliverychange.php?id=".$row['ID']."'>Change delivery details</a></td>
 			  
 			 
             </tr>\n";
