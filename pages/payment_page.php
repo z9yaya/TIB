@@ -35,11 +35,18 @@
 						
 						require '../functions/functions.php';
 						
-						$data = GrabMoreData("SELECT position FROM users WHERE email= :email", array(array(':email', $_SESSION['email'])));
+						$user_position = '';
 						
-						$user_position = implode("", $data[0]);
+						if(isset($_SESSION['email'])){
+							$data = GrabMoreData("SELECT position FROM users WHERE email= :email", array(array(':email', $_SESSION['email'])));
+							$user_position = implode("", $data[0]);
+						}
 						
-						if($user_position == 'customer'){
+						if(!$user_position){
+							//If they have not logged in
+							echo "You must log in to use this feature";
+							
+						}elseif($user_position == 'customer'){
 							//Customer Code Here
 							echo "Please note, here are the packages you need to pay for. Until this has been sorted, we are unable to collect and send your package/s.<br/><br/>";
 							
