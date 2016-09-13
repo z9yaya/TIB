@@ -174,7 +174,7 @@ function GrabData($table, $column, $where_column, $where)
 }
 
 ///$query is the basic mySQL query eg: "SELECT * FROM users WHERE email = :email AND password = :password".
-///$bind is a array, can have nested arrays I think, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
+///$bind is a nested array, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
 function GrabMoreData($query, $bind)
 {
                          try
@@ -217,6 +217,100 @@ function writeError($method)
             echo "<span class='php_error'>This email is already in use</span>";
         }
     }
+    if ($method == 'request')
+    {
+        echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to request a delivery</span>";
+    }
+     if ($method == 'deliveries')
+    {
+        echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to view your deliveries</span>";
+    }
+    if ($method == 'tracking')
+    {
+        echo "<span class='php_error' id='login_error_php'>Please <b>sign in</b> or <b>register</b></br>to track a delivery</span>";
+    }
+}
+
+function countResults($resultsItems)
+        {
+            $num_rows=0;
+            for ($i=0;$i < count($resultsItems); $i++) 
+            {
+                $num_rows++;
+            }
+            return $num_rows;
+
+        }
+
+function trackPackages()
+{
+    if (CheckExist('email', 'delivery', 'user', $_SESSION))
+    {
+        $ID = GrabMoreData('SELECT ID FROM delivery WHERE user = :email AND status = "In Transit"', array(array(':email', $_SESSION['email'])));
+        if(countResults($ID) > 1)
+        {
+            $IDval = $ID[0]['ID'];
+            $selected = $IDval;
+            echo "<form id='packageNumber' method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>
+                    <label for='select_id' style='font-weight: bold;color: rgba(44, 70, 98, 0.55);'>DELIVERY NUMBER: </label><select id='select_id' name='ID' class='dropdown_number' onchange='(document.getElementById(\"packageNumber\").submit())'>";
+            if (!empty($_POST['ID']))
+            {
+                $selected = $_POST['ID'];
+            }
+            for ($i = 1; $i <= countResults($ID); $i++)
+            {
+                echo "<option value=" . $ID[$i - 1]['ID'];
+                if($ID[$i - 1]['ID'] == $selected)
+                {echo " selected";}
+                echo ">" . $i . "</option>";
+            }
+            echo "</select></form>";
+        }
+        else
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = (SELECT ID FROM delivery WHERE user = :email AND status = "In Transit") ORDER BY time DESC', array(array(':email', $_SESSION['email'])));
+        }
+        if (!empty($_POST['ID']))
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $_POST['ID'])));
+        }if (empty($_POST['ID']) && !empty($IDval))
+        {
+             $tracking = GrabMoreData('SELECT delivery_id, time, location FROM history WHERE delivery_id = :id ORDER BY time DESC', array(array(':id', $IDval)));
+        }
+        if (!isset($tracking) || !$tracking)
+        {
+            echo "<br/>You do not have any packages in transit at the moment..<br/><br/><br/><input type='button' onclick='(window.location.href = \"deliveries.php\")' value='VIEW YOUR DELIVERIES' class='button'/> ";
+        }
+        else
+        {
+            echo '<div id="table_holder">
+                    <table>
+                            <thead><tr>
+                                     <th style="text-align: left;padding-left: 10px;
+	                                   padding-right: 5px;">Location</th>
+                                     <th>Time</th>
+                                     <th>Date</th>
+                                  </tr>
+                            </thead>
+                            <tbody>
+                            ';
+            foreach ($tracking as $step)
+            {
+                echo '<tr>
+                <td class="delivery_location">' . ucfirst($step['location']) . '</td>
+                ';
+                echo '<td class="delivery_time">' . date('h:i a',$step['time']) . '</td>
+                ';
+                echo '<td class="delivery_date">' . date('D j M',$step['time']) . '</td></tr>
+                ';
+            }
+            echo '</tbody></table></div>';
+        }
+    }
+    else
+        {
+            echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
+        }
 }
 
 //generates a table of the inputted data

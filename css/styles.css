@@ -344,35 +344,21 @@ header{
 		font-size: 38.34px;
 	}
 }
-
 #content
 {
     
 	height: 100%;
 	text-align: center;
-    width: auto;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-#content2
-{
-    
-	height: 100%;
-	text-align: center;
-    width: 350px;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-#content3
-{
-    
-	height: 100%;
-	text-align: center;
-    width: 400px;
+    width: 600px;
     margin: 0 auto;
     margin-top: 10px;
 }
 
+#delivery_text
+{
+   position: relative;
+   left: 23px;
+}
 
 #form
 {
@@ -423,6 +409,22 @@ header{
     font-family: Arial;
 }
 
+.dropdown_number
+{
+    text-align-last: center;
+    margin-bottom: 20px;
+    width: 70px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px;
+    font-family: Arial;
+    margin-left: 0;
+}
+
+#packageNumber
+{
+    text-align: right;
+}
 .input_text[type="date"], .input_text[type="time"]
 {
     height: 15px;
@@ -433,16 +435,27 @@ header{
     resize: none;
     height: 15px;
     width: 175px;
-    transition: height 0.1s linear;
+    font-size: 12px;
+    transition: height 0.1s linear,
+                width 0.1s linear;
 }
 
-.textarea:focus
+.textarea_height:focus
 {
     height: 60px;
+}
+.textarea_width
+{
+    width: 442px;
 }
 
 .text_long{
     height: 60px;
+}
+
+.textarea_short
+{
+    width: 140px;
 }
 .input_label
 {
@@ -458,6 +471,7 @@ header{
 {
     float: left;
     width: 360px;
+    height: 230px;
 }
 
 .left
@@ -475,7 +489,7 @@ header{
 {
     float: right;
     width: 240px;
-    height: 185px;
+    height: 230px;
 }
 
 .right
@@ -485,10 +499,21 @@ header{
     bottom: 14px;
 }
 
+.right_no_bottom
+{
+    float: right;
+    top: 2px;
+}
+
+#bottom
+{
+    width: 562px;
+}
 #bottom_wide
 {
     width: 633px;
-    margin-left: -36px;
+    margin-left: -37px;
+    overflow: hidden;
 }
 .button
 {
@@ -541,7 +566,7 @@ label.button_white
     display: block;
     line-height: 35px;
     position: relative;
-    bottom: 114px;
+    bottom: 117px;
     width: 130px;
     margin: 0px auto 20px auto;
     text-align: left;
@@ -607,6 +632,8 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     opacity: 1;
     display: block;
     margin: 0px auto 20px auto;
+    position: relative;
+    bottom: 3px;
 }
 .sign_title
 {
@@ -615,7 +642,7 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     color: #607489;
     position: relative;
     bottom: 30px;
-    right: 40px;
+    //right: 40px;
 }
 
 #signin_form .sign_title
@@ -699,6 +726,81 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 {
     margin-top: 39px;
 }
+
+
+
+
+#table_holder
+{
+	margin-top: 0;
+	width: 600px;
+	min-width: 311px;
+    position: static;
+    color: #2c4662;
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
+    padding: 0px 200px 0px 200px;
+    margin-left: -200px;
+    
+    
+}
+
+#table_holder table 
+{
+	border-collapse: collapse;
+    width: 600px;
+      
+}
+
+#table_holder a{
+	text-decoration: none;
+	color: inherit;
+}
+
+#address_map_left_results tr:hover > .item_number{
+	color: #edc4c4;
+}
+
+
+#table_holder .delivery_location
+{
+	font-weight: bold;
+   
+
+}
+#table_holder .delivery_location
+{
+    padding-left: 10px;
+	padding-right: 5px;
+    width: 67.5%;
+    text-align: left;
+}
+#table_holder .delivery_time,
+#table_holder .delivery_date
+{
+	padding-left: 10px;
+	padding-right: 5px;
+    width: 100px;
+
+}
+#table_holder tr
+{
+    height: 50px;
+    //border-bottom: 2px solid #f1f1f1; 
+     color: rgba(44, 70, 98, 0.66);
+}
+
+#table_holder thead tr
+{
+    height: 30px;
+    //border-bottom: 2px solid rgb(169, 169, 169);
+    color: rgba(44, 70, 98, 0.4);
+}
+
+tbody tr:first-of-type
+{
+    color: #2c4662 !important;
+}
+
 /*/START////////////////////////////////////////		WHITE BOX(<div>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 
