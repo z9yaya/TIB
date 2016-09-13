@@ -57,10 +57,12 @@ include '../functions/change.php';
 	  ?>
 	  
 	  <?php
-	  $delivery = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' AND status != 'Delivered' "; 
+	  $delivery = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' 
+									AND status != 'Delivered' AND delivery.ID = package.delivery_ID "; 
 	  $deliveryresult = $conn->query($delivery);	
 	  
-	  $status = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' AND status = 'Delivered' ";	  
+	  $status = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' 
+									AND status = 'Delivered' AND delivery.ID = package.delivery_ID ";	  
 	  $statusresult = $conn->query($status);
 	  ?>	
 	  
