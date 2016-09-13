@@ -57,29 +57,31 @@ include '../functions/change.php';
 	  ?>
 	  
 	  <?php
-	  $delivery = "SELECT * FROM delivery WHERE user = '" . $_SESSION['email'] . "'"; 
-	  $deliveryresult = $conn->query($delivery);	  
+	  $delivery = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' AND status != 'Delivered' "; 
+	  $deliveryresult = $conn->query($delivery);	
+	  
+	  $status = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' AND status = 'Delivered' ";	  
+	  $statusresult = $conn->query($status);
 	  ?>	
 	  
-	  <h1>Deliveries</h1>
+	  <h1>Ongoing Deliveries</h1>
 	  
       <table border="2" style= "background-color: #FBF5E6; color: black; margin: 0 auto;" >
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Delivery ID</th>
           <th>User</th>
-          <th>Driver</th>
-		  <th>Origin</th>
+     	  <th>Origin</th>
 		  <th>Destination</th>
-		  <th>Name</th>
+		  <th>Recipient</th>
 		  <th>Pick Up</th>
 		  <th>Drop Off</th>
-		  <th>Cost</th>
+		  <th>Cost($)</th>
+		  <th>Package Content</th>
 		  <th>Type</th>
-		  <th>Paid</th>
 		  <th>Date Paid</th>
 		  <th>Fragile</th>
-		  <th>Special</th>
+		  <th>Special Instructions</th>
 		  <th>Status</th>		  
         </tr>
       </thead>
@@ -90,17 +92,16 @@ include '../functions/change.php';
           while( $row = $deliveryresult->fetch_assoc()){
             echo
             "<tr>
-              <td>$row[ID]</td>
+              <td>$row[delivery_ID]</td>
 			  <td>$row[user]</td>
-			  <td>$row[driver]</td>
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
 			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
 			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
 			  <td>$row[cost]</td>
+			  <td>$row[content]</td>
 			  <td>$row[type]</td>
-			  <td>$row[paid]</td>
 			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
 			  <td>$row[fragile]</td>
 			  <td>$row[special]</td>
@@ -108,9 +109,61 @@ include '../functions/change.php';
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
 			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
               <td><a href='deliverychange.php?id=".$row['ID']."'>Change delivery details</a></td>
-			  
-			 
-            </tr>\n";
+			</tr>\n";
+          }
+		}
+		else {
+				echo "No Results Found";} 
+        ?>
+      </tbody>
+    </table><br>	
+	
+	<h1>Completed Deliveries</h1>
+
+      <table border="2" style= "background-color: #FBF5E6; color: black; margin: 0 auto;" >
+      <thead>
+        <tr>
+          <th>Delivery ID</th>
+          <th>User</th>
+     	  <th>Origin</th>
+		  <th>Destination</th>
+		  <th>Recipient</th>
+		  <th>Pick Up</th>
+		  <th>Drop Off</th>
+		  <th>Cost($)</th>
+		  <th>Package Content</th>
+		  <th>Type</th>
+		  <th>Date Paid</th>
+		  <th>Fragile</th>
+		  <th>Special Instructions</th>
+		  <th>Status</th>		  
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+		if ($deliveryresult->num_rows > 0) 
+		{
+          while( $row = $statusresult->fetch_assoc()){
+            echo
+            "<tr>
+              <td>$row[delivery_ID]</td>
+			  <td>$row[user]</td>
+			  <td>$row[origin]</td>
+			  <td>$row[destination]</td>
+			  <td>$row[name]</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
+			  <td>$row[cost]</td>
+			  <td>$row[content]</td>
+			  <td>$row[type]</td>
+			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
+			  <td>$row[fragile]</td>
+			  <td>$row[special]</td>
+			  <td>$row[status]</td>
+			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
+			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
+              <td><a href='deliverychange.php?id=".$row['ID']."'>Change delivery details</a></td>
+			</tr>\n";
           }
 		}
 		else {
@@ -118,6 +171,7 @@ include '../functions/change.php';
         ?>
       </tbody>
     </table>	
+	
 
     <?php $conn->close(); ?>
 	
@@ -132,8 +186,6 @@ include '../functions/change.php';
     }
 //-->
 </script>
-
-
 
 	<br>            
 					</div>

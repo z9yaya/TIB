@@ -50,10 +50,10 @@
 	  
 	<br>
 	<form method="get" action="complaints.php">
-	    Full Name: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder=""/><br>
-		Date: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder=""/><br>
-		Delivery ID: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder=""/><br>
-		<textarea rows="5" cols="40" placeholder="What is your comaplint?" required></textarea><br><br>
+	    Full Name: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="" required/><br>
+		Date: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="" required/><br>
+		Delivery ID: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="" required/><br>
+		<textarea rows="5" cols="40" placeholder="What is your complaint?" required></textarea><br><br>
 		<button type="submit">Submit</button>
 	</form>
 	
