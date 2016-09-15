@@ -84,7 +84,7 @@ function registerRequest()
                              {
                                  echo $e -> getMessage();
                              }
-                         header("Location: ../pages/tracking.php");
+                         header("Location: ../pages/deliveries.php");
                      }
                 }
             }
