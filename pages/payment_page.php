@@ -34,6 +34,7 @@
 						if (session_id() == ''){session_start();}
 						
 						require '../functions/functions.php';
+						require '../functions/payment.php';
 						
 						$user_position = '';
 						
@@ -104,11 +105,12 @@
 						
 						
 						
-						<footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
-					</footer>
+						
 					</div>
 				</div>
+				<footer id="footer">
+					<p> Designed by Yannick Mansuy - 2016</p>
+				</footer>
 			</div>
     </body>
 </html>

@@ -3,13 +3,14 @@
 //Will work with data collected from GrabMoreData
 //NOT tested for data collected from GrabData
 function generateForm($data){
-	$dat = $data;
-	echo "<table border=2 width=100%><tr>";
-	while ($id = current($dat[0])) {
-		if($id){
-			echo "<th>".key($data[0])."</th>";
-		}
-		next($data[0]);
+	echo "<div id='table_holder'>";
+	echo "<table><tr>";
+	
+	$arrKey = $data[0];
+	
+	while (current($arrKey)) {
+		echo "<th>".key($arrKey).'</th>';
+		next($arrKey);
 	}
 	foreach($data as $arr1){
 		echo "</tr><tr>";
@@ -24,6 +25,6 @@ function generateForm($data){
 		}
 	}
 	echo "</tr>";
-	echo "</table>";
+	echo "</table></div>";
 }
 ?>
