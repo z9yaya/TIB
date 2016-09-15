@@ -64,7 +64,7 @@ if (!empty($_POST))
                         <div id="separator">&nbsp;</div>
                             
                             <form class="form" id="signup_form" onsubmit="return Checkstuff()" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
-                                <span class="sign_title">Register an account</span>
+                                <span class="sign_title">Register for an account</span>
 							<div id="signup_text">
                                 <div id="left">
 									<input type="email" android:inputType="textEmailAddress"  name="email" class="input_text" placeholder="Email address" required/>
