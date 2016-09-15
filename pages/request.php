@@ -86,12 +86,11 @@ registerRequest();
                                     </div>
                                 </form>
                             </div>
-            </div>
-             <footer id="footer">
+                        </div> 
+			</div> 
+            <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
 					</footer>
-			</div>
         </div>
-    
     </body>
 </html>

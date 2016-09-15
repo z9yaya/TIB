@@ -44,11 +44,11 @@
                         Email input example: <input type="email" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" placeholder="Email template" required/><br>
                         
                         Submit input example: <input id='signup_button' type="submit" value="SUBMIT" class="button">
-                        <footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
-					</footer>
 					</div>
 				</div>
+                <footer id="footer">
+                        <p> Designed by Yannick Mansuy - 2016</p>
+					</footer>
 			</div>
     </body>
 </html>

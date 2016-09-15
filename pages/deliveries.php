@@ -1,6 +1,5 @@
 <?php 
 include '../functions/functions.php';
-include '../functions/change.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +15,15 @@ include '../functions/change.php';
 		 <link async href="../css/deliveriescss.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 		<script type="text/javascript">
-
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
 </script>
     </head>
     <body>
@@ -38,7 +45,7 @@ include '../functions/change.php';
 					
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
+					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
 				
 				</header>
@@ -57,18 +64,15 @@ include '../functions/change.php';
 	  ?>
 	  
 	  <?php
-	  $delivery = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' 
-									AND status != 'Delivered' AND delivery.ID = package.delivery_ID "; 
-	  $deliveryresult = $conn->query($delivery);	
+      $deliveryresult = GrabMoreData("SELECT * FROM delivery, package WHERE user = :email AND status != 'Delivered' AND delivery.ID = package.delivery_ID ", array(array(":email", $_SESSION['email'])));
 	  
-	  $status = "SELECT * FROM delivery, package WHERE user = '" . $_SESSION['email'] . "' 
-									AND status = 'Delivered' AND delivery.ID = package.delivery_ID ";	  
-	  $statusresult = $conn->query($status);
-	  ?>	
+	  $statusresult = GrabMoreData("SELECT * FROM delivery, package WHERE user = :email AND status = 'Delivered' AND delivery.ID = package.delivery_ID ", array(array(":email", $_SESSION['email'])));	  	
 	  
-	  <h1>Ongoing Deliveries</h1>
-	  
-      <table border="2" style= "background-color: #FBF5E6; color: black; margin: 0 auto;" >
+		if ($deliveryresult != false) 
+		{
+            echo '<h1>Ongoing Deliveries</h1>
+	  <div id="table_holder">
+      <table>
       <thead>
         <tr>
           <th>Delivery ID</th>
@@ -87,11 +91,8 @@ include '../functions/change.php';
 		  <th>Status</th>		  
         </tr>
       </thead>
-      <tbody>
-        <?php
-		if ($deliveryresult->num_rows > 0) 
-		{
-          while( $row = $deliveryresult->fetch_assoc()){
+      <tbody>';
+          foreach($deliveryresult as $row){
             echo
             "<tr>
               <td>$row[delivery_ID]</td>
@@ -115,14 +116,20 @@ include '../functions/change.php';
           }
 		}
 		else {
-				echo "No Results Found";} 
+				echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
+        }
         ?>
       </tbody>
-    </table><br>	
+          </table></div><br>	
 	
 	<h1>Completed Deliveries</h1>
 
-      <table border="2" style= "background-color: #FBF5E6; color: black; margin: 0 auto;" >
+        <?php
+		if ($statusresult != false) 
+		{
+            echo '<h1>Ongoing Deliveries</h1>
+	  <div id="table_holder">
+      <table>
       <thead>
         <tr>
           <th>Delivery ID</th>
@@ -141,11 +148,8 @@ include '../functions/change.php';
 		  <th>Status</th>		  
         </tr>
       </thead>
-      <tbody>
-        <?php
-		if ($deliveryresult->num_rows > 0) 
-		{
-          while( $row = $statusresult->fetch_assoc()){
+      <tbody>';
+          foreach($deliveryresult as $row){
             echo
             "<tr>
               <td>$row[delivery_ID]</td>
@@ -173,28 +177,16 @@ include '../functions/change.php';
         ?>
       </tbody>
     </table>	
-	
 
     <?php $conn->close(); ?>
 	
-<script type="text/javascript">
-<!--
-    function toggle_visibility(id) {
-       var e = document.getElementByClassName(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    }
-//-->
-</script>
+
 
 	<br>            
-					</div>
-					        <footer id="footer">
+    </div></div>
+				   <footer id="footer">
                         <p> Designed by Michael Phong - 2016</p>
-					</footer>
-				</div>
+					</footer>	     
 			</div>
     </body>
 </html>

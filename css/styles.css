@@ -32,6 +32,9 @@ body #back_nav
 	min-width: 800px;
 	max-width: 1080px;
 	background-color: rgb(248, 249, 250);
+    min-height: 100vh;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
 
 /*/START////////////////////////////////////////		HEADER(<div id="header"><img/></>)	////////////////////////////////////////////////////////////////////*/
@@ -656,6 +659,8 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     display: none;
     color: red;
     white-space: nowrap;
+    position: relative;
+    bottom: 15px;
 }
 
 .php_error
@@ -824,16 +829,19 @@ tbody tr:first-of-type
 /*/START////////////////////////////////////////		FOOTER SECTION(<div id="footer"><p/></>)	////////////////////////////////////////////////////////////////////*/
 #footer
 {
-	position: absolute;
-	clear: both;
+    
+    font-family: Helvetica;
+    font-size: 12px;
+	//position: absolute;
+	//clear: both;
 	text-align: right;
 	display:block;
 	width: 100%;
 	background-color: white;
 	color: rgba(44, 70, 98, 0.77);
 	z-index: 98;
-	left: 0px;
-	top: 100vh;
+	//left: 0px;
+	//top: 100vh;
 }
 #footer p
 {

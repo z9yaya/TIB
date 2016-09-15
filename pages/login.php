@@ -49,7 +49,7 @@ if (!empty($_POST))
 					<div id="content">
                         <div id="form">
 							<form class="form" id="signin_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
-                                <span class="sign_title">Sign in your account</span>
+                                <span class="sign_title">Sign in</span>
 								<input id="username_input" type="text" name="email" class="input_text" size="15" maxlength="30" autofocus placeholder="Email address"/><br>
 								<input id="password_input" type="password" name="password" class="input_text" size="15" maxlength="30" placeholder="Password"/>
                                 <input type="hidden" name="method" value="login"><br>
@@ -64,7 +64,7 @@ if (!empty($_POST))
                         <div id="separator">&nbsp;</div>
                             
                             <form class="form" id="signup_form" onsubmit="return Checkstuff()" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
-                                <span class="sign_title">Register for an account</span>
+                                <span class="sign_title">Register an account</span>
 							<div id="signup_text">
                                 <div id="left">
 									<input type="email" android:inputType="textEmailAddress"  name="email" class="input_text" placeholder="Email address" required/>
@@ -80,10 +80,10 @@ if (!empty($_POST))
                                     <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="Full name" required/>
                                     <span id="name_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="tel" name="phone" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(signup_form.contact.value, 'contact_error', 'Only numbers allowed')" required/>
+                                    <input id="numberInput" type="tel" name="phone" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(this.value, 'contact_error', 'Only numbers allowed')" required/>
                                     <span id="contact_error" class="error_signup"></span>
                                     <br/>
-                                    <input type="text" name="dob" class="input_text" placeholder="Date of birth" onfocus="(this.type='date')" required/>
+                                    <input type="text" name="dob" class="input_text" placeholder="Date of birth" min="1915-01-01" max=<?php echo date('Y-m-d', time() - 409968000);?> onfocus="(this.type='date')" required/>
                                     <input type="hidden" name="method" value="signup">
                                     <span id="dob_error" class="error_signup"></span>
                                     <br/>
@@ -92,11 +92,13 @@ if (!empty($_POST))
                                 </div>
 						</form>
                         </div>
-                        <footer id="footer">
+                        
+					</div>
+                
+				</div>
+            <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
 					</footer>
-					</div>
-				</div>
 			</div>
     </body>
 </html>

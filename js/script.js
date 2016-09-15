@@ -101,7 +101,7 @@ function checkField(obj, id, msg) {
 
 function Checkstuff()
 {
-    var numb = checkField(signup_form.contact.value, 'contact_error', 'Only numbers allowed');
+    var numb = checkField(document.getElementById('numberInput').value, 'contact_error', 'Only numbers allowed');
     var pass = passwordsMatch();
     if (!numb || !pass)
         {
