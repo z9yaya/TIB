@@ -13,7 +13,7 @@
 	</head>
     <body>
         <div id="back_nav">
-            <div id="wrapper">
+            <div id="wrapper" style="margin-bottom: 0;">
 				<header>
 					<a id="login" class="menu" href="pages/login.php"><?php 
                                                                         if (session_id() == '')
@@ -25,9 +25,27 @@
                                                                         else 
                                                                             echo 'SIGN IN</a>';?>
 					<a id="header" class="intro" href="index.php">drop.it</a>
+                       
 					<a id="deliveries" class="menu" href="pages/deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu" href="pages/tracking.php">TRACKING</a>
-					<a id="new" class="menu" href="pages/request.php">REQUEST</a>	
+                         <?php 
+                            if(isset($_SESSION['position']))
+                            {
+                                if ($_SESSION['position'] != 'driver')
+                                {
+                                     echo '<a id="tracking" class="menu" href="pages/tracking.php">TRACKING</a>
+					                <a id="new" class="menu" href="pages/request.php">REQUEST</a>';	
+                                }
+                                else if ($_SESSION['position'] == 'driver')
+                                {
+                                     echo '<a id="log" class="menu" href="pages/driver.php">LOG</a>';
+                                }
+                            }
+                            else
+                                    {
+                                         echo '<a id="tracking" class="menu" href="pages/tracking.php">TRACKING</a>
+                                        <a id="new" class="menu" href="pages/request.php">REQUEST</a>';	
+                                    }
+                        ?>
 				</header>
 				<a href="#" target="_blank" id="new_tab">Open in a new tab</a>
                     <div id="content">
@@ -38,11 +56,11 @@
 							<p id="by_start">
 							ARTHUR C. NIELSEN</p>
 						</div>
-					<footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
-					</footer>
                     </div>               
             </div>
+            <footer id="footer">
+                    <p> Designed by Yannick Mansuy - 2016</p>
+                </footer>
         </div>
     </body>
 </html>
