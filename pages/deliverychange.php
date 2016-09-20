@@ -56,20 +56,21 @@ if (isset($_POST))
                         <input id="date_input" type="text" name="pickDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="Pickup date" onfocus="(this.type='date')" required value="<?php echo $info['pickupDate'];?>"/>
                         <input id="text_input" type="text" name="dropOff" class="input_text" size="15" maxlength="10" autofocus placeholder="Drop off" required value="<?php echo $info['destination'];?>"/>
                         <input id="text_input" type="text" name="dropTime" min="09:00:00" max="17:00:00" class="input_text" size="15" maxlength="30" placeholder="Dropoff time" onfocus="(this.type='time')" required value="<?php echo $info['dropTime'];?>"/>
-                        <input id="date_input" type="text" name="dropDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="dropoff date" onfocus="(this.type='date')" required value="<?php echo $info['dropDate'];?>"/>
+                        <input id="date_input" type="text" name="dropDate" min=<?php echo date('Y-m-d', mktime(0, 0, 0,date('m'), date('d') + 1, date('Y')));?> class="input_text" size="15" maxlength="30" placeholder="dropoff date" onfocus="(this.type='date')" required value="<?php echo $info['dropDate'];?>"/>
                         <input id="text_input" type="text" name="recipient" class="input_text" size="15" maxlength="10" autofocus placeholder="Recipient" required value="<?php echo $info['name'];?>"/>
                         <textarea rows="4" cols="50" name="special" class="input_text textarea textarea_height" placeholder="Special instructions" onkeyup="this.className=' input_text textarea textarea_height text_long'" required><?php echo $info['special'];?></textarea>
                         </select><br><br><br>
                           
 						<input id='submit_button' type="submit" value="SUBMIT" class="button">
 						</form>
-                    </div>
+                    
+				</div>
+			</div>
+                </div>
                         <footer id="footer">
                         <p>Done by Nicholas Bensein - 2016</p>
 					</footer>
 					</div>
-				</div>
-			</div>
     </body>
 </html>
 
