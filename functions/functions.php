@@ -313,4 +313,64 @@ function trackPackages()
         }
 }
 
+function Emailer()
+{
+    if (session_id() == '')
+    {
+        session_start();
+    }
+    if (isset($_POST) && isset($_SESSION))
+            {
+                 if (!empty($_POST) && !empty($_SESSION) && !empty($_POST['ID']) && !empty($_SESSION['email']))
+                    {
+                        $account="dropitdeliveries@gmail.com";//source email, DO NOT CHANGE
+                        $password="drop.itsupport";//source password, DO NOT CHANGE
+                        $to="ze_yaya@msn.com";//recipient
+                        $email = $_SESSION['email'];
+                        $from = $email; //reply to email
+                        $name = GrabData("users","name","email",  $email);
+                        $name = $name[0]['name'];
+                        $from_name= $name; //From name
+                        $msg= htmlspecialchars($_POST['contents']); // HTML message
+                        $subject="Complaint Delivery: " . $_POST['ID'];//email subject
+                     
+                        $mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->CharSet = 'UTF-8';
+                        $mail->Host = "smtp.gmail.com";
+                        $mail->SMTPAuth= true;
+                        $mail->Port = 465;
+                        $mail->Username= $account;
+                        $mail->Password= $password;
+                        $mail->SMTPSecure = 'ssl';
+                        $mail->addReplyTo($email, $name);
+                        $mail->FromName = $name;
+                        $mail->isHTML(true);
+                        $mail->Subject = $subject;
+                        $mail->Body = $msg;
+                        $mail->addAddress($to);
+                        if(!$mail->send())
+                        {
+                            echo "Mailer Error: " . $mail->ErrorInfo;
+                        }
+                        else
+                        {
+                            echo "E-Mail has been sent";
+                            header("Location: deliveries.php");
+                        }
+                 }
+}
+}
+
+function WriteID()
+{
+     if (isset($_POST))
+            {
+                 if (!empty($_POST) && !empty($_POST['delivery']))
+                    {
+                        echo $_POST['delivery'];
+                    }
+
+            }
+}
 ?>

@@ -460,6 +460,12 @@ header{
 {
     width: 140px;
 }
+
+#complaint
+{
+    height: 250px;
+    width: 500px;
+}
 .input_label
 {
     white-space: nowrap;

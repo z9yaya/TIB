@@ -1,3 +1,8 @@
+<?php include '../functions/functions.php';
+ require '../functions/mail/PHPMailerAutoload.php';
+Emailer();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,44 +29,44 @@
                                                                         else 
                                                                             echo 'SIGN IN</a>';?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
+                       
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
-                    <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
-					<a id="request" class="menu menu_blue" href="history.php">HISTORY</a>
+                         <?php 
+                            if(isset($_SESSION['position']))
+                            {
+                                if ($_SESSION['position'] != 'driver')
+                                {
+                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
+                                }
+                                else if ($_SESSION['position'] == 'driver')
+                                {
+                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
+                                }
+                            }
+                            else
+                                    {
+                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
+                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
+                                    }
+                        ?>
 				</header>
-					<div id="content">
-					
-      <?php
-	  $servername = "localhost";
-	  $username = "edit";
-	  $password = "editme";
-	  $dbname = "tib";
-
-	  $conn = new mysqli($servername, $username, $password, $dbname);
-	  
-	  if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);}	  
-
-      //execute the SQL query and return records
-	  $sql = "SELECT delivery_id, time, location FROM history";
-	  $result = $conn->query($sql);
-      ?>
-	  <h1>Submit a Complaint</h1>
-	  
-	<br>
-	<form method="get" action="complaints.php">
-	    Full Name: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="" required/><br>
-		Date: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="" required/><br>
-		Delivery ID: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="" required/><br>
-		<textarea rows="5" cols="40" placeholder="What is your complaint?" required></textarea><br><br>
-		<button type="submit">Submit</button>
+				<div id="content">
+                    <div id="form">
+	   <span class="sign_title">Submit a Complaint</span><br>
+	<form method="POST" action="complaints.php">
+        <?php print_r($_POST);?>
+        <input type="hidden" name='ID' value="<?php WriteID();?>">
+		<textarea rows="50" cols="40" class=" input_text textarea" placeholder="Enter your complaint" name="contents" id="complaint" required autofocus></textarea><br><br>
+		<input id='submit_button' class="button" type="submit" value="SUBMIT"/>
 	</form>
 	
-                    <footer id="footer">
-                        <p> Designed by Michael Phong - 2016</p>
-					</footer>
 					</div>
 				</div>
+                    </div>
+                <footer id="footer">
+                        <p> Designed by Michael Phong - 2016</p>
+					</footer>
 			</div>
     </body>
 </html>
