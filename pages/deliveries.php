@@ -110,9 +110,12 @@ include '../functions/functions.php';
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
-              <td><a href='deliverychange.php?id=".$row['ID']."'>Change delivery details</a></td>
-			</tr>\n";
+			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>";
+              if ($row['status'] == "Awaiting Pick Up")
+              {
+              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' value='Change delivery details'></form></td>";
+              }              
+			 echo "</tr>\n";
           }
 		}
 		else {

@@ -1,9 +1,12 @@
 <?php include '../functions/functions.php';
-include '../functions/change.php';
-
-if (!empty($_POST))
+include '../functions/change-auto.php';
+if (isset($_POST))
 {
-driverUpdate();
+    if (!empty($_POST) && !empty($_POST['ID']))
+        {
+            $info = getInfo($_POST['ID']);
+            print_r($info);
+        }
 }
 ?>
 
@@ -41,16 +44,21 @@ driverUpdate();
 				
 				<div id="content" style="width:160px;">
                     <div id="form">
-					  <form class="form" id="change_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+					  <form class="form" id="change_form" method='POST' action='../functions/change.php'>
                         <span class="sign_title">Change Details</span><br>
-                        <input id="text_input" type="text" name="pickUp" class="input_text" size="15" maxlength="10" autofocus placeholder="Pickup" required/>
-                        <input id="text_input" type="text" name="pickTime" min="09:00:00" max="17:00:00" class="input_text" size="15" maxlength="30" placeholder="Pickup time" onfocus="(this.type='time')" required/>
-                        <input id="date_input" type="text" name="pickDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="Pickup date" onfocus="(this.type='date')" required/>
-                        <input id="text_input" type="text" name="DropOff" class="input_text" size="15" maxlength="10" autofocus placeholder="Drop off" required/>
-                        <input id="text_input" type="text" name="dropTime" min="09:00:00" max="17:00:00" class="input_text" size="15" maxlength="30" placeholder="Dropoff time" onfocus="(this.type='time')" required/>
-                        <input id="date_input" type="text" name="dropDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="dropoff date" onfocus="(this.type='date')" required/>
-                        <input id="text_input" type="text" name="recipient" class="input_text" size="15" maxlength="10" autofocus placeholder="Recipient" required/>
-                        <textarea rows="4" cols="50" name="special" class="input_text textarea textarea_height" placeholder="Special instructions" onkeyup="this.className=' input_text textarea textarea_height text_long'" required></textarea>
+                        <input id="text_input" type="hidden" name="ID" value="<?php if (isset($_POST))
+                                {
+                                    if (!empty($_POST) && !empty($_POST['ID']))
+                                        {
+                                            echo $_POST['ID'];}}?>"/>
+                        <input id="text_input" type="text" name="pickUp" class="input_text" size="15" maxlength="10" autofocus placeholder="Pickup" required value="<?php echo $info['origin'];?>"/>
+                        <input id="text_input" type="text" name="pickTime" min="09:00:00" max="17:00:00" class="input_text" size="15" maxlength="30" placeholder="Pickup time" onfocus="(this.type='time')" required value="<?php echo $info['pickupTime'];?>"/>
+                        <input id="date_input" type="text" name="pickDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="Pickup date" onfocus="(this.type='date')" required value="<?php echo $info['pickupDate'];?>"/>
+                        <input id="text_input" type="text" name="dropOff" class="input_text" size="15" maxlength="10" autofocus placeholder="Drop off" required value="<?php echo $info['destination'];?>"/>
+                        <input id="text_input" type="text" name="dropTime" min="09:00:00" max="17:00:00" class="input_text" size="15" maxlength="30" placeholder="Dropoff time" onfocus="(this.type='time')" required value="<?php echo $info['dropTime'];?>"/>
+                        <input id="date_input" type="text" name="dropDate" min=<?php echo date('Y-m-d');?> class="input_text" size="15" maxlength="30" placeholder="dropoff date" onfocus="(this.type='date')" required value="<?php echo $info['dropDate'];?>"/>
+                        <input id="text_input" type="text" name="recipient" class="input_text" size="15" maxlength="10" autofocus placeholder="Recipient" required value="<?php echo $info['name'];?>"/>
+                        <textarea rows="4" cols="50" name="special" class="input_text textarea textarea_height" placeholder="Special instructions" onkeyup="this.className=' input_text textarea textarea_height text_long'" required><?php echo $info['special'];?></textarea>
                         </select><br><br><br>
                           
 						<input id='submit_button' type="submit" value="SUBMIT" class="button">
