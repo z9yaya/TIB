@@ -551,6 +551,12 @@ header{
     left: 0;
 }
 
+#numberInput::-webkit-outer-spin-button,
+#numberInput::-webkit-inner-spin-button 
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .button:hover
 {

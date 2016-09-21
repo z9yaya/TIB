@@ -1,4 +1,9 @@
-<?php include '../functions/functions.php';
+<?php 
+if (!isset($_POST) || empty($_POST) || empty($_POST['delivery']) && !isset($_POST['ID']))
+{
+    header("Location: deliveries.php");
+}
+include '../functions/functions.php';
  require '../functions/mail/PHPMailerAutoload.php';
 Emailer();
 ?>
@@ -55,7 +60,6 @@ Emailer();
                     <div id="form">
 	   <span class="sign_title">Submit a Complaint</span><br>
 	<form method="POST" action="complaints.php">
-        <?php print_r($_POST);?>
         <input type="hidden" name='ID' value="<?php WriteID();?>">
 		<textarea rows="50" cols="40" class=" input_text textarea" placeholder="Enter your complaint" name="contents" id="complaint" required autofocus></textarea><br><br>
 		<input id='submit_button' class="button" type="submit" value="SUBMIT"/>

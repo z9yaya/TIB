@@ -373,4 +373,25 @@ function WriteID()
 
             }
 }
+
+function AddDropLog()
+{
+     if (session_id() == '')
+    {
+        session_start();
+    }
+    if (isset($_SESSION))
+            {
+                 if (!empty($_SESSION) && !empty($_SESSION['email']))
+                    {
+                        $driver = $_SESSION['email'];
+                        $ID = GrabData("delivery","ID","driver",$driver);
+                        for ($i = 0; $i < countResults($ID); $i++)
+                            {
+                                echo "<option value=" . $ID[$i]['ID'];
+                                echo ">" . $ID[$i]['ID'] . "</option>";
+                            }
+                    }
+            }
+}
 ?>

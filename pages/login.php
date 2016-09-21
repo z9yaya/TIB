@@ -80,7 +80,7 @@ if (!empty($_POST))
                                     <input type="text" name="name" size="10" maxlength="50" class="input_text" placeholder="Full name" required/>
                                     <span id="name_error" class="error_signup"></span>
                                     <br/>
-                                    <input id="numberInput" type="tel" name="phone" size="12" maxlength="10" class="input_text" placeholder="Mobile phone" onkeyup="checkField(this.value, 'contact_error', 'Only numbers allowed')" required/>
+                                    <input id="numberInput" type="number" name="phone" size="12" maxlength="10" class="input_text" min="0100000000" max="0999999999" placeholder="Mobile phone" onkeyup="checkField(this.value, 'contact_error', 'Only numbers allowed')" required/>
                                     <span id="contact_error" class="error_signup"></span>
                                     <br/>
                                     <input type="text" name="dob" class="input_text" placeholder="Date of birth" min="1915-01-01" max=<?php echo date('Y-m-d', time() - 409968000);?> onfocus="(this.type='date')" required/>

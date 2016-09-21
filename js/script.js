@@ -60,6 +60,8 @@ function checkField(obj, id, rgx, msg) {
 	}
 }//end chedkField
 
+/*to be used for password validation, executes validation for
+empty, invalid and valid fields and displays corresponding message*/
 function passwordsMatch() {
     if(isEmpty(document.getElementById("password2").value)) {
 		printEmptyFieldError("password_error");
@@ -99,6 +101,8 @@ function checkField(obj, id, msg) {
 	}
 }//end chedkField
 
+
+/*execute functions to check password and number*/
 function Checkstuff()
 {
     var numb = checkField(document.getElementById('numberInput').value, 'contact_error', 'Only numbers allowed');
@@ -117,6 +121,7 @@ function Checkstuff()
 
 
 
+/*Used to create a new Package */
 function AddPackage()
 {
     if (packageNumber < 5)
@@ -124,7 +129,7 @@ function AddPackage()
             var div = document.createElement('div');
             packageNumber++;
             div.className="package";
-            div.innerHTML='<input type="button" class="exit" onclick="Exit(this);" value="x" title="Remove package"><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" min="0.5" max="15" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
+            div.innerHTML='<input type="button" class="exit" onclick="Exit(this);" value="x" title="Remove package"><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" min="0.5" max="15" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea textarea_height" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
             document.getElementById("packages_container").appendChild(div);  
        }
     else
@@ -133,7 +138,7 @@ function AddPackage()
             var div = document.createElement('div');
             packageNumber++;
             div.className="package";
-            div.innerHTML='<span class="exit" onclick="Exit(this);">x</span><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" min="0.5" max="15" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
+            div.innerHTML='<span class="exit" onclick="Exit(this);">x</span><span class="title">PACKAGE ' + packageNumber + '</span><input type="number" step="0.01" min="0.5" max="15" id="weight" name="weight[]" size="12" maxlength="10" class="input_text" placeholder="Weight in kg" required/><br><textarea rows="4" cols="50" name="contents[]" class="input_text textarea textarea_height" placeholder="Package contents" onkeyup="this.className=\' input_text textarea text_long\'" required></textarea></div>';
             document.getElementById("packages_container").appendChild(div);  
         }
 }
@@ -152,5 +157,12 @@ function ChangeDate(Today, Object)
 {
     Object.value=Today;
     Object.type='date';
+    
+}
+
+function ChangeTime(Today, Object)
+{
+    Object.value=Today;
+    Object.type='time';
     
 }
