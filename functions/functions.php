@@ -415,11 +415,20 @@ function AddDropLog()
                     {
                         $driver = $_SESSION['email'];
                         $ID = GrabData("delivery","ID","driver",$driver);
-                        for ($i = 0; $i < countResults($ID); $i++)
+                        if ($ID != false)
+                        {
+                            for ($i = 0; $i < countResults($ID); $i++)
                             {
                                 echo "<option value=" . $ID[$i]['ID'];
                                 echo ">" . $ID[$i]['ID'] . "</option>";
                             }
+                        }
+                        else 
+                        {
+                             echo "<option value=\"\">No deliveries assigned</option>";
+                        }
+                    
+                        
                     }
             }
 }
