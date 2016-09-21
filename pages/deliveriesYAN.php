@@ -128,15 +128,15 @@ include '../functions/functions.php';
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
 			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>
               <td><a href='deliverychange.php?id=". $row['delivery_ID'] ."'>Change delivery details</a></td>
-			</tr>\n";
+			</tr></tbody>
+          </table></div><br>";
           }
 		}
 		else {
 				echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
         }
         ?>
-      </tbody>
-          </table></div><br>	
+
 	
 	<h1>Completed Deliveries</h1>
 
@@ -185,14 +185,14 @@ include '../functions/functions.php';
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
 			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row[delivery_ID] ."'><input type='submit' class='button' value='Report<br/>Issue'></form></td>
               <td><a href='deliverychange.php?id=". $row[delivery_ID] ."'>Change delivery details</a></td>
-			</tr>\n";
+			</tr></div></tbody>
+    </table>";
           }
 		}
 		else {
 				echo "No Results Found";} 
         ?>
-        </div></tbody>
-    </table>	
+        
 
     <?php $conn->close(); ?>
 	
