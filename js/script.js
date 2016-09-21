@@ -1,11 +1,6 @@
-//window.addEventListener("scroll", forceFooter);
-
-function forceFooter()
-{
-    var element = document.getElementById('footer');
-    element.style.top = document.documentElement.offsetHeight + 'px';
-}
 var packageNumber = 1;
+//INPUT obj: input from a form
+//checks if an input is empty or not then returns true if it is.
 function isEmpty(obj) {
 	if (obj.length === 0) {
 		return true;
@@ -142,9 +137,12 @@ function AddPackage()
             document.getElementById("packages_container").appendChild(div);  
         }
 }
+
+//used to remove package input boxes and hide the "ADD PACKAGE" button when the limit of 6 has been //reached,
+//the button is re-added when the number of packages is below 6
 function Exit(Element)
 {
-    Element.parentElement.style.display = 'none';
+    Element.parentElement.remove();
     packageNumber--;
     if (packageNumber < 6 && document.getElementById("button_new_package").style.display=="none")
         {
@@ -153,6 +151,9 @@ function Exit(Element)
         
 }
 
+//used to assign value to an input, before changing it to a date input
+//INPUT Today: the specified date in format Y-m-d
+//INPUT Object: the element that needs to be changed.
 function ChangeDate(Today, Object)
 {
     Object.value=Today;
@@ -160,6 +161,9 @@ function ChangeDate(Today, Object)
     
 }
 
+//used to assign a value to an input, before changing it to a time input
+//INPUT Today: the specified time in format H:i
+//INPUT Object: the element that needs to be changed
 function ChangeTime(Today, Object)
 {
     Object.value=Today;

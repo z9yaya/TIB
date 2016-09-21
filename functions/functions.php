@@ -1,5 +1,6 @@
 <?php
 
+///function used to connect to create a new connection object to connect to the database
 function connect()
     {
         $pdo = new PDO('mysql:host=localhost;dbname=tib', 'edit', 'editme');
@@ -8,6 +9,9 @@ function connect()
         return $pdo;
     }//end connect
 
+///Used to register new users on the database,
+///grabs all the data from the form, then formats it, binds it to variables for inserting into database,
+///then pushes email,position and password to $_SESSION
 function registerUser()
     {
         if (CheckExist('email', 'users', 'email', $_POST))
@@ -64,6 +68,7 @@ function registerUser()
         }
 }
 
+///Used to authenticate an existing user on the system, grabs data from form then checks against the database and pushes to $_SESSION
 function authenticateUser()
 {
     if (CheckExist('email', 'users', 'email', $_POST))
@@ -115,6 +120,12 @@ function authenticateUser()
        return false;
     }
 }
+
+///Used to check if a row with the specified value exist in a table
+///INPUT $attribute: index name in $_GET or $_POST
+///INPUT $table: name of table in database
+///INPUT $column: name of column to check against in database
+///INPUT $getOrpost: specifies where the data is stored, options:$_GET or $_POST
 function CheckExist($attribute, $table, $column, $getOrpost)
 {
     if (isset($getOrpost))
@@ -146,6 +157,12 @@ function CheckExist($attribute, $table, $column, $getOrpost)
                     }  
             }
 }
+
+///Used to return single cell from database
+///INPUT $table: table in the database where to look for the data
+///INPUT $column: the name of the column you want to select
+///INPUT $where_column: the name of the column that contains the data that needs to match the input
+///INPUT $where: the data that will be looked for in the specified column.
 function GrabData($table, $column, $where_column, $where)
 {
                          $input = $where;
@@ -173,8 +190,9 @@ function GrabData($table, $column, $where_column, $where)
                          
 }
 
+///Used to return the results of a specified mySQL query
 ///$query is the basic mySQL query eg: "SELECT * FROM users WHERE email = :email AND password = :password".
-///$bind is a nested array, must be in pairs, eg: 'array(array(:email, 'ze_yaya@msn.com'))'
+///$bind is a nested array, must be in pairs, eg: 'array(array(':email', 'generic@email.com'), array(':password', 'passwordtext'))'
 function GrabMoreData($query, $bind)
 {
                          try
@@ -204,6 +222,8 @@ function GrabMoreData($query, $bind)
                          
 }
 
+///function used to write the error message when trying to access a restricted page
+//INPUT $method: options: "login", "signup", "request", "deliveries", "tracking"
 function writeError($method)
 {
     if (!empty($_POST))
@@ -231,6 +251,8 @@ function writeError($method)
     }
 }
 
+///used to count the number of objects in an array
+///INPUT $resultsItems: array containing data/objects
 function countResults($resultsItems)
         {
             $num_rows=0;
@@ -242,6 +264,8 @@ function countResults($resultsItems)
 
         }
 
+///used to display the tracking information requested,
+//checks if user is logged in, and then fetches the information for the requested delivery item that can be selected using a drop down which is also generated in this function.
 function trackPackages()
 {
     if (CheckExist('email', 'delivery', 'user', $_SESSION))
@@ -313,6 +337,8 @@ function trackPackages()
         }
 }
 
+///used to send a complaint email using the website, currently uses gmail account to send emails,
+///grabs the data from the submitted form, then picks the data to generate a basic email sent to the ///email address of your choice, in this case my personal email address
 function Emailer()
 {
     if (session_id() == '')
@@ -362,6 +388,7 @@ function Emailer()
 }
 }
 
+///used to add the selected delivery ID to a hidden input on the complaint form.
 function WriteID()
 {
      if (isset($_POST))
@@ -374,6 +401,8 @@ function WriteID()
             }
 }
 
+///used to generate the dropdown menu on the log page,
+///fetches id of deliverys from database where the user is the selected driver, then puts them in a select box.
 function AddDropLog()
 {
      if (session_id() == '')
