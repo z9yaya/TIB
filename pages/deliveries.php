@@ -1,11 +1,14 @@
+
+<!-- This code allows for functions to be included in this file. -->
 <?php 
-include '../functions/functions.php'; // This code allows for functions to be included in this file.
+include '../functions/functions.php'; 
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Deliveries - drop.it</title>  	<!-- This is the title of the web page as well as links to the CSS and Javascript files -->
+		<!-- This is the title of the web page as well as links to the CSS and Javascript files -->
+        <title>Deliveries - drop.it</title>  	
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -14,14 +17,17 @@ include '../functions/functions.php'; // This code allows for functions to be in
          <link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
 		 <link async href="../css/deliveriescss.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-		
+
+<!-- This style hides all table rows called Hide -->		
 <style>
-    .Hide        <!-- This style hides all table rows called Hide -->
+    .Hide        
 {
     //display: none;
 }
 </style>
-<script type="text/javascript">  <!-- This is functions specific to deliveries.php. This function allows table rows for 'more info' to be hidden and shown with a button -->
+
+<!-- This is functions specific to deliveries.php. This function allows table rows for 'more info' to be hidden and shown with a button -->
+<script type="text/javascript">  
     function toggle_visibility(id, Object) {
 		console.log("stuff");
        var Td = Object.parentElement;
@@ -45,7 +51,7 @@ include '../functions/functions.php'; // This code allows for functions to be in
     </head>
     <body>
         <div id="back_nav"> <!-- This div holds the navigation menu -->
-			<div id="wrapper" style='min-height: 0px;'> <!-- This wrapper allows for positioning of the navigation menu.
+			<div id="wrapper" style='min-height: 0px;'> <!-- This wrapper allows for positioning of the navigation menu. -->
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php"><?php  //This code checks to see if a user has logged in correctly and starts a session. If not, will display errors.
 																			if (session_id() == '')

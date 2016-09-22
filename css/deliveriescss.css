@@ -1,8 +1,10 @@
-#row1 {               /* Makes all table rows named 'row1' invisible */
+/* Makes all table rows named 'row1' invisible */
+#row1 {               
 	display: none;
 }
 
-#deliverieswrapper { /* CSS for the wrapper the deliveries tables are in, changing font size, width, height, colour etc. */
+/* CSS for the wrapper the deliveries tables are in, changing font size, width, height, colour etc. */
+#deliverieswrapper { 
     font-family: Helvetica;
     font-size: 12px;	
 	min-width: 800px;
@@ -13,7 +15,8 @@
 
 }
 
-#table_deliveries table{ /* CSS for the base table in deliveries.php, changing width, colour, position, padding etc */
+/* CSS for the base table in deliveries.php, changing width, colour, position, padding etc */
+#table_deliveries table{ 
 	margin-top: 0;
 	width: 950px;
 	min-width: 311px;
@@ -25,14 +28,15 @@
 	background-color: #FBF5E6;	  
 }
 
-
-#table_deliveries td { /* CSS for table cells in deliveries.php, specifying cell padding, text alignment and border colour & size */
+/* CSS for table cells in deliveries.php, specifying cell padding, text alignment and border colour & size */
+#table_deliveries td { 
   padding: 0px 5px 0px 5px;
   text-align: center; 
   border: 1px solid #ddd;
 }
 
-#table_deliveries th { /* CSS for the table headers in deliveries.php, specifying header padding, colour, text alignment and border colour & size */
+/* CSS for the table headers in deliveries.php, specifying header padding, colour, text alignment and border colour & size */
+#table_deliveries th { 
   padding: 10px 10px 10px 10px;	
   background-color: #4CAF50;
   color: white;
@@ -40,8 +44,10 @@
   border: 1px solid #ddd;  
 }
 
-#table_deliveries tr:nth-child(even){background-color: #f2f2f2;} /* This colours the even numbered table rows in a colour */
+/* This colours the even numbered table rows in a colour */
+#table_deliveries tr:nth-child(even){background-color: #f2f2f2;} 
 
-#table_deliveries tr:hover {background-color: #ddd;} /* Makes the row the mouse pointer is on have highlight a colour */
+/* Makes the row the mouse pointer is on have highlight a colour */
+#table_deliveries tr:hover {background-color: #ddd;} 
 
 
