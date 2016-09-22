@@ -13,7 +13,7 @@ if (isset($_POST))
 <!DOCTYPE html>
 <html>
     <head>
-        <title>****TITLE**** - drop.it</title>
+        <title>Delivery Change - drop.it</title>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -39,7 +39,7 @@ if (isset($_POST))
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
 					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
                     <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
-					<a id="driverform" class="menu menu_blue" href="driverform.php">DRIVER</a>
+					
 				</header>
 				
 				<div id="content" style="width:160px;">
