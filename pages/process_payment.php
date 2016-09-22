@@ -32,12 +32,12 @@
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+                                    echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
 					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
                                 }
                                 else 
                                 {
-                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
+                                    echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
                                 }
                             }
                             else
@@ -56,10 +56,12 @@
 						require '../fpdf/fpdf.php';
 						require '../functions/mail/PHPMailerAutoload.php';
 						
+						// Direct copy of he last table from "payment_page.php"
+							// Used to determine who owes money and to help reduce mistakes when identifying who has paid
 						$toProcess = GrabData("delivery","ID, user, cost","paid", "0");
-						
 						echo generateForm($toProcess);
 						
+						// Input for the delivery ID
 						echo '
 							Enter the ID:  
 							<form action="../functions/update_payments.php" method="POST">
@@ -67,6 +69,7 @@
 							<br>
 						';
 						
+						// Submit button
 						echo 'Submit Payment: <input id="submit_payment" type="submit" value="SUBMIT" class="button"></form>';
 						?>
 						
