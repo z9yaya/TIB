@@ -551,12 +551,6 @@ header{
     left: 0;
 }
 
-#numberInput::-webkit-outer-spin-button,
-#numberInput::-webkit-inner-spin-button 
-{
-    -webkit-appearance: none;
-    margin: 0;
-}
 
 .button:hover
 {
@@ -750,22 +744,19 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 #table_holder
 {
 	margin-top: 0;
-	width: 600px;
+	width: 750px;
 	min-width: 311px;
     position: static;
     color: #2c4662;
     background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
-    padding: 0px 200px 0px 200px;
-    margin-left: -200px;
-    
-    
+    padding: 0px 200px 0px 2000px;
+    margin-left: -200px; 
 }
 
 #table_holder table 
 {
 	border-collapse: collapse;
-    width: 600px;
-      
+    width: 600px;      
 }
 
 #table_holder a{

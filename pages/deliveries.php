@@ -14,21 +14,22 @@ include '../functions/functions.php';
          <link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
 		 <link async href="../css/deliveriescss.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-		<script type="text/javascript">
-<!--
+		
+<script type="text/javascript">
     function toggle_visibility(id) {
-       var e = document.getElementById(id);
+       var e = document.getElementByClassName(id);
        if(e.style.display == 'block')
           e.style.display = 'none';
        else
           e.style.display = 'block';
     }
-//-->
+	
 </script>
+
     </head>
     <body>
         <div id="back_nav">
-			<div id="wrapper">
+			<div id="deliverieswrapper">
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
 																			if (session_id() == '')
@@ -71,11 +72,11 @@ include '../functions/functions.php';
 		if ($deliveryresult != false) 
 		{
             echo '<h1>Ongoing Deliveries</h1>
-	  <div id="table_holder">
+	  <div id="table_deliveries">
       <table>
       <thead>
         <tr>
-          <th>Delivery ID</th>
+          <th id="moreinfo">Delivery ID</th>
           <th>User</th>
      	  <th>Origin</th>
 		  <th>Destination</th>
@@ -95,7 +96,7 @@ include '../functions/functions.php';
           foreach($deliveryresult as $row){
             echo
             "<tr>
-              <td>$row[delivery_ID]</td>
+              <td class='c'>$row[delivery_ID]</td>
 			  <td>$row[user]</td>
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
@@ -107,13 +108,13 @@ include '../functions/functions.php';
 			  <td>$row[type]</td>
 			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
 			  <td>$row[fragile]</td>
-			  <td>$row[special]</td>
+     		  <td>$row[special]</td>
 			  <td>$row[status]</td>
-			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>";
+			  <td><a href='#' onclick=\"toggle_visibility(moreinfo);\">More Info</a></td>
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($row['status'] == "Awaiting Pick Up")
               {
-              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' value='Change delivery details'></form></td>";
+              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
               }              
 			 echo "</tr>\n";
           }
@@ -123,15 +124,15 @@ include '../functions/functions.php';
         }
         ?>
       </tbody>
-          </table></div><br>	
-	
-	<h1>Completed Deliveries</h1>
+          </table></div>
+		  <br>
+		  <br>		  
 
         <?php
 		if ($statusresult != false) 
 		{
-            echo '<h1>Ongoing Deliveries</h1>
-	  <div id="table_holder">
+            echo '<h1>Completed Deliveries</h1>
+	  <div id="table_deliveries">
       <table>
       <thead>
         <tr>
@@ -152,7 +153,7 @@ include '../functions/functions.php';
         </tr>
       </thead>
       <tbody>';
-          foreach($deliveryresult as $row){
+          foreach($statusresult as $row){
             echo
             "<tr>
               <td>$row[delivery_ID]</td>
@@ -170,8 +171,7 @@ include '../functions/functions.php';
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
 			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
-			  <td><a href='complaints.php?id=".$row['ID']."'>Report an Issue</a></td>
-              <td><a href='deliverychange.php?id=".$row['ID']."'>Change delivery details</a></td>
+              <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>
 			</tr>\n";
           }
 		}
@@ -187,9 +187,10 @@ include '../functions/functions.php';
 
 	<br>            
     </div></div>
+
+			</div>
 				   <footer id="footer">
                         <p> Designed by Michael Phong - 2016</p>
-					</footer>	     
-			</div>
+					</footer>	     			
     </body>
 </html>
