@@ -16,13 +16,20 @@ include '../functions/functions.php';
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 		
 <script type="text/javascript">
-    function toggle_visibility(id) {
+    function showRow(id) {
        var e = document.getElementById(id);
-       if(e.style.display == 'block')
+       if(e.style.display == 'table-row')
           e.style.display = 'none';
        else
-          e.style.display = 'block';
+          e.style.display = 'table-row';
     }
+	
+	function showRow1(Id) {
+    document.getElementById(Id).style.display = "";
+	}
+	function hideRow(Id) {
+		document.getElementById(Id).style.display = "none";
+	}	
 </script>
     </head>
     <body>
@@ -118,22 +125,31 @@ include '../functions/functions.php';
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$row[pickup]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$row[dropoff]) . "</td>
 			  <td>$row[cost]</td>
 			  <td>$row[content]</td>
 			  <td>$row[type]</td>
 			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
-			  <td>$row[fragile]</td>
-     		  <td>$row[special]</td>
+			  <td>";
+			  if ($row[fragile] == 1)
+			  {
+				  echo "☑";
+			  }
+			  else{
+				  echo "&#9744;";
+			  }
+     		  echo "</td><td>$row[special]</td>
 			  <td>$row[status]</td>
-			  <td><a href='#' onclick=\"toggle_visibility(moreinfo);\">More Info</a></td>
+			  <td><input type='submit' class='button' value='More Info' onclick=\"showRow('row1');\"/></td>
 			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($row['status'] == "Awaiting Pick Up")
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
-              }              
-			 echo "</tr>";
+              }
+			  
+			 echo"</tr>
+			 <tr id='row1'><td colspan='13'>$row[content]</td></tr>";
           }
 		  echo "</tbody>
     </table></div>";
@@ -142,7 +158,7 @@ include '../functions/functions.php';
 				echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
         }
         ?>
-	  
+	 <!-- <tr id='row1'><td colspan='13'>test</td></tr>  This goes between </tr> and </tbody> up a couple lines -->
 		</br></br></br></br></br>
         <?php
 		if ($statusresult != false) 
@@ -175,8 +191,8 @@ include '../functions/functions.php';
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$row[pickup]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$row[dropoff]) . "</td>
 			  <td>$row[cost]</td>
 			  <td>$row[content]</td>
 			  <td>$row[type]</td>
@@ -184,7 +200,7 @@ include '../functions/functions.php';
 			  <td>$row[fragile]</td>
 			  <td>$row[special]</td>
 			  <td>$row[status]</td>
-			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
+			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('moreinfo');\"/></td>
               <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>
 			</tr>\n";
           }
