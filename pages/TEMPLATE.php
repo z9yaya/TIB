@@ -24,7 +24,7 @@
                                                                         else 
                                                                             echo 'SIGN IN</a>';?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                       
+                    <a id="rating" class="menu menu_blue selected" href="rating.php">RATING</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
                          <?php 
                             if(isset($_SESSION['position']))
