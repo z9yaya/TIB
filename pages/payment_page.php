@@ -48,16 +48,16 @@
 						}
 						
 						if(!$user_position){
-							//If they have not logged in
+							// If they have not logged in
 							echo "You must log in to use this feature";
 							
 						}elseif($user_position == 'customer'){
-							//Customer Code Here
+							// Customer Code Here
 							echo "Please note, here are the packages you need to pay for. Until this has been sorted, we are unable to collect and send your package/s.<br/><br/>";
 							
 							$data = GrabMoreData("SELECT ID, cost FROM delivery WHERE status='Awaiting Pick Up' AND paid=0 AND user= :email", array(array(':email', $_SESSION['email'])));
 							
-							//generate form
+							// Generate form
 							if(!$data){
 								echo "Nothing to show.<br/><br/>";
 							}else{
@@ -71,7 +71,7 @@
 							$userInfo = GrabData("users","name","email",$_SESSION['email'])[0];
 							
 							//Generate PDF
-							
+								// See "update_payments.php" for more information
 							$pdf = new FPDF();
 							$pdf->AddPage();
 							
@@ -94,7 +94,7 @@
 							}
 							$pdf->Output($_SESSION['email']."_PaymentHistory".".pdf",'F');
 							
-							//Email the thing
+							// Email the PDF
 							$pdfDir = $_SESSION['email']."_PaymentHistory".".pdf";
 							
 							$emailBody = htmlspecialchars("Good day. Here is your most up to date history of the delivery purchases you have made with us. Sincerely, Drop It Delivery");
@@ -107,9 +107,9 @@
 							echo "<br/><br/>An updated record of your purchase history has been emailed to you.";
 							
 						}else{
-							//Manager Code Here
+							// Manager Code Here
 							
-							//Form for customers that have paid, and need their items picked up
+							// Form for customers that have paid, and need their items picked up
 							echo "List of customer that have paid and require their packages to be picked up:<br/><br/>";
 							
 							$data = GrabMoreData("SELECT ID, origin, driver, pickup, fragile, special FROM delivery WHERE status='Awaiting Pick Up' AND paid=1", array(array(':email', $_SESSION['email'])));
@@ -128,8 +128,6 @@
 							echo "List of customer that have not paid for their package delivery:<br/><br/>";
 							
 							$data = GrabMoreData("SELECT delivery.ID, delivery.user, users.name, users.phone FROM delivery INNER JOIN users ON delivery.user=users.email WHERE delivery.paid=0", array(array(':email', $_SESSION['email'])));
-							//print_r($data);
-							//echo "<br/><br/>";
 							
 							//generate form
 							if(!$data){
@@ -138,6 +136,7 @@
 								$htmlData = generateForm($data);
 								echo $htmlData;
 								
+								// Links to "process_payment.php" to update if someone has recently paid for their delivery
 								echo '
 								<form action="process_payment.php">
 									<input type="submit" value="Process a Payment">
@@ -146,13 +145,7 @@
 							}
 						}
 						
-						
-						
-						
 						?>
-						
-						
-						
 						
 					</div>
 			</div>
