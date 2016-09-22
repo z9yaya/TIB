@@ -153,7 +153,6 @@ include '../functions/functions.php';
 			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][pickup]) . "</td>
 			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][dropoff]) . "</td>
 			  <td>" . $deliveryresult[$i][cost] . "</td>
-			  <td>" . $deliveryresult[$i][content] . "</td>
 			  <td>" . $deliveryresult[$i][type] . "</td>
 			  <td>" . date('h:i:s\ d-m-Y',$deliveryresult[$i][date_paid]) . "</td>
 			  <td>";
@@ -167,7 +166,7 @@ include '../functions/functions.php';
      		  echo "</td><td>" . $deliveryresult[$i][special] . "</td>
 			  <td>" . $deliveryresult[$i][status] . "</td>
 			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
-			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $deliveryresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $deliveryresult[$i]['ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($deliveryresult[$i]['status'] == "Awaiting Pick Up")
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$deliveryresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
@@ -178,7 +177,7 @@ include '../functions/functions.php';
 			 {
 			 if ($package["delivery_ID"] == $deliveryresult[$i]["ID"])
 			 {
-				echo "<tr class='Hide' ><td colspan='13'>Contents: " . $package[content] . " Weight: " . $package[weight] . "kg </td></tr>";
+				echo "<tr class='Hide' ><td colspan='12'>Contents: " . $package[content] . " Weight: " . $package[weight] . "kg </td></tr>";
 			 }
 			 }
           }
@@ -227,7 +226,6 @@ include '../functions/functions.php';
 			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][pickup]) . "</td>
 			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][dropoff]) . "</td>
 			  <td>" . $statusresult[$i][cost] . "</td>
-			  <td>" . $statusresult[$i][content] . "</td>
 			  <td>" . $statusresult[$i][type] . "</td>
 			  <td>" . date('h:i:s\ d-m-Y',$statusresult[$i][date_paid]) . "</td>
 			  <td>";
@@ -241,7 +239,7 @@ include '../functions/functions.php';
      		  echo "</td><td>" . $statusresult[$i][special] . "</td>
 			  <td>" . $statusresult[$i][status] . "</td>
 			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
-			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $statusresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $statusresult[$i]['ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($statusresult[$i]['status'] == "Awaiting Pick Up")
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$statusresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
@@ -252,7 +250,7 @@ include '../functions/functions.php';
 			 {
 			 if ($statuspackage["delivery_ID"] == $statusresult[$i]["ID"])
 			 {
-				echo "<tr class='Hide'><td colspan='13'>Contents: " . $statuspackage[content] . " Weight: " . $statuspackage[weight] . "kg </td></tr>";
+				echo "<tr class='Hide'><td colspan='12'>Contents: " . $statuspackage[content] . " Weight: " . $statuspackage[weight] . "kg </td></tr>";
 			 }
 			 }
           }
