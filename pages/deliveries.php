@@ -135,7 +135,6 @@ include '../functions/functions.php';
 		  <th>Pick Up</th>
 		  <th>Drop Off</th>
 		  <th>Cost($)</th>
-		  <th>Package Content</th>
 		  <th>Type</th>
 		  <th>Date Paid</th>
 		  <th>Fragile</th>
@@ -210,7 +209,6 @@ include '../functions/functions.php';
 		  <th>Pick Up</th>
 		  <th>Drop Off</th>
 		  <th>Cost($)</th>
-		  <th>Package Content</th>
 		  <th>Type</th>
 		  <th>Date Paid</th>
 		  <th>Fragile</th>
