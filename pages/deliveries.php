@@ -5,7 +5,7 @@ include '../functions/functions.php';
 <!DOCTYPE html>
 <html>
     <head>
-        <title>****TITLE**** - drop.it</title>
+        <title>Deliveries - drop.it</title>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -17,19 +17,17 @@ include '../functions/functions.php';
 		
 <script type="text/javascript">
     function toggle_visibility(id) {
-       var e = document.getElementByClassName(id);
+       var e = document.getElementById(id);
        if(e.style.display == 'block')
           e.style.display = 'none';
        else
           e.style.display = 'block';
     }
-	
 </script>
-
     </head>
     <body>
         <div id="back_nav">
-			<div id="deliverieswrapper">
+			<div id="wrapper" style='min-height: 0px;'>
 				<header>
 					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
 																			if (session_id() == '')
@@ -44,12 +42,32 @@ include '../functions/functions.php';
 																				echo 'SIGN IN</a>';
 																			}?>
 					
-					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
+						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
+                       
 					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-                    <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
+                         <?php 
+                            if(isset($_SESSION['position']))
+                            {
+                                if ($_SESSION['position'] != 'driver')
+                                {
+                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
+                                }
+                                else if ($_SESSION['position'] == 'driver')
+                                {
+                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
+                                }
+                            }
+                            else
+                                    {
+                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
+                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
+                                    }
+                        ?>
 				
 				</header>
+			</div>
+<div id="deliverieswrapper">			
 					<div id="content">
 					
       <?php
