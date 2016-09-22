@@ -166,7 +166,7 @@ include '../functions/functions.php';
      		  echo "</td><td>" . $deliveryresult[$i][special] . "</td>
 			  <td>" . $deliveryresult[$i][status] . "</td>
 			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
-			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $deliveryresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $deliveryresult[$i]['ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($deliveryresult[$i]['status'] == "Awaiting Pick Up")
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$deliveryresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
@@ -239,7 +239,7 @@ include '../functions/functions.php';
      		  echo "</td><td>" . $statusresult[$i][special] . "</td>
 			  <td>" . $statusresult[$i][status] . "</td>
 			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
-			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $statusresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $statusresult[$i]['ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
               if ($statusresult[$i]['status'] == "Awaiting Pick Up")
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$statusresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
