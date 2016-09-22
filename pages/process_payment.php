@@ -56,12 +56,16 @@
 						require '../fpdf/fpdf.php';
 						require '../functions/mail/PHPMailerAutoload.php';
 						
-						$toProcess = GrabData("delivery ","ID, user, cost","paid", "0");
+						$toProcess = GrabData("delivery","ID, user, cost","paid", "0");
 						
 						echo generateForm($toProcess);
 						
 						echo '
-                        Enter the ID:  <form action="xxx.php" method="POST"><input type="text" name="ID_Paid" maxlength="10" class="input_text" placeholder="ID"/><br>';
+							Enter the ID:  
+							<form action="../functions/update_payments.php" method="POST">
+							<input type="text" name="ID_Paid" maxlength="10" class="input_text" placeholder="ID"/>
+							<br>
+						';
 						
 						echo 'Submit Payment: <input id="submit_payment" type="submit" value="SUBMIT" class="button"></form>';
 						?>

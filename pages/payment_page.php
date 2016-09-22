@@ -102,7 +102,7 @@
 							sendEmail($_SESSION['email'], "Purchase History", $emailBody, $pdfDir);
 							
 							//Delete unwanted copy
-							//unlink($_SESSION['email']."_PaymentHistory".".pdf");
+							unlink($_SESSION['email']."_PaymentHistory".".pdf");
 							
 							echo "<br/><br/>An updated record of your purchase history has been emailed to you.";
 							
@@ -144,9 +144,6 @@
 								</form>
 								';
 							}
-							
-							
-							
 						}
 						
 						
@@ -158,10 +155,10 @@
 						
 						
 					</div>
-				</div>
-				<footer id="footer">
-					<p> Designed by Yannick Mansuy - 2016</p>
-				</footer>
 			</div>
+			<footer id="footer">
+				<p> Designed by Yannick Mansuy - 2016</p>
+			</footer>
+		</div>
     </body>
 </html>

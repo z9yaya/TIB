@@ -15,14 +15,32 @@ include '../functions/functions.php';
 		 <link async href="../css/deliveriescss.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 		
+<style>
+    .Hide
+{
+    //display: none;
+}
+</style>
 <script type="text/javascript">
-    function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
+    function toggle_visibility(id, Object) {
+		console.log("stuff");
+       var Td = Object.parentElement;
+	   console.log(Td);
+       var Parent = Td.parentElement;
+	   console.log(Parent);
+	   var sibling = Parent.nextSibling;
+	   console.log(sibling);
+       var e = sibling.getElementsByClassName(id);
+	   
+        for (var i = 0; i < e.length; i++)
+            {
+				console.log(e[i]);
+       if(e[i].style.display == 'table-row')
+          e[i].style.display = 'none';
        else
-          e.style.display = 'block';
-    }
+          e[i].style.display = 'table-row';
+            }
+	}
 </script>
     </head>
     <body>
@@ -84,9 +102,24 @@ include '../functions/functions.php';
 	  ?>
 	  
 	  <?php
-      $deliveryresult = GrabMoreData("SELECT * FROM delivery, package WHERE user = :email AND status != 'Delivered' AND delivery.ID = package.delivery_ID ", array(array(":email", $_SESSION['email'])));
+      $deliveryresult = GrabMoreData("SELECT * FROM delivery WHERE user = :email AND status != 'Delivered'", array(array(":email", $_SESSION['email'])));
+	  foreach($deliveryresult as $data)
+	  {
+		  $package = GrabData("package", "delivery_ID, content, weight", "delivery_ID", $data['ID']);
+		  foreach ($package as $pack)
+		  $packageresult[]= $pack;
+	  }
 	  
-	  $statusresult = GrabMoreData("SELECT * FROM delivery, package WHERE user = :email AND status = 'Delivered' AND delivery.ID = package.delivery_ID ", array(array(":email", $_SESSION['email'])));	  	
+	  
+	  
+	  $statusresult = GrabMoreData("SELECT * FROM delivery WHERE user = :email AND status = 'Delivered'", array(array(":email", $_SESSION['email'])));	  	
+	  foreach($statusresult as $data)
+	  {
+		  $statuspackage = GrabData("package", "delivery_ID, content, weight", "delivery_ID", $data['ID']);
+		  foreach ($statuspackage as $pack)
+		  $statuspack[]= $pack;
+	  }  
+	  
 	  
 		if ($deliveryresult != false) 
 		{
@@ -111,29 +144,44 @@ include '../functions/functions.php';
         </tr>
       </thead>
       <tbody>';
-          foreach($deliveryresult as $row){
+          for($i = 0; $i < count ($deliveryresult); $i++){
             echo
             "<tr>
-              <td>$row[delivery_ID]</td>
-			  <td>$row[origin]</td>
-			  <td>$row[destination]</td>
-			  <td>$row[name]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
-			  <td>$row[cost]</td>
-			  <td>$row[content]</td>
-			  <td>$row[type]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
-			  <td>$row[fragile]</td>
-     		  <td>$row[special]</td>
-			  <td>$row[status]</td>
-			  <td><a href='#' onclick=\"toggle_visibility(moreinfo);\">More Info</a></td>
-			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
-              if ($row['status'] == "Awaiting Pick Up")
+              <td>" . $deliveryresult[$i][ID] . "</td>
+			  <td>" . $deliveryresult[$i][origin] . "</td>
+			  <td>" . $deliveryresult[$i][destination] . "</td>
+			  <td>" . $deliveryresult[$i][name] . "</td>
+			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][pickup]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][dropoff]) . "</td>
+			  <td>" . $deliveryresult[$i][cost] . "</td>
+			  <td>" . $deliveryresult[$i][content] . "</td>
+			  <td>" . $deliveryresult[$i][type] . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$deliveryresult[$i][date_paid]) . "</td>
+			  <td>";
+			  if ($deliveryresult[$i][fragile] == 1)
+			  {
+				  echo "☑";
+			  }
+			  else{
+				  echo "&#9744;";
+			  }
+     		  echo "</td><td>" . $deliveryresult[$i][special] . "</td>
+			  <td>" . $deliveryresult[$i][status] . "</td>
+			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $deliveryresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+              if ($deliveryresult[$i]['status'] == "Awaiting Pick Up")
               {
-              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
-              }              
-			 echo "</tr>";
+              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$deliveryresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
+              }
+			  
+			 echo"</tr>";
+			 foreach ($packageresult as $package)
+			 {
+			 if ($package["delivery_ID"] == $deliveryresult[$i]["ID"])
+			 {
+				echo "<tr class='Hide' ><td colspan='13'>Contents: " . $package[content] . " Weight: " . $package[weight] . "kg </td></tr>";
+			 }
+			 }
           }
 		  echo "</tbody>
     </table></div>";
@@ -142,12 +190,15 @@ include '../functions/functions.php';
 				echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
         }
         ?>
-	  
+	 <!-- <tr id='row1'><td colspan='13'>test</td></tr>  This goes between </tr> and </tbody> up a couple lines -->
 		</br></br></br></br></br>
+		
+		
+		
         <?php
 		if ($statusresult != false) 
 		{
-            echo '<span class="sign_title">Completed Deliveries</span><br>
+            echo '<span class="sign_title">Ongoing Deliveries</span><br>
 	  <div id="table_deliveries">
       <table>
       <thead>
@@ -168,25 +219,44 @@ include '../functions/functions.php';
         </tr>
       </thead>
       <tbody>';
-          foreach($statusresult as $row){
+          for($i = 0; $i < count ($statusresult); $i++){
             echo
             "<tr>
-              <td>$row[delivery_ID]</td>
-			  <td>$row[origin]</td>
-			  <td>$row[destination]</td>
-			  <td>$row[name]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[pickup]) . "</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[dropoff]) . "</td>
-			  <td>$row[cost]</td>
-			  <td>$row[content]</td>
-			  <td>$row[type]</td>
-			  <td>" . date('h:i:s\ d-m-Y',$row[date_paid]) . "</td>
-			  <td>$row[fragile]</td>
-			  <td>$row[special]</td>
-			  <td>$row[status]</td>
-			  <td><a href='#' onclick=\"toggle_visibility('moreinfo');\">More Info</a></td>
-              <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>
-			</tr>\n";
+              <td>" . $statusresult[$i][ID] . "</td>
+			  <td>" . $statusresult[$i][origin] . "</td>
+			  <td>" . $statusresult[$i][destination] . "</td>
+			  <td>" . $statusresult[$i][name] . "</td>
+			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][pickup]) . "</td>
+			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][dropoff]) . "</td>
+			  <td>" . $statusresult[$i][cost] . "</td>
+			  <td>" . $statusresult[$i][content] . "</td>
+			  <td>" . $statusresult[$i][type] . "</td>
+			  <td>" . date('h:i:s\ d-m-Y',$statusresult[$i][date_paid]) . "</td>
+			  <td>";
+			  if ($statusresult[$i][fragile] == 1)
+			  {
+				  echo "☑";
+			  }
+			  else{
+				  echo "&#9744;";
+			  }
+     		  echo "</td><td>" . $statusresult[$i][special] . "</td>
+			  <td>" . $statusresult[$i][status] . "</td>
+			  <td><input type='submit' class='button' value='More Info' onclick=\"toggle_visibility('Hide', this);\"/></td>
+			  <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $statusresult[$i]['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>";
+              if ($statusresult[$i]['status'] == "Awaiting Pick Up")
+              {
+              echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$statusresult[$i]['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
+              }
+			  
+			 echo"</tr>";
+			 foreach ($statuspack as $statuspackage)
+			 {
+			 if ($statuspackage["delivery_ID"] == $statusresult[$i]["ID"])
+			 {
+				echo "<tr class='Hide'><td colspan='13'>Contents: " . $statuspackage[content] . " Weight: " . $statuspackage[weight] . "kg </td></tr>";
+			 }
+			 }
           }
 		  echo "</tbody>
     </table></div>";

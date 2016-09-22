@@ -67,4 +67,8 @@ function sendEmail($userEmail, $subject, $body, $pdf){
 	
 }
 
+function UpdatePayments($id){
+	
+}
+
 ?>

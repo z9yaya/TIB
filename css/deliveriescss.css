@@ -1,3 +1,7 @@
+#row1 {
+	display: none;
+}
+
 #deliverieswrapper
 {
 
@@ -28,13 +32,15 @@
 #table_deliveries td {
   padding: 0px 5px 0px 5px;
   text-align: center; 
+  border: 1px solid #ddd;
 }
 
 #table_deliveries th {
   padding: 10px 10px 10px 10px;	
   background-color: #4CAF50;
   color: white;
-  text-align: center;  
+  text-align: center; 
+  border: 1px solid #ddd;  
 }
 
 #table_deliveries tr:nth-child(even){background-color: #f2f2f2;}
