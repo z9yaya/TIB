@@ -177,7 +177,7 @@ include '../functions/functions.php';
 			 {
 			 if ($package["delivery_ID"] == $deliveryresult[$i]["ID"])
 			 {
-				echo "<tr class='Hide' ><td colspan='13'>Contents: " . $package[content] . " Weight: " . $package[weight] . "kg </td></tr>";
+				echo "<tr class='Hide' ><td colspan='12'>Contents: " . $package[content] . " Weight: " . $package[weight] . "kg </td></tr>";
 			 }
 			 }
           }
@@ -250,7 +250,7 @@ include '../functions/functions.php';
 			 {
 			 if ($statuspackage["delivery_ID"] == $statusresult[$i]["ID"])
 			 {
-				echo "<tr class='Hide'><td colspan='13'>Contents: " . $statuspackage[content] . " Weight: " . $statuspackage[weight] . "kg </td></tr>";
+				echo "<tr class='Hide'><td colspan='12'>Contents: " . $statuspackage[content] . " Weight: " . $statuspackage[weight] . "kg </td></tr>";
 			 }
 			 }
           }
