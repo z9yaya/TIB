@@ -1,11 +1,11 @@
 <?php 
-include '../functions/functions.php';
+include '../functions/functions.php'; // This code allows for functions to be included in this file.
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Deliveries - drop.it</title>
+        <title>Deliveries - drop.it</title>  	<!-- This is the title of the web page as well as links to the CSS and Javascript files -->
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -16,12 +16,12 @@ include '../functions/functions.php';
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 		
 <style>
-    .Hide
+    .Hide        <!-- This style hides all table rows called Hide -->
 {
     //display: none;
 }
 </style>
-<script type="text/javascript">
+<script type="text/javascript">  <!-- This is functions specific to deliveries.php. This function allows table rows for 'more info' to be hidden and shown with a button -->
     function toggle_visibility(id, Object) {
 		console.log("stuff");
        var Td = Object.parentElement;
@@ -44,10 +44,10 @@ include '../functions/functions.php';
 </script>
     </head>
     <body>
-        <div id="back_nav">
-			<div id="wrapper" style='min-height: 0px;'>
+        <div id="back_nav"> <!-- This div holds the navigation menu -->
+			<div id="wrapper" style='min-height: 0px;'> <!-- This wrapper allows for positioning of the navigation menu.
 				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
+					<a id="login_blue" class="menu menu_blue" href="login.php"><?php  //This code checks to see if a user has logged in correctly and starts a session. If not, will display errors.
 																			if (session_id() == '')
 																			{
 																				session_start();
@@ -60,9 +60,11 @@ include '../functions/functions.php';
 																				echo 'SIGN IN</a>';
 																			}?>
 					
-						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
+						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a> <!-- This is the logo of the project and if clicked on will link to the homepage -->
                        
-					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
+					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a> <!-- Menu link to deliveries.php page -->
+					
+						<!-- php code that checks what type of user is logged in and displays the appropriate menu links -->
                          <?php 
                             if(isset($_SESSION['position']))
                             {
@@ -85,42 +87,46 @@ include '../functions/functions.php';
 				
 				</header>
 			</div>
-<div id="deliverieswrapper">			
-					<div id="content">
+		<div id="deliverieswrapper"> <!-- A wrapper for the deliveries tables to be in so they can be positioned correctly on the page -->			
+					<div id="content"> <!-- Content Div that holds all the unique content on the page -->
 					<div id="form">
 					
       <?php
-	  $servername = "localhost";
+	  $servername = "localhost"; //This is login details to connect to the databse
 	  $username = "edit";
 	  $password = "editme";
 	  $dbname = "tib";
 
-	  $conn = new mysqli($servername, $username, $password, $dbname);
+	  $conn = new mysqli($servername, $username, $password, $dbname); //This code allows the the website to connect a specific database in mysql workbench.
 	  
-	  if ($conn->connect_error) {
+	  if ($conn->connect_error) {   //If the connection fails, an error message will pop up
 		die("Connection failed: " . $conn->connect_error);}	  
 	  ?>
 	  
-	  <?php
+	  <?php 
+	  
+	  //This grabs all the ongoing delivery details from the database for the user logged in.
       $deliveryresult = GrabMoreData("SELECT * FROM delivery WHERE user = :email AND status != 'Delivered'", array(array(":email", $_SESSION['email'])));
 	  foreach($deliveryresult as $data)
 	  {
+		  //Uses a function from functions.php that grabs specific data from a table in the database
 		  $package = GrabData("package", "delivery_ID, content, weight", "delivery_ID", $data['ID']);
 		  foreach ($package as $pack)
 		  $packageresult[]= $pack;
 	  }
 	  
 	  
-	  
+	  //This grabs all the completed delivery details from the database for the user logged in.
 	  $statusresult = GrabMoreData("SELECT * FROM delivery WHERE user = :email AND status = 'Delivered'", array(array(":email", $_SESSION['email'])));	  	
 	  foreach($statusresult as $data)
 	  {
+		  //Uses a function from functions.php that grabs specific data from a table in the database
 		  $statuspackage = GrabData("package", "delivery_ID, content, weight", "delivery_ID", $data['ID']);
 		  foreach ($statuspackage as $pack)
 		  $statuspack[]= $pack;
 	  }  
 	  
-	  
+	  //This php code display the user's ongoing deliveries in a table format.
 		if ($deliveryresult != false) 
 		{
             echo '<span class="sign_title">Ongoing Deliveries</span><br>
@@ -128,7 +134,7 @@ include '../functions/functions.php';
       <table>
       <thead>
         <tr>
-          <th>Delivery ID</th>
+          <th>Delivery ID</th> 
      	  <th>Origin</th>
 		  <th>Destination</th>
 		  <th>Recipient</th>
@@ -142,8 +148,8 @@ include '../functions/functions.php';
 		  <th>Status</th>		  
         </tr>
       </thead>
-      <tbody>';
-          for($i = 0; $i < count ($deliveryresult); $i++){
+      <tbody>'; 
+          for($i = 0; $i < count ($deliveryresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
             "<tr>
               <td>" . $deliveryresult[$i][ID] . "</td>
@@ -194,6 +200,8 @@ include '../functions/functions.php';
 		
 		
         <?php
+		
+		//This php code display the user's completed deliveries in a table format.
 		if ($statusresult != false) 
 		{
             echo '<span class="sign_title">Completed Deliveries</span><br>
@@ -216,7 +224,7 @@ include '../functions/functions.php';
         </tr>
       </thead>
       <tbody>';
-          for($i = 0; $i < count ($statusresult); $i++){
+          for($i = 0; $i < count ($statusresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
             "<tr>
               <td>" . $statusresult[$i][ID] . "</td>
@@ -261,13 +269,13 @@ include '../functions/functions.php';
 				echo "";} 
         ?>
       	
-
+	<!-- This php closes the connection to the database -->
     <?php $conn->close(); ?>
 	
 
 
 	<br></div></div></div>
-	<footer id="footer">
+	<footer id="footer"> <!-- This is the footer for the page -->
                         <p> Designed by Michael Phong - 2016</p>
 					</footer>
 			</div>
