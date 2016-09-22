@@ -69,6 +69,7 @@ include '../functions/functions.php';
 			</div>
 <div id="deliverieswrapper">			
 					<div id="content">
+					<div id="form">
 					
       <?php
 	  $servername = "localhost";
@@ -89,13 +90,12 @@ include '../functions/functions.php';
 	  
 		if ($deliveryresult != false) 
 		{
-            echo '<h1>Ongoing Deliveries</h1>
+            echo '<span class="sign_title">Ongoing Deliveries</span><br>
 	  <div id="table_deliveries">
       <table>
       <thead>
         <tr>
-          <th id="moreinfo">Delivery ID</th>
-          <th>User</th>
+          <th>Delivery ID</th>
      	  <th>Origin</th>
 		  <th>Destination</th>
 		  <th>Recipient</th>
@@ -114,8 +114,7 @@ include '../functions/functions.php';
           foreach($deliveryresult as $row){
             echo
             "<tr>
-              <td class='c'>$row[delivery_ID]</td>
-			  <td>$row[user]</td>
+              <td>$row[delivery_ID]</td>
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
@@ -134,28 +133,26 @@ include '../functions/functions.php';
               {
               echo "<td><form action='deliverychange.php' method='POST'><input type='hidden' name='ID' value='".$row['ID']."'><input type='submit' class='button' value='Change Details'></form></td>";
               }              
-			 echo "</tr>\n";
+			 echo "</tr>";
           }
+		  echo "</tbody>
+    </table></div>";
 		}
 		else {
 				echo "<br/>You have not requested a delivery yet..<br/><br/><br/><input type='button' onclick='(window.location.href = \"request.php\")' value='REQUEST A DELIVERY' class='button'/> ";
         }
         ?>
-      </tbody>
-          </table></div>
-		  <br>
-		  <br>		  
-
+	  
+		</br></br></br></br></br>
         <?php
 		if ($statusresult != false) 
 		{
-            echo '<h1>Completed Deliveries</h1>
+            echo '<span class="sign_title">Completed Deliveries</span><br>
 	  <div id="table_deliveries">
       <table>
       <thead>
         <tr>
           <th>Delivery ID</th>
-          <th>User</th>
      	  <th>Origin</th>
 		  <th>Destination</th>
 		  <th>Recipient</th>
@@ -175,7 +172,6 @@ include '../functions/functions.php';
             echo
             "<tr>
               <td>$row[delivery_ID]</td>
-			  <td>$row[user]</td>
 			  <td>$row[origin]</td>
 			  <td>$row[destination]</td>
 			  <td>$row[name]</td>
@@ -192,23 +188,23 @@ include '../functions/functions.php';
               <td><form action='complaints.php' method='POST'><input type='hidden' name='delivery' value='". $row['delivery_ID'] ."'><input type='submit' class='button' value='Report Issue'></form></td>
 			</tr>\n";
           }
+		  echo "</tbody>
+    </table></div>";
 		}
 		else {
-				echo "No Results Found";} 
+				echo "";} 
         ?>
-      </tbody>
-    </table>	
+      	
 
     <?php $conn->close(); ?>
 	
 
 
-	<br>            
-    </div></div>
-
-			</div>
-				   <footer id="footer">
+	<br></div></div></div>
+	<footer id="footer">
                         <p> Designed by Michael Phong - 2016</p>
-					</footer>	     			
+					</footer>
+			</div>
+				   	     			
     </body>
 </html>
