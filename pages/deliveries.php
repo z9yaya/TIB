@@ -153,7 +153,6 @@ include '../functions/functions.php';
 			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][pickup]) . "</td>
 			  <td>" . date('h:i\ d-m-Y',$deliveryresult[$i][dropoff]) . "</td>
 			  <td>" . $deliveryresult[$i][cost] . "</td>
-			  <td>" . $deliveryresult[$i][content] . "</td>
 			  <td>" . $deliveryresult[$i][type] . "</td>
 			  <td>" . date('h:i:s\ d-m-Y',$deliveryresult[$i][date_paid]) . "</td>
 			  <td>";
@@ -227,7 +226,6 @@ include '../functions/functions.php';
 			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][pickup]) . "</td>
 			  <td>" . date('h:i\ d-m-Y',$statusresult[$i][dropoff]) . "</td>
 			  <td>" . $statusresult[$i][cost] . "</td>
-			  <td>" . $statusresult[$i][content] . "</td>
 			  <td>" . $statusresult[$i][type] . "</td>
 			  <td>" . date('h:i:s\ d-m-Y',$statusresult[$i][date_paid]) . "</td>
 			  <td>";
