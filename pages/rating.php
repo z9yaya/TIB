@@ -54,39 +54,7 @@
 	 </span></h1><br>
 	     <input type="submit" name="submit_review"  id="submit" class="reviewbutton" value="Submit Review"><br><br>
 	</form>
-	
-	
-	  <?php 
-	echo "<center>";
-      echo "<table border=solid width=auto>";
-        echo "<thead><tr><th>User</th>
-            <th>Review</th><th>Rating</th><th>Date</th></tr></thead>";
-        foreach ($reviewdata as $data){
-        echo "<tr>";
-
-        echo "<td>";
-        echo $data['fname'];
-
-        echo "<td>";  
-        echo $data['review']; 
-      
-
-        echo "<td>";  
-        echo $data['rating']; 
-
-        echo "<td>";  
-        echo $data['date']; 
-      
-        }
-      echo "</tr></table>";
-	echo "</center";
-   ?>
-	  
-	  
-	
-	
-	
-</div> 
+	</div> 
 		</div>
 	  </div>
 	</div>
