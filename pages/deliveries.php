@@ -36,6 +36,7 @@ include '../functions/functions.php';
         <div id="back_nav">
 			<div id="wrapper" style='min-height: 0px;'>
 				<header>
+					
 					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
 																			if (session_id() == '')
 																			{
@@ -50,7 +51,7 @@ include '../functions/functions.php';
 																			}?>
 					
 						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                       
+                       <a id="rating" class="menu menu_blue selected" href="rating.php">RATING</a>
 					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a>
                          <?php 
                             if(isset($_SESSION['position']))
