@@ -1,4 +1,6 @@
 <?php
+
+//This function enables user to provide order information.
 function registerRequest()
 { 
     if (session_id() == '')
@@ -11,6 +13,8 @@ function registerRequest()
                 {
                      if (!empty($_POST) && !empty($_POST['pickUp']))
                         {
+                         
+                         //A series of checks will be made based on the form input as there are fiels that can't be empty in the DB. The time must also be converted to unix.
                          
                              $pickUp = $_POST['pickUp'];
                              $dropOff = $_POST['dropOff'];
@@ -53,6 +57,8 @@ function registerRequest()
                              $dropDate = mktime($dropTime['hour'], $dropTime['minute'], 0, $b['month'], $b['day'], $b['year']);
                              try
                              {
+                                 
+                                 //Inserting information into the delivery table to produce a new order.
                                  $pdo = connect();
                                  $query= "INSERT INTO delivery(origin, destination, user, name, pickup, dropoff, type, fragile, special)
                                  VALUES(:pickUp, :dropOff, :user, :recipient, :pickTime, :dropTime, :first, :fragile, :special);";
@@ -69,6 +75,7 @@ function registerRequest()
                                  $prepare -> execute();
                                  $ID = $pdo->lastInsertId();
                                  
+                                 //Creates an entry for each package in a delivery by using an array and a variable to track the number of loops required.
                                  for($i=0; $i < $track; $i++)
                                  {
                                  $query= "INSERT INTO package(delivery_ID,weight, content)
@@ -84,6 +91,8 @@ function registerRequest()
                              {
                                  echo $e -> getMessage();
                              }
+                         
+                         //Redirect.
                          header("Location: ../pages/deliveries.php");
                      }
                 }

@@ -2,9 +2,9 @@
 include '../functions/change-auto.php';
 if (isset($_POST))
 {
-    if (!empty($_POST) && !empty($_POST['ID']))
+    if (!empty($_POST) && !empty($_POST['ID']))//If the ID is psted from delivery page run a function.
         {
-            $info = getInfo($_POST['ID']);
+            $info = getInfo($_POST['ID']);//Calls getInfo function and passes ID which is required for                               queries.
         }
 }
 ?>
@@ -41,6 +41,9 @@ if (isset($_POST))
 					
 				</header>
 				
+                    
+            /* In this for every "value=" is filled from the get info array so customers know what they entered previously and ID is placed into an invisible feild so that it cannot be incorrectly entered, this also makes it easier to set in functions based on this form */
+                    
 				<div id="content" style="width:160px;">
                     <div id="form">
 					  <form class="form" id="change_form" method='POST' action='../functions/change.php'>

@@ -1,5 +1,7 @@
 <?php 
 
+//Creates an array based on a select query and converts time to 12 hour format for display on delivery change page
+
 function getInfo($ID)
 {
    $result = GrabMoreData("SELECT origin, destination, name, pickup, dropoff, special FROM delivery WHERE ID = :ID", array(array("ID", $ID)));

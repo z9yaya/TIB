@@ -1,4 +1,6 @@
 <?php
+
+//Uses form inputs to insert values into delivery table using "insert into" in DB as well as update options as the driver reaches milestones.
 function driverUpdate()
 { 
     if (session_id() == '')
@@ -46,6 +48,8 @@ function driverUpdate()
                              {
                                  echo $e -> getMessage();
                              }
+                         
+                         //Redirect
                          header("Location: ../pages/tracking.php");
                      }
                 }
