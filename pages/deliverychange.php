@@ -5,7 +5,6 @@ if (isset($_POST))
     if (!empty($_POST) && !empty($_POST['ID']))
         {
             $info = getInfo($_POST['ID']);
-            print_r($info);
         }
 }
 ?>
