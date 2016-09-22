@@ -42,7 +42,7 @@ if (isset($_POST))
 				</header>
 				
                     
-            /* In this for every "value=" is filled from the get info array so customers know what they entered previously and ID is placed into an invisible feild so that it cannot be incorrectly entered, this also makes it easier to set in functions based on this form */
+            <!-- In this for every "value=" is filled from the get info array so customers know what they entered previously and ID is placed into an invisible feild so that it cannot be incorrectly entered, this also makes it easier to set in functions based on this form -->
                     
 				<div id="content" style="width:160px;">
                     <div id="form">
