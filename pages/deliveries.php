@@ -196,7 +196,7 @@ include '../functions/functions.php';
         <?php
 		if ($statusresult != false) 
 		{
-            echo '<span class="sign_title">Ongoing Deliveries</span><br>
+            echo '<span class="sign_title">Completed Deliveries</span><br>
 	  <div id="table_deliveries">
       <table>
       <thead>
