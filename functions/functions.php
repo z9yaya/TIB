@@ -432,4 +432,33 @@ function AddDropLog()
                     }
             }
 }
+
+function AddChat()
+{
+    if (session_id() == '')
+    {
+        session_start();
+    }
+    if (isset($_SESSION))
+    {
+                 if (!empty($_SESSION) && !empty($_SESSION['email']) && $_SESSION['position'] == 'driver')
+                 {
+                        echo '<div id=ChatSystem>
+                            <div id="messageBox">
+                                <div class="name">
+                                <span id="name" onclick="hideChat()"></span>
+                                <span id="close" onclick="closeChat()" title="Close">x</span>
+                                </div>
+                                <div id="id" class="chat" onmouseover="stopScroll(true)" onmouseout="stopScroll(false)"></div>
+                                    <form onsubmit="event.preventDefault()">
+                                    <input type="text" name="text" id="chat_input">
+                                        <input type="submit" id="submitText"></form>
+                            </div>
+                            <div id="contactsPart">
+                            <input type="checkbox" id="hideContacts">
+                            <div id="contacts_bar" title="Hide/Show contacts"><div class="name" id="contacts_title" onclick="HideContactsBar()">Contacts</div></div></div>
+                        </div>';
+                 }
+    }
+}
 ?>
