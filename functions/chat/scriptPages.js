@@ -95,8 +95,7 @@ function pushChanges(exist = true, Document, user = '')
                         var d = new Date();
                         var currentTime = d.getTime();
                         var timestamp = new Date(currentTime)
-                        var minutes = timestamp.getMinutes();
-                        var time = timestamp.getHours() + ':' + timestamp.getMinutes();
+                        var time = timestamp.toLocaleTimeString() + " " + timestamp.getDate()+"/"+(timestamp.getMonth() + 1)+"/"+timestamp.getFullYear();
                         var formated_input = '<message><div class="container"><div class="' + email + '" title="'+time+'">' + input + '</div></div></message>';
                         var data = 'data='+ formated_input + "&document=" + Document;
                         document.getElementById("chat_input").value='';
@@ -149,9 +148,9 @@ function loadContacts()
             if (this.readyState == 4 && this.status == 200)
                 {
                     contacts =  JSON.parse(xmlhttp.responseText);
-                    for (var i=0; i< email.length; i++)
+                    for (var i=0; i< contacts.length; i++)
                         {
-                            contacts_bar.innerHTML += '<div class="contact" onclick=\'openChat("'+i+'",this)\' data-myValue="'+contacts[i]["email"]+'">'+contacts[i]["name"]+'</div>';
+                             document.getElementById(contacts[i]["position"]).innerHTML += '<div class="contact" onclick=\'openChat("'+i+'",this)\' data-myValue="'+contacts[i]["email"]+'">'+contacts[i]["name"]+'</div>';
                         }                    
                 }
             };
