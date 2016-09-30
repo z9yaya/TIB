@@ -9,7 +9,14 @@ body
 {
 	margin: 0 auto;
 	z-index: -99;
-    background: rgb(248, 249, 250);
+    background: rgb(248, 249, 250); 
+}
+
+.noscroll
+{
+    position: fixed; 
+    width: 100%;
+    overflow-y:scroll;
 }
 
 /*/START////////////////////////////////////////		NAV MENU BACKGROUND(<div id="back_nav" />)	////////////////////////////////////////////////////////////////////*/
@@ -19,7 +26,7 @@ body #back_nav
 	width: 100%;
 	background: white;
 	height: 100px;
-	z-index: 98;
+	z-index: 1;
 }
 /*/END////////////////////////////////////////		NAV MENU BACKGROUND(<div id="back_nav" />)	////////////////////////////////////////////////////////////////////*/
 
@@ -56,7 +63,7 @@ header{
     font-size: 28pt;
 	width: 100px;
 	text-decoration: none;
-	z-index: 99;
+	z-index: 2;
 	left: 15px;
 }
 .intro_blue{
@@ -167,7 +174,7 @@ header{
 	position: fixed;
 	bottom: 15px;
 	right: 15px;
-	z-index: 99;
+	z-index: 2;
 	text-decoration: none;
 	color: #333;
 	font-size: 15px;
@@ -200,7 +207,7 @@ header{
 	background-color: #374969;
 	width: 100%;
 	height: 44px;
-	z-index: 98;
+	z-index: 1;
 }
 
 #nav a:hover/* , #nav a[id="current"] */ {
@@ -223,7 +230,7 @@ header{
 	color: white;
 	font-weight: bold;
 	text-decoration: none;
-	z-index: 99;
+	z-index: 2;
 	padding-left: 12px;
 	padding-right: 12px;
 	line-height: 30px;
@@ -318,7 +325,7 @@ header{
 #by_start
 {
 	color: #ddd;
-    z-index: 99;
+    z-index: 2;
     position: relative;
 }
 /*/START////////////////////////////////////////		PAGE CONTENT(<div id="content">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
@@ -329,7 +336,7 @@ header{
 	font-weight: bold;
 	font-size: 2vw;
 	margin-top: 50vh;
-    z-index: 99;
+    z-index: 2;
     position: relative;
 }
 
@@ -679,7 +686,7 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 {
     font-family: Arial;
     color: red;
-    z-index: 99;
+    z-index: 2;
     white-space: nowrap;
     position: relative;
     top: 10px;
@@ -851,9 +858,10 @@ tbody tr:first-of-type
 	width: 100%;
 	background-color: white;
 	color: rgba(44, 70, 98, 0.77);
-	z-index: 98;
+	z-index: 2;
 	//left: 0px;
 	//top: 100vh;
+    position: relative;
 }
 #footer p
 {
@@ -867,3 +875,219 @@ tbody tr:first-of-type
 /*/END////////////////////////////////////////		CONTENT WRAPPER(<div id="wrapper">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 /*/END////////////////////////////////////////		BODY SECTION(<body>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+#ChatSystem
+{
+    width: 405px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+
+}
+#messageBox
+{
+    width: 236px;
+    font-family: Helvetica;
+    font-size: 12px;
+    max-height: 346px;
+    border-top: 1px solid #cecfd2;
+    border-left: 1px solid #cecfd2;
+    border-right: 1px solid #cecfd2;
+    display: none;
+    float: left;
+    position: absolute;
+    bottom: 0;
+    background: white;
+    pointer-events: auto;
+
+}
+
+.chat{
+    height: 296px;
+    width: 230px;
+    overflow-y:scroll;
+    margin: 0;
+    padding-right: 3px;
+    padding-left: 3px;
+    background: white;
+    pointer-events: auto;
+    padding-bottom: 4px;
+
+}
+ .container
+{
+    width: 100%;
+    display: block;
+    overflow: auto;
+}
+
+#name
+{
+    display: inline-block;
+    width: 210px;
+    pointer-events: auto;
+}
+.name
+{
+    font-family: Helvetica;
+    font-size: 12px;
+    width: 233px;
+    background-color: #016e96;
+    color: white;
+    height: 22px;
+    line-height: 22px;
+    font-weight: bold;
+    padding-left: 5px;
+    margin-left: -1px;
+    margin-top: -1px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+.name:hover
+{
+    background-color: #015d7f;
+}
+
+#close
+{
+    float: right;
+    padding-right: 6px;
+    padding-left: 6px;
+    line-height: 20px;
+    cursor: default;
+    pointer-events: auto;
+}
+#close:hover, #close:focus
+{
+    color: #cecfd2;
+}
+
+#chat_input
+{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #cecfd2;
+    height: 20px;
+    background: rgb(252,252,252);
+    pointer-events: auto;
+}
+#chat_input:focus
+{
+    background: white;
+}
+#submitText
+{
+    display: none;
+}
+#contactsPart
+{
+    float: right;
+    width: 200px;
+    height: 100%;
+}
+#contacts_bar
+{
+    display: block;
+    height: 100%;
+    width: 150px;
+    border-left:1px solid #cecfd2;
+    float: right;
+    background: white;
+    transition: 0.3s all ease;
+    pointer-events: auto;
+    overflow: hidden;
+}
+.contact
+{
+    font-family: Helvetica;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    width: 130px;
+    clear: both;
+    text-align: right;
+    cursor: pointer;
+    color: #999999;
+    margin-top: 5px;
+    pointer-events: auto;
+    padding-right: 20px;
+}
+.contact:hover
+{
+    color: black;
+    background: #eef4f6;
+}
+.active
+{
+    font-weight: bold;
+    color: black;
+}
+
+.unread::before
+{
+    content: "1";
+    float: left;
+    border: 1px solid #016e96;
+    background: #016e96;
+    color: white;
+    border-radius: 3px;
+    height: 12px;
+    width: 13px;
+    line-height: 12px;
+    margin-top: 7px;
+    margin-left: 15px;
+    font-weight: bold;
+    text-align: center;   
+}
+@keyframes notification {
+    from {background-color: #cacbce;}
+    to {background-color: #016e96;}
+}
+.unreadHid
+{
+    background-color: #016e96 !important;  
+    animation-name: notification;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+#hideContacts
+{
+    display: none;
+    
+}
+#hideContacts:checked + #contacts_bar
+{
+    height 21px;
+    margin-top: calc(100vh - 21px);
+}
+
+#contacts_title
+{
+    padding: 0;
+    width: 146px;
+    padding-left: 5px;
+    background-color: #cacbce;
+    color: white;
+}
+#contacts_title::after
+{
+    content: "-";
+    float: right;
+    margin-right: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 1px;
+}
+#contacts_title.name.Hid::after
+{
+    content: "+";
+    float: right;
+    margin-right: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 1px;
+}
