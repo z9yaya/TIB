@@ -9,7 +9,7 @@
             {
                 session_start();
             }
-            if(isset($_SESSION['position']) && $_SESSION['position'] == 'driver')
+            if(isset($_SESSION['position']) && $_SESSION['position'] != 'customer')
             {
                 echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
                         <meta http-equiv="Pragma" content="no-cache" />
