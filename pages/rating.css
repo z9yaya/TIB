@@ -1,0 +1,49 @@
+#rating label, #user_rating label
+{
+	font-weight: normal;
+	color:  #999;
+	font-size: 40px;
+	float:left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	z-index: 0;
+	padding-top: 1px;
+	
+}
+
+#rating label{
+	cursor: pointer;
+	margin-top: -19px;
+}
+
+#rating input, #user_rating input{
+	position:absolute;
+	z-index: -1;
+	opacity: 0;
+	height: 29px;
+	width: 15px;
+}
+#rating input:checked + label ~ label,#rating input:checked + label,
+#user_rating input:checked + label ~ label,#user_rating input:checked + label{
+	color: #00ff00;
+}
+#rating label:hover ~ label, #rating label:hover{
+    color: #b3ffb3 !important;
+}
+
+#rating, #user_rating
+{
+	display :inline-block;
+	height: 20px;
+	transform: rotateY(180deg);
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+#form input{
+	width: 50;
+	height: 30;
+	
+}
