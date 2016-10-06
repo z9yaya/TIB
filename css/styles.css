@@ -1091,3 +1091,28 @@ tbody tr:first-of-type
     font-weight: bold;
     margin-top: 1px;
 }
+
+#driver, #manager
+{
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+#driver::before, #manager::before
+{
+    position: relative;
+    content: "Drivers";
+    font-family: Helvetica;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    background-color: #80b3ff;
+    line-height: 18px;
+    top:-2px;
+}
+#manager::before
+{
+    content: "Manager";
+}
