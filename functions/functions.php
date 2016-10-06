@@ -441,7 +441,7 @@ function AddChat()
     }
     if (isset($_SESSION))
     {
-                 if (!empty($_SESSION) && !empty($_SESSION['email']) && $_SESSION['position'] == 'driver')
+                 if (!empty($_SESSION) && !empty($_SESSION['email']) && $_SESSION['position'] != 'customer')
                  {
                         echo '<div id=ChatSystem>
                             <div id="messageBox">
@@ -456,7 +456,12 @@ function AddChat()
                             </div>
                             <div id="contactsPart">
                             <input type="checkbox" id="hideContacts">
-                            <div id="contacts_bar" title="Hide/Show contacts"><div class="name" id="contacts_title" onclick="HideContactsBar()">Contacts</div></div></div>
+                            <div id="contacts_bar"><div class="name" id="contacts_title" onclick="HideContactsBar()" title="Hide/Show contacts">Contacts</div>';
+                             if ($_SESSION['position'] != 'manager')
+                             {
+                                 echo '<div id="manager"></div>';
+                             }
+                    echo '<div id="driver"></div></div></div>
                         </div>';
                  }
     }
