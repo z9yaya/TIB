@@ -1,3 +1,6 @@
+//used to check if a file exists at the specified location
+//INPUT url: path of file eg: "root/folder/file.extension"
+//OUTPUT: true when the file is found and accessible or false when the file cannot be accessed
 function UrlExists(url)
 {
     var http = new XMLHttpRequest();
@@ -6,7 +9,8 @@ function UrlExists(url)
     return http.status!=404;
 }
 
-////////////////////////////////////
+//used to create a event listening for server sent events, when data is received, the function LoadDoc is executed with default parameters except the serverSent parameter which is set to true
+//INPUT file: the name of the file being watched by the server.
 function AutoCheck(file)
 {
     if (!!window.EventSource)
@@ -28,8 +32,12 @@ function AutoCheck(file)
             console.log("Sorry, your browser does not support instant messaging...");
         }
 }
-/////////////////////////////////////
 
+//used to display conversation when they exist or executes the pushChanges function while specifying that the file does not exist
+//INPUT creator: default is the global email variable, email of logged in user.
+//INPUT receiver: default is the global user variable, email of target user
+//INPUT serverSent: default is set to false, used to specify if the function was executed from the AutoCheck function, false when executed from somewhere else
+//OUTPUT file: the name of the file being viewed by the user.
 function loadDoc(creator = email, receiver = user, serverSent = false) 
     {
         if (creator!='' && receiver !='')
@@ -82,6 +90,10 @@ function loadDoc(creator = email, receiver = user, serverSent = false)
             }
     }
 
+//used to create a new conversation or write to a conversation
+//INPUT exist: default is true, used to specify if the file needs to be created or not
+//INPUT Document: variable containing the name of the file being modified
+//INPUT user: default is null, only specified when a file does not exist, used to push current user details to database
 function pushChanges(exist = true, Document, user = '')
 {
     if (email)
@@ -125,6 +137,7 @@ var email = '';
 var contacts = '';
 var user = '';
 
+//used to set the global variable email, the value of the logged in user
 function grabSession()
 {
     var xmlhttp = new XMLHttpRequest();
@@ -133,6 +146,7 @@ function grabSession()
             if (this.readyState == 4 && this.status == 200)
                 {
                     email = xmlhttp.responseText;
+                    loadContacts();
                 }
             };
         xmlhttp.open('POST','functions/chat/session.php', true);
@@ -140,6 +154,7 @@ function grabSession()
         xmlhttp.send();
 }
 
+//used to read the contacts from database and add elements to the contacts bar, also sets the function CheckMissed to be executed every 10 seconds.
 function loadContacts()
 {
     var xmlhttp = new XMLHttpRequest();
@@ -159,11 +174,12 @@ function loadContacts()
         xmlhttp.send();
         MakeCss(email, 'originator');
         CheckMissed();
-        setInterval(CheckMissed, 10000);
-       
+        setInterval(CheckMissed, 10000);     
 }
 
-
+//used to display the user messageBox and execute the loadDoc functions to display the conversation
+//INPUT User: index of the email in global variable contacts
+//INPUT Contact: HTML object, the object that executed this function
 function openChat(User, Contact)
 {
     if (id.style.display=="none")
@@ -175,7 +191,6 @@ function openChat(User, Contact)
             var Contacts = document.getElementsByClassName("active");
             if (Contacts.length == 1)
                 {
-                console.log(Contacts[0]);
                 Contacts[0].className = "contact";
                 }
 
@@ -194,6 +209,7 @@ function openChat(User, Contact)
         }
 }
 
+//used to hide the messageBox
 function closeChat()
 {
     messageBox.style.display = "none";
@@ -205,6 +221,7 @@ function closeChat()
         }
 }
 
+//used to hide the message container but keep it active and easily accessible
 function hideChat()
 {
     if (id.style.display != "none")
@@ -219,6 +236,7 @@ function hideChat()
         }
 }
 
+//used to query the database to check for any missed messages
 function CheckMissed()
 {
     var xmlhttp = new XMLHttpRequest();
@@ -250,6 +268,9 @@ function CheckMissed()
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//used to block body scrolling when over scrolling in conversation container
+//INPUT block, true to lock the body scrolling to its current position, false to restore body scrolling
 function stopScroll(block)
 {
     if (block == true)
@@ -270,6 +291,9 @@ function stopScroll(block)
         }
 }
 
+//used to generate styling for the MessageBox object, using the class set on the individual messages, can differentiate between sender and receiver
+//INPUT className: email address of the user
+//INPUT actor: originator or receiver, used to set the appropriate styling for the messages
 function MakeCss(className, actor)
 {
     if (actor == "originator")
@@ -296,6 +320,7 @@ function MakeCss(className, actor)
         }
 }
 
+//used to the contacts bar to reduce the screen space used by the messaging system when not in use
 function HideContactsBar()
 {
     if(document.getElementById("contacts_title").classList.contains("Hid"))
@@ -314,6 +339,4 @@ function HideContactsBar()
         }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-setTimeout(loadContacts,500);
 grabSession();
-//setTimeout(function(){MakeCss(email, 'originator')},500);

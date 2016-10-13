@@ -1,7 +1,5 @@
 <?php include "../functions.php";
-//error_reporting(E_ALL);
-//var_dump($_SERVER);
-
+//this script is used to write a file or create a file, then updates the database, recording when the file was last modified and adding the last online for the user writing to the file 
 if (!empty($_POST)) {
     if (session_id() == '')
     {

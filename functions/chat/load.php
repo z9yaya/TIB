@@ -1,4 +1,5 @@
 <?php include "../functions.php";
+//this script is used to fetch contacts and encodes in json to send to the browser
 if (session_id() == '')
             {
                 session_start();

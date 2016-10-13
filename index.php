@@ -4,19 +4,7 @@
         <title>drop.it</title>
         <link rel="SHORTCUT ICON" href="images/icon.ico" />
         <link rel="icon" href="images/icon.ico" type="image/ico" />
-        <script async type="text/javascript" src="js/script.js"></script>
-        <?php if (session_id() == '')
-            {
-                session_start();
-            }
-            if(isset($_SESSION['position']) && $_SESSION['position'] != 'customer')
-            {
-                echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-                        <meta http-equiv="Pragma" content="no-cache" />
-                        <meta http-equiv="Expires" content="0" />
-                        <script type="text/javascript" src="functions/chat/script.js"></script>';
-            }?>
-                
+        <script async type="text/javascript" src="js/script.js"></script>        
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <link async href="css/styles.css" rel="stylesheet" type="text/css"/>
@@ -58,6 +46,7 @@
                                         <a id="new" class="menu" href="pages/request.php">REQUEST</a>';	
                                     }
                         ?>
+                        </header>
                     <div id="content">
 						<div id="content_start">
 							<div id="text_start">
@@ -74,5 +63,16 @@
                     <p> Designed by Yannick Mansuy - 2016</p>
                 </footer>
         </div>
+                <?php if (session_id() == '')
+            {
+                session_start();
+            }
+            if(isset($_SESSION['position']) && $_SESSION['position'] != 'customer')
+            {
+                echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+                        <meta http-equiv="Pragma" content="no-cache" />
+                        <meta http-equiv="Expires" content="0" />
+                        <script type="text/javascript" src="functions/chat/script.js"></script>';
+            }?>
     </body>
 </html>

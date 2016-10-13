@@ -433,6 +433,7 @@ function AddDropLog()
             }
 }
 
+//used to add the instant messaging system to a page when the required criterias are met
 function AddChat()
 {
     if (session_id() == '')
@@ -455,8 +456,8 @@ function AddChat()
                                         <input type="submit" id="submitText"></form>
                             </div>
                             <div id="contactsPart">
-                            <input type="checkbox" id="hideContacts">
-                            <div id="contacts_bar"><div class="name" id="contacts_title" onclick="HideContactsBar()" title="Hide/Show contacts">Contacts</div>';
+                            <input type="checkbox" id="hideContacts" checked>
+                            <div id="contacts_bar"><div class="name Hid" id="contacts_title" onclick="HideContactsBar()" title="Hide/Show contacts">Contacts</div>';
                              if ($_SESSION['position'] != 'manager')
                              {
                                  echo '<div id="manager"></div>';

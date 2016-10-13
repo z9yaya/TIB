@@ -1,3 +1,6 @@
+<?php 
+include '../functions/functions.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +27,7 @@
                                                                         else 
                                                                             echo 'SIGN IN</a>';?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                    <a id="rating" class="menu menu_blue selected" href="rating.php">RATING</a>
+                    <a id="rating" class="menu menu_blue" href="rating.php">RATING</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
                          <?php 
                             if(isset($_SESSION['position']))
@@ -46,27 +49,43 @@
                             }
                         ?>
 				</header>
-					<div id="content">
-                        *****PUT YOUR CONTENT HERE*****
-                        TEMPLATE INPUTS:<br/>
-                        Text input example: <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Text template"/><br>
-                        
-                        Date input example: <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Date template"/><br>
-                        
-                        Password input example: <input id="password_input" type="password" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" placeholder="Password template"/><br>
-                        
-                        Mobile phone input example:  <input type="tel" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Number input example: <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
-                        
-                        Email input example: <input type="email" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" placeholder="Email template" required/><br>
-                        
-                        Submit input example: <input id='signup_button' type="submit" value="SUBMIT" class="button">
-					</div>
-				</div>
+					<div id="content"><!--REQUIRED-->
+                         <div id="form"><!--REQUIRED-->
+                             <form class="form" id="request_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>
+                                <div class="sign_title">*****TITLE*****</div>
+                                
+                                <input id="text_input" type="text" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Text template"/><br>
+
+                                <input id="date_input" type="date" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" autofocus placeholder="Date template"/><br>
+
+                                <input id="password_input" type="password" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" size="15" maxlength="30" placeholder="Password template"/><br>
+
+                                <input type="tel" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
+
+                                <input type="number" name="DESCRIPTION OF INFORMATION (1 WORD)" size="12" maxlength="10" class="input_text" placeholder="Phone template"/><br>
+
+                                <input type="email" name="DESCRIPTION OF INFORMATION (1 WORD)" class="input_text" placeholder="Email template" required/><br>
+
+                                <input id='signup_button' type="submit" value="SUBMIT" class="button">
+                             </form>
+                        </div><!--REQUIRED-->
+					</div><!--REQUIRED-->
+				</div><!--REQUIRED-->
+                <?php AddChat();?>
                 <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
 					</footer>
 			</div>
+            <?php if (session_id() == '')
+            {
+                session_start();
+            }
+            if(isset($_SESSION['position']) && $_SESSION['position'] != 'customer')
+            {
+                echo '<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+                        <meta http-equiv="Pragma" content="no-cache" />
+                        <meta http-equiv="Expires" content="0" />
+                        <script type="text/javascript" src="../functions/chat/scriptPages.js"></script>';
+            }?>
     </body>
 </html>
