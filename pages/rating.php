@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>****TITLE**** - drop.it</title>
-		
+        <title>****TITLE**** - drop.it</title>		
 		<link href="rating.css" rel="stylesheet" type="text/css"/>
 		<link href="styles1.css" rel="stylesheet" type="text/css"/>
 		<link href="styles.css" rel="stylesheet" type="text/css"/>
@@ -19,7 +18,12 @@
                         <meta http-equiv="Pragma" content="no-cache" />
                         <meta http-equiv="Expires" content="0" />
                         <script type="text/javascript" src="../functions/chat/scriptPages.js"></script>';
-            }?>
+            }
+			if(isset($_GET['delivery'])){
+			$id = $_GET['delivery'];
+				}
+			?>
+			
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
          <link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
@@ -66,8 +70,10 @@
 				</header>
 <div id="content">  
 <div id="form">
-                        <span class="sign_title">Write Your Feedback Below!</span><br>
-				<?php include '../functions/functions.php';
+                        <span class="sign_title">Write Your Feedback Below!</span>
+
+												
+				<?php include '../functions/functions.php'; include "uploadfile.php";
 				 $pdo = connect();
   $servername = "localhost";
   $username = "edit";
@@ -76,39 +82,59 @@
 
 if (isset($_POST['submit']))
 {
-	
 	$email = $_SESSION['email'];
 	$review = $_POST['review'];
-	$rating = $_POST['rating'];
-	$date = time();
+	$delivery_rating = $_POST['delivery_rating'];
+	$package_rating = $_POST['package_rating'];
+	$date = time();		
 
-		$sql = "INSERT INTO `reviews` (`email`, `review`, `rating`, `date`)	
-		       VALUES ('$email', '$review', '$rating', '$date')";
+		$sql = "INSERT INTO `reviews` (`id`, `email`, `review`, `delivery_rating`, `package_rating`, `date`)	
+						VALUES ('$id', '$email', '$review', '$delivery_rating', '$package_rating', '$date')";
         $rs= $pdo->prepare($sql);
 		$rs->execute();
+			echo "<script>alert('Thank you for your feedback!');</script>";
+			
 }
 ?>
 
 <div id="fieldset_title">						
-	<form action="rating.php" id="form" method="POST" name="form">
+	<form action="rating.php?delivery=<?php echo $id;?>" id="ratingForm" method="POST" name="form" enctype="multipart/form-data">
 			<textarea id="msg" name="review" class="reviewmsg input_text textarea text_long" placeholder="Please type your thoughts here......"></textarea><br><br> 
-			<h1><strong class="choice">Rate Us:</strong></h1>
+
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<!--<input type="submit" value="Upload Image" name="submit">-->
+			<br>		
+			
+			<h2><strong class="choice">Delivery Quality:</strong></h2>
 		<fieldset id="rating" onchange="showSelectedRating('value')">
-			<input type="radio" id="star5" value="5" name="rating" title="Amazing"/><label for="star5" title="Amazing">&#9733;</label>
-			<input type="radio" id="star4" value="4" name="rating" title="Good"/><label for="star4" title="Good">&#9733;</label>
-			<input type="radio" id="star3" value="3" name="rating" title="Average"/><label for="star3" title="Average">&#9733;</label>
-			<input type="radio" id="star2" value="2" name="rating" title="Bad"/><label for="star2" title="Bad">&#9733;</label>
-			<input type="radio" id="star1" value="1" name="rating" title="Terrible"/><label for="star1" title="Terrible">&#9733;</label>
+			<input type="radio" id="star5" value="5" name="delivery_rating" title="Amazing"/><label for="star5" title="Amazing">&#9733;</label>
+			<input type="radio" id="star4" value="4" name="delivery_rating" title="Good"/><label for="star4" title="Good">&#9733;</label>
+			<input type="radio" id="star3" value="3" name="delivery_rating" title="Average"/><label for="star3" title="Average">&#9733;</label>
+			<input type="radio" id="star2" value="2" name="delivery_rating" title="Bad"/><label for="star2" title="Bad">&#9733;</label>
+			<input type="radio" id="star1" value="1" name="delivery_rating" title="Terrible"/><label for="star1" title="Terrible">&#9733;</label>
+		</fieldset>
+
+		
+		<h2><strong class="choice">Package Quality:</strong></h2>
+		<fieldset id="rating_package" onchange="showSelectedRating('value')">
+			<input type="radio" id="star5_1" value="5" name="package_rating" title="Amazing"/><label for="star5_1" title="Amazing">&#9733;</label>
+			<input type="radio" id="star4_1" value="4" name="package_rating" title="Good"/><label for="star4_1" title="Good">&#9733;</label>
+			<input type="radio" id="star3_1" value="3" name="package_rating" title="Average"/><label for="star3_1" title="Average">&#9733;</label>
+			<input type="radio" id="star2_1" value="2" name="package_rating" title="Bad"/><label for="star2_1" title="Bad">&#9733;</label>
+			<input type="radio" id="star1_1" value="1" name="package_rating" title="Terrible"/><label for="star1_1" title="Terrible">&#9733;</label>
 		</fieldset><br><br><br>
-			<input type="submit" name="submit"  id="submit" class="button" value="Submit"><br><br>
+			<input type="submit" name="submit"  id="submit" class="button" value="Submit">&nbsp; &nbsp;
+			<input type="reset" name="reset"  id="reset" class="button" value="Reset"><br><br>
 	</form>
 </div>
+
+
 		</div>
 	  </div>
 	</div>
 	<?php AddChat();?>
 	<footer id="footer">
-        <p> Designed by Elias - 2016</p>
+        <p> Designed by Elias MG - 2016</p>
 	</footer>
 	</div>
 </body>

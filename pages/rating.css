@@ -1,4 +1,4 @@
-#rating label, #user_rating label
+#rating label, #rating_package label
 {
 	font-weight: normal;
 	color:  #999;
@@ -12,12 +12,12 @@
 	
 }
 
-#rating label{
+#rating label, #rating_package label{
 	cursor: pointer;
 	margin-top: -19px;
 }
 
-#rating input, #user_rating input{
+#rating input, #rating_package input{
 	position:absolute;
 	z-index: -1;
 	opacity: 0;
@@ -25,14 +25,16 @@
 	width: 15px;
 }
 #rating input:checked + label ~ label,#rating input:checked + label,
-#user_rating input:checked + label ~ label,#user_rating input:checked + label{
-	color: #00ff00;
+#rating_package input:checked + label ~ label,#rating_package input:checked + label{
+	color: #ffb504;
 }
-#rating label:hover ~ label, #rating label:hover{
-    color: #b3ffb3 !important;
+/*#00ff00*/
+#rating label:hover ~ label, #rating label:hover, 
+#rating_package label:hover ~ label, #rating_package label:hover{
+    color: #d0fe1f !important;
 }
-
-#rating, #user_rating
+/*#b3ffb3 */
+#rating, #rating_package
 {
 	display :inline-block;
 	height: 20px;
