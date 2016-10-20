@@ -299,6 +299,7 @@ header{
 }
 #content_start
 {
+    background: #7f8fa0;
 	background-image: url("../images/background2.gif");
 	background-repeat: no-repeat;
 	background-size: cover;
