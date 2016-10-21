@@ -2,14 +2,14 @@
 include '../functions/uploadfile.php';
  require '../functions/mail/PHPMailerAutoload.php';
 
- if (isset($_POST) && !empty($_GET['id'])){
+ if (isset($_POST) && !empty($_GET['delivery'])){
 	if (session_id() == '')
     {
         session_start();
     }
     if (isset($_POST) && isset($_SESSION))
             {
-                 if (!empty($_POST) && !empty($_SESSION) && !empty($_GET['id']) && !empty($_SESSION['email']))
+                 if (!empty($_POST) && !empty($_SESSION) && !empty($_GET['delivery']) && !empty($_SESSION['email']))
                     {
                         $account="dropitdeliveries@gmail.com";//source email, DO NOT CHANGE
                         $password="drop.itsupport";//source password, DO NOT CHANGE
@@ -20,38 +20,50 @@ include '../functions/uploadfile.php';
                         $name = $name[0]['name'];
                         $from_name= $name; //From name
                 		$file_to_attach = uploadFile();
-						$review = $_POST['review'];
-						$delivery_rating = $_POST['delivery_rating'];
-						$package_rating = $_POST['package_rating'];
-						$date = date('H:i d/m/Y');
-						$msg= htmlspecialchars($review . "\n Package Rating:" . $package_rating . "\n Delivery Rating:" . $delivery_rating); // HTML message
-                        $subject="Delivery Review: " . $_GET['id'] . " at " . $date;//email subject
-						$mail = new PHPMailer();
-                        $mail->IsSMTP();
-                        $mail->CharSet = 'UTF-8';
-                        $mail->Host = "smtp.gmail.com";
-                        $mail->SMTPAuth= true;
-                        $mail->Port = 465;
-                        $mail->Username= $account;
-                        $mail->Password= $password;
-                        $mail->SMTPSecure = 'ssl';
-                        $mail->addReplyTo($email, $name);
-                        $mail->FromName = $name;
-                        $mail->isHTML(true);
-                        $mail->Subject = $subject;
-                        $mail->Body = $msg;
-                        $mail->addAddress($to);
-						$mail->AddAttachment($file_to_attach , strtolower(pathinfo($file_to_attach,PATHINFO_EXTENSION)));
-                        if(!$mail->send())
-                        {
-                            echo "Mailer Error: " . $mail->ErrorInfo;
-                        }
-                        else
-                        {
-							unlink($file_to_attach);
-                            echo "E-Mail has been sent";
-                            header("Location: deliveries.php");
-                        }
+						if ($file_to_attach == "upload_error")
+						{
+							echo "<script>alert('Sorry, there was an error uploading your file. Please report this issue.');</script>";
+						}
+						else if ($file_to_attach == "upload_invalid")
+						{
+							echo "<script>alert('Sorry, your file was either too big or not supported.');</script>";
+						}
+						else
+						{
+							$review = $_POST['review'];
+							$delivery_rating = $_POST['delivery_rating'];
+							$package_rating = $_POST['package_rating'];
+							$date = date('H:i d/m/Y');
+							$msg= htmlspecialchars($review . "\n Package Rating:" . $package_rating . "\n Delivery Rating:" . $delivery_rating); // HTML message
+							$subject="Delivery Review: " . $_GET['delivery'] . " at " . $date;//email subject
+							$mail = new PHPMailer();
+							$mail->IsSMTP();
+							$mail->CharSet = 'UTF-8';
+							$mail->Host = "smtp.gmail.com";
+							$mail->SMTPAuth= true;
+							$mail->Port = 465;
+							$mail->Username= $account;
+							$mail->Password= $password;
+							$mail->SMTPSecure = 'ssl';
+							$mail->addReplyTo($email, $name);
+							$mail->FromName = $name;
+							$mail->isHTML(true);
+							$mail->Subject = $subject;
+							$mail->Body = $msg;
+							$mail->addAddress($to);
+							
+							$mail->AddAttachment($file_to_attach , strtolower(pathinfo($file_to_attach,PATHINFO_EXTENSION)));
+							if(!$mail->send())
+							{
+								echo "Mailer Error: " . $mail->ErrorInfo;
+							}
+							else
+							{
+								unlink($file_to_attach);
+								echo "E-Mail has been sent";
+								header("Location: deliveries.php");
+							}
+						}
                  }
 }
  }
@@ -112,8 +124,8 @@ include '../functions/uploadfile.php';
                                 if ($_SESSION['position'] != 'driver')
                                 {
                                      echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>
-									<a id="ratingsystem" class="menu menu_blue selected" href="rating.php">RATING</a>';	
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
+										
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
@@ -133,7 +145,7 @@ include '../functions/uploadfile.php';
 
 
 <div id="fieldset_title">						
-	<form action="rating.php?id=<?php echo $id;?>" id="ratingForm" method="POST" name="form" enctype="multipart/form-data" onsubmit="document.getElementById('alert_background').style.display='block';">
+	<form action="rating.php?delivery=<?php echo $id;?>" id="ratingForm" method="POST" name="form" enctype="multipart/form-data" onsubmit="document.getElementById('alert_background').style.display='block';">
 			<textarea id="msg" name="review" class="reviewmsg input_text textarea text_long" placeholder="Please type your thoughts here......"></textarea>
 
 			<input type="file" name="fileToUpload" class="input_text" id="fileToUpload">
