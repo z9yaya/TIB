@@ -1,8 +1,11 @@
 <?php
+ function uploadFile()
+ {
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploaded_file = basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($uploaded_file,PATHINFO_EXTENSION));
+$target_file = $target_dir . "image." . $imageFileType;
 
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -17,7 +20,6 @@ print_r($_POST["fileToUpload"]);
         $uploadOk = 0;
     }
 }
-//http://cygnus.orbboost.net/atmiya/ group 95 website
 // Check if file already exists
 if (file_exists($target_file)) {
     //echo "<script>alert('Sorry, file already exists.')</script>";
@@ -44,9 +46,10 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-		echo "<script>alert('The Image ". basename( $_FILES["fileToUpload"][""]). " You Chose and Your Feedback Has Been Submitted. Thank You!');</script>";
+		return $target_file;
     } else {
         echo "<script>alert('Sorry, there was an error uploading your file.<br>" . print_r(error_get_last())."');</script>";;
     }
+}
 }
 ?>

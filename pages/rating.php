@@ -1,7 +1,67 @@
+<?php include '../functions/functions.php';
+include "uploadfile.php";
+ require '../functions/mail/PHPMailerAutoload.php';
+ //echo "sstuff before";
+ //print_r($_POST);
+ if (isset($_POST) && !empty($_GET['id'])){
+	 //echo "stuff during";
+	if (session_id() == '')
+    {
+        session_start();
+    }
+    if (isset($_POST) && isset($_SESSION))
+            {
+                 if (!empty($_POST) && !empty($_SESSION) && !empty($_GET['id']) && !empty($_SESSION['email']))
+                    {
+                        $account="dropitdeliveries@gmail.com";//source email, DO NOT CHANGE
+                        $password="drop.itsupport";//source password, DO NOT CHANGE
+                        $to="eliasrihan@yahoo.com";//recipient
+                        $email = $_SESSION['email'];
+                        $from = $email; //reply to email
+                        $name = GrabData("users","name","email",  $email);
+                        $name = $name[0]['name'];
+                        $from_name= $name; //From name
+                		$file_to_attach = uploadFile();
+						$review = $_POST['review'];
+						$delivery_rating = $_POST['delivery_rating'];
+						$package_rating = $_POST['package_rating'];
+						$date = date('H:i d/m/Y');
+						$msg= htmlspecialchars($review . "\n Package Rating:" . $package_rating . "\n Delivery Rating:" . $delivery_rating); // HTML message
+                        $subject="Delivery Review: " . $_GET['id'] . " at " . $date;//email subject
+						$mail = new PHPMailer();
+                        $mail->IsSMTP();
+                        $mail->CharSet = 'UTF-8';
+                        $mail->Host = "smtp.gmail.com";
+                        $mail->SMTPAuth= true;
+                        $mail->Port = 465;
+                        $mail->Username= $account;
+                        $mail->Password= $password;
+                        $mail->SMTPSecure = 'ssl';
+                        $mail->addReplyTo($email, $name);
+                        $mail->FromName = $name;
+                        $mail->isHTML(true);
+                        $mail->Subject = $subject;
+                        $mail->Body = $msg;
+                        $mail->addAddress($to);
+						$mail->AddAttachment($file_to_attach , strtolower(pathinfo($file_to_attach,PATHINFO_EXTENSION)));
+                        if(!$mail->send())
+                        {
+                            echo "Mailer Error: " . $mail->ErrorInfo;
+                        }
+                        else
+                        {
+							unlink($file_to_attach);
+                            echo "E-Mail has been sent";
+                            header("Location: deliveries.php");
+                        }
+                 }
+}
+ }
+?>
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>****TITLE**** - drop.it</title>		
+        <title>Rating - drop.it</title>		
 		<link href="rating.css" rel="stylesheet" type="text/css"/>
 		<link href="styles1.css" rel="stylesheet" type="text/css"/>
 		<link href="styles.css" rel="stylesheet" type="text/css"/>
@@ -30,6 +90,9 @@
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     </head>
 <body>
+<div id="alert_background">															
+<div id="alert"><span>Please wait while we submit your feedback. Thank You!<br></span></div>
+</div>
         <div id="back_nav">
 			<div id="wrapper">
 				<header>
@@ -70,38 +133,14 @@
 				</header>
 <div id="content">  
 <div id="form">
-                        <span class="sign_title">Write Your Feedback Below!</span>
+                        <span class="sign_title">Leave feedback for delivery ID: <?php echo $id?></span>
 
-												
-				<?php include '../functions/functions.php'; include "uploadfile.php";
-				 $pdo = connect();
-  $servername = "localhost";
-  $username = "edit";
-  $password = "editme";
-  $dbname = "tib";
-
-if (isset($_POST['submit']))
-{
-	$email = $_SESSION['email'];
-	$review = $_POST['review'];
-	$delivery_rating = $_POST['delivery_rating'];
-	$package_rating = $_POST['package_rating'];
-	$date = time();		
-
-		$sql = "INSERT INTO `reviews` (`id`, `email`, `review`, `delivery_rating`, `package_rating`, `date`)	
-						VALUES ('$id', '$email', '$review', '$delivery_rating', '$package_rating', '$date')";
-        $rs= $pdo->prepare($sql);
-		$rs->execute();
-			echo "<script>alert('Thank you for your feedback!');</script>";
-			
-}
-?>
 
 <div id="fieldset_title">						
-	<form action="rating.php?delivery=<?php echo $id;?>" id="ratingForm" method="POST" name="form" enctype="multipart/form-data">
-			<textarea id="msg" name="review" class="reviewmsg input_text textarea text_long" placeholder="Please type your thoughts here......"></textarea><br><br> 
+	<form action="rating.php?id=<?php echo $id;?>" id="ratingForm" method="POST" name="form" enctype="multipart/form-data" onsubmit="document.getElementById('alert_background').style.display='block';">
+			<textarea id="msg" name="review" class="reviewmsg input_text textarea text_long" placeholder="Please type your thoughts here......"></textarea>
 
-			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="file" name="fileToUpload" class="input_text" id="fileToUpload">
 			<!--<input type="submit" value="Upload Image" name="submit">-->
 			<br>		
 			
@@ -123,11 +162,9 @@ if (isset($_POST['submit']))
 			<input type="radio" id="star2_1" value="2" name="package_rating" title="Bad"/><label for="star2_1" title="Bad">&#9733;</label>
 			<input type="radio" id="star1_1" value="1" name="package_rating" title="Terrible"/><label for="star1_1" title="Terrible">&#9733;</label>
 		</fieldset><br><br><br>
-			<input type="submit" name="submit"  id="submit" class="button" value="Submit">&nbsp; &nbsp;
-			<input type="reset" name="reset"  id="reset" class="button" value="Reset"><br><br>
+			<input type="submit" name="submit"  id="submit" class="button" value="Submit">
 	</form>
 </div>
-
 
 		</div>
 	  </div>
