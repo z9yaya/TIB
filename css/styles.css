@@ -892,7 +892,7 @@ tbody tr:first-of-type
     width: 236px;
     font-family: Helvetica;
     font-size: 12px;
-    max-height: 346px;
+    max-height: 366px;
     border-top: 1px solid #cecfd2;
     border-left: 1px solid #cecfd2;
     border-right: 1px solid #cecfd2;
@@ -967,10 +967,10 @@ tbody tr:first-of-type
 
 #chat_input
 {
-    width: 100%;
+    width: 226px;
     border: 0;
     border-top: 1px solid #cecfd2;
-    height: 20px;
+    padding: 10px 5px 10px 5px;
     background: rgb(252,252,252);
     pointer-events: auto;
 }
