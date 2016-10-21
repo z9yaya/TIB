@@ -1,10 +1,8 @@
 <?php include '../functions/functions.php';
-include "uploadfile.php";
+include '../functions/uploadfile.php';
  require '../functions/mail/PHPMailerAutoload.php';
- //echo "sstuff before";
- //print_r($_POST);
+
  if (isset($_POST) && !empty($_GET['id'])){
-	 //echo "stuff during";
 	if (session_id() == '')
     {
         session_start();
@@ -62,9 +60,6 @@ include "uploadfile.php";
 <html>
 	<head>
         <title>Rating - drop.it</title>		
-		<link href="rating.css" rel="stylesheet" type="text/css"/>
-		<link href="styles1.css" rel="stylesheet" type="text/css"/>
-		<link href="styles.css" rel="stylesheet" type="text/css"/>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
         <script type="text/javascript" src="../js/script.js"></script>
@@ -87,6 +82,7 @@ include "uploadfile.php";
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
          <link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
+		 <link async href="../css/rating.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     </head>
 <body>
