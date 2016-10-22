@@ -60,14 +60,14 @@
 	$pdf->Cell(20,10,"$ ".$data[0]['cost'],1,1);
 	
 	// Purely for ease of reading
-	$pdfDir = "../uploads/".$ID."_PaymentHistory".".pdf";
+	$pdfDir = $ID."_PaymentHistory".".pdf";
 	
 	// Make the PDF
 	$pdf->Output($pdfDir,'F');
 	
 	// Email body
 	$emailBody = htmlspecialchars("Good day. Here is your receipt for your purchase that you have made with us. Sincerely, Drop.IT Delivery");
-	sendEmail($data[0]['user'], "Receipt for delivery ID ".$ID, $emailBody, $pdfDir);
+	sendEmail($data[0]['user'], "Purchase History", $emailBody, $pdfDir);
 	
 	// Delete PDF to remove clutter
 	unlink($pdfDir);

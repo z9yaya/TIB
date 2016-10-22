@@ -65,7 +65,7 @@ function sendEmail($userEmail, $subject, $body, $pdf){
         $mail->Username= $account;
         $mail->Password= $password;
         $mail->SMTPSecure = 'ssl';
-        $mail->FromName = $from_name;
+        $mail->FromName = "TIB";
         $mail->isHTML(true);
 		$mail->addAttachment($pdf);
         $mail->Subject = $subject;
