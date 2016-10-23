@@ -35,14 +35,8 @@
 }
 
 /* This colours the even numbered table rows in a colour */
-#table_deliveries tr:nth-child(even):not([class~=BUTTONS])
-{background-color: #f2f2f2;}
 
-#table_deliveries tr:nth-child(even):not([class~=base BUTTONS])
+#table_deliveries tr:not([class~=base BUTTONS]):nth-child(even)
 {background-color: #f2f2f2;} 
-
- 
-/* Makes the row the mouse pointer is on have highlight a colour */
-//#table_deliveries tr:not([class~=BUTTONS]):hover {background-color: #ddd;} 
 
 
