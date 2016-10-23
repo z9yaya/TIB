@@ -159,7 +159,7 @@ include '../functions/functions.php';
           for($i = 0; $i < count ($deliveryresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
             "<tr class='base'>
-              <td><a id=" . $deliveryresult[$i]['ID'] . ">" . $deliveryresult[$i]['ID'] . "</a></td>
+              <td><a id=" . $deliveryresult[$i]['ID'] . " style='font-weight:bold;'>" . $deliveryresult[$i]['ID'] . "</a></td>
 			  <td>" . $deliveryresult[$i]['origin'] . "</td>
 			  <td>" . $deliveryresult[$i]['destination'] . "</td>
 			  <td>" . $deliveryresult[$i]['name'] . "</td>
@@ -254,7 +254,7 @@ include '../functions/functions.php';
           for($i = 0; $i < count ($statusresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
             "<tr class='base'>
-              <td><a id=" . $statusresult[$i]['ID'] . ">" . $statusresult[$i]['ID'] . "</td>
+              <td><a id=" . $statusresult[$i]['ID'] . " style='font-weight:bold;'>" . $statusresult[$i]['ID'] . "</td>
 			  <td>" . $statusresult[$i]['origin'] . "</td>
 			  <td>" . $statusresult[$i]['destination'] . "</td>
 			  <td>" . $statusresult[$i]['name'] . "</td>

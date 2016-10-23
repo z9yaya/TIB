@@ -36,7 +36,8 @@
 
 /* This colours the even numbered table rows in a colour */
 
-#table_deliveries tr:not([class~=base BUTTONS]):nth-child(even)
+#table_deliveries tr:not([class*=base]):nth-child(even),
+#table_deliveries tr:not([class*=BUTTONS]):nth-child(even)
 {background-color: #f2f2f2;} 
 
 
