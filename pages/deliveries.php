@@ -158,7 +158,7 @@ include '../functions/functions.php';
       <tbody>'; 
           for($i = 0; $i < count ($deliveryresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
-            "<tr>
+            "<tr class='base'>
               <td><a id=" . $deliveryresult[$i]['ID'] . ">" . $deliveryresult[$i]['ID'] . "</a></td>
 			  <td>" . $deliveryresult[$i]['origin'] . "</td>
 			  <td>" . $deliveryresult[$i]['destination'] . "</td>
@@ -212,7 +212,7 @@ include '../functions/functions.php';
                 <div class='package_number'>PACKAGE ".$packageNumber."</div></td></tr>";
 			 }
 			 }
-              echo "<tr><td colspan='12' class='noborder'><input id='more_infoCheck".$deliveryresult[$i]['ID']."' class='more_infoCheck' type='checkbox' onclick=\"toggle_visibility(".$deliveryresult[$i]['ID'].", 'Label".$deliveryresult[$i]['ID']."');\"><label id='Label".$deliveryresult[$i]['ID']."' for='more_infoCheck".$deliveryresult[$i]['ID']."' class='more_info'>MORE</label></td></tr>";
+              echo "<tr><td colspan='12' class='noborder BUTTONS'><input id='more_infoCheck".$deliveryresult[$i]['ID']."' class='more_infoCheck' type='checkbox' onclick=\"toggle_visibility(".$deliveryresult[$i]['ID'].", 'Label".$deliveryresult[$i]['ID']."');\"><label id='Label".$deliveryresult[$i]['ID']."' for='more_infoCheck".$deliveryresult[$i]['ID']."' class='more_info'>MORE</label></td></tr>";
           }
 		  echo "</tbody>
     </table></div>";
@@ -253,7 +253,7 @@ include '../functions/functions.php';
       <tbody>';
           for($i = 0; $i < count ($statusresult); $i++){	//This for loop goes through all the returned results and populates the table
             echo
-            "<tr>
+            "<tr class='base'>
               <td><a id=" . $statusresult[$i]['ID'] . ">" . $statusresult[$i]['ID'] . "</td>
 			  <td>" . $statusresult[$i]['origin'] . "</td>
 			  <td>" . $statusresult[$i]['destination'] . "</td>
@@ -308,7 +308,7 @@ include '../functions/functions.php';
                 <div class='package_number'>PACKAGE ".$packageNumber."</div></td></tr>";
 			 }
 			 }
-              echo "<tr><td colspan='12' class='noborder'><input id='more_infoCheck".$statusresult[$i]["ID"]."' class='more_infoCheck' type='checkbox' onclick=\"toggle_visibility(".$statusresult[$i]["ID"].", 'Label".$statusresult[$i]["ID"]."');\"><label id='Label".$statusresult[$i]["ID"]."' for='more_infoCheck".$statusresult[$i]["ID"]."' class='more_info'>MORE</label></td></tr>";
+              echo "<tr><td colspan='12' class='noborder BUTTONS'><input id='more_infoCheck".$statusresult[$i]["ID"]."' class='more_infoCheck' type='checkbox' onclick=\"toggle_visibility(".$statusresult[$i]["ID"].", 'Label".$statusresult[$i]["ID"]."');\"><label id='Label".$statusresult[$i]["ID"]."' for='more_infoCheck".$statusresult[$i]["ID"]."' class='more_info'>MORE</label></td></tr>";
           }
 		  echo "</tbody>
     </table></div>";

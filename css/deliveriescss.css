@@ -19,6 +19,11 @@
 #table_deliveries td { 
   padding: 0px 5px 0px 5px;
   border: 1px solid #ddd;
+    
+}
+#table_deliveries td:not([class~=BUTTONS])
+{
+    height: 50px;
 }
 
 /* CSS for the table headers in deliveries.php, specifying header padding, colour, text alignment and border colour & size */
@@ -30,9 +35,14 @@
 }
 
 /* This colours the even numbered table rows in a colour */
-#table_deliveries tr:nth-child(even):not([class~=BUTTONS]){background-color: #f2f2f2;} 
+#table_deliveries tr:nth-child(even):not([class~=BUTTONS])
+{background-color: #f2f2f2;}
 
+#table_deliveries tr:nth-child(even):not([class~=base BUTTONS])
+{background-color: #f2f2f2;} 
+
+ 
 /* Makes the row the mouse pointer is on have highlight a colour */
-#table_deliveries tr:not([class~=BUTTONS]):hover {background-color: #ddd;} 
+//#table_deliveries tr:not([class~=BUTTONS]):hover {background-color: #ddd;} 
 
 
