@@ -1218,7 +1218,8 @@ tbody tr:first-of-type
 #buttons_holder form:first-of-type
 {
     float: left;
-}#buttons_holder form:last-of-type
+}
+#buttons_holder form:last-of-type
 {
     float: right;
 }
@@ -1237,6 +1238,11 @@ tbody tr:first-of-type
     background: rgba(44, 70, 98, 0.55);
     color: white;
     border: 1px solid rgba(44, 70, 98, 0.55); 
+}
+
+.BUTTONS:last-of-type
+{
+    background-color: #f2f2f2;
 }
 
 .two_buttons_wide
