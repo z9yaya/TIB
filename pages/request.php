@@ -42,7 +42,8 @@ registerRequest();
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+                                      echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
 					                <a id="new" class="menu menu_blue selected" href="request.php">REQUEST</a>';	
                                 }
                                 else if ($_SESSION['position'] == 'driver')

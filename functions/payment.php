@@ -13,10 +13,10 @@ function generateForm($data){
 		// This was the best solution to collect the keys (array locations with specific names)
 		// Has a bug where it wont display the key if the fist row of info in NULL
 	$arrKey = $data[0];
-	while (current($arrKey)) {
-		$htmlData = $htmlData."<th>".ucfirst(key($arrKey)).'</th>';
-		next($arrKey);
-	}
+    foreach ($arrKey as $key => $value)
+    {
+        $htmlData = $htmlData."<th>".ucfirst($key).'</th>';
+    };
 	
 	// Generate each row of data
 	foreach($data as $arr1){
@@ -24,8 +24,8 @@ function generateForm($data){
 		foreach($arr1 as &$arr){
 			$htmlData=$htmlData."<td>";
 			
-			if($arr > 1000000000){		// If the number is bigger than this, it can e guaranteed to be a date 
-				$htmlData=$htmlData.date("d-m-Y", $arr)."<br/>".date("h:i A", $arr);
+			if($arr > 1000000000){		// If the number is bigger than this, it can be guaranteed to be a date 
+				$htmlData=$htmlData.date("h:i A ", $arr)."<br/>".date("d-m-Y", $arr);
 				
 			}elseif($arr > 10000000){	// If smaller than above, but still bigger than this,m it's guaranteed to be a phone number 
 				$htmlData=$htmlData."0".$arr; // Purely to add the leading zero

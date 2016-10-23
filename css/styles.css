@@ -542,6 +542,9 @@ header{
     cursor: pointer;
     position: relative;
     font-weight: bold;
+    height: 34px;
+    display: inline-block;
+    text-decoration: none;
 }
 #signup_form .button
 {
@@ -557,6 +560,10 @@ header{
 #signin_form .button
 {
     left: 0;
+}
+a.button
+{
+    line-height: 34px;
 }
 
 #numberInput::-webkit-outer-spin-button,
@@ -1116,4 +1123,129 @@ tbody tr:first-of-type
 #manager::before
 {
     content: "Manager";
+}
+
+/*/////////////////////////////////////////		DELIVERIES	////////////////////////////////////////////////////////////////////*/
+.Hide
+{
+    height: 50px;
+    display: none;
+}
+
+.more_info
+{
+    display: block;
+    width: 100%;
+    border: 0;
+    line-height: 25px;
+    background: none; 
+    cursor: pointer;
+    font-weight: bold;
+    color: rgba(44, 70, 98, 0.55);
+    font-family: Helvetica;
+    background-color: #f2f2f2;
+}
+.more_info::before
+{
+    content: "⊻";
+    float: right;
+    font-size: 16px;
+}.more_info::after
+{
+    content: "⊻";
+    float: left;
+    font-size: 16px;
+}
+.more_info:hover
+{
+    color: rgb(44, 70, 98);
+}
+.more_infoCheck:checked ~ .more_info::after,
+.more_infoCheck:checked ~ .more_info::before
+{
+    content: "⊼";
+    color: #5a6877;
+}
+.more_infoCheck:checked ~ .more_info
+{
+    color: #5a6877;
+    background: #ddd;
+}
+.noborder
+{
+    border: 0 !important;
+}
+
+.more_infoCheck
+{
+    display: none;
+}
+
+.Hide .single_line
+{
+    line-height: 25px;
+    text-align: left !important;
+}
+
+.package_details
+{
+    float: left;
+}
+.package_number
+{
+    float: right;
+    line-height: 50px;
+    position: relative;
+    color: rgba(169, 169, 169, 0.58);
+    font-weight: bold;
+    font-size: 17px;
+    font-family: arial;
+}
+
+#buttons_holder
+{
+    padding: 0;
+}
+#buttons_holder form
+{
+    margin: 0;
+    height: 100%;
+    display: inline-block;
+    max-width: 50%;
+    width: auto;
+    min-width: 33.3%;
+}
+#buttons_holder form:first-of-type
+{
+    float: left;
+}#buttons_holder form:last-of-type
+{
+    float: right;
+}
+
+#buttons_holder input[type=submit]
+{
+    height: 100%;
+    width: 100%;
+    border: 0;
+    color: rgba(44, 70, 98, 0.55);
+    background: white;
+    border-radius: 0;
+}
+#buttons_holder input[type=submit]:hover
+{
+    background: rgba(44, 70, 98, 0.55);
+    color: white;
+    border: 1px solid rgba(44, 70, 98, 0.55); 
+}
+
+.two_buttons_wide
+{
+    width: 100% !important;
+    float: none !important;
+}
+
+.nowidth
+{
+    width: auto !important;
 }

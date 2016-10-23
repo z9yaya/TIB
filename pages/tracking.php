@@ -34,8 +34,9 @@
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
+                                      echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue selected" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';		
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
