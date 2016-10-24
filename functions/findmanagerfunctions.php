@@ -347,7 +347,7 @@ function Emailer()
                     {
                         $account="dropitdeliveries@gmail.com";//source email, DO NOT CHANGE
                         $password="drop.itsupport";//source password, DO NOT CHANGE
-                        $to="m.phong@hotmail.com";//recipient ze_yaya@msn.com
+                        $to="ze_yaya@msn.com";//recipient ze_yaya@msn.com
                         $from = $_POST['email']; //reply to email
                         $name = $_POST['name'];
                         $from_name= $name; //From name
