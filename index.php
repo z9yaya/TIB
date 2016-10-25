@@ -8,6 +8,7 @@
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
         <link async href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <link async href="css/services.css" rel="stylesheet" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 	</head>
@@ -56,8 +57,28 @@
 							<p id="by_start">
 							ARTHUR C. NIELSEN</p>
 						</div>
-                    </div>               
+                    </div>
             </div>
+                <div id="serviceContainer" class="containerWidth">
+                    <div id="services_1" class= "services">
+                        <span class= "symbol"><a href="pages/request.php">&#9951;</a></span>
+                        <p><i>Drop.it</i> offers a second to none package delivery service that will pick up from your doorstep and deliver to anywhere in Australia. We offer different levels of service based on both your budget and needs,  but endeavour to offer a quality service, no matter what.<br><br>
+                        
+                        Our standard, economic service will still pick up parcels from your door and offer a timely delivery, however, this is not an express service, nor does it come with parcel insurance.<br><br>
+
+                        <i>Drop.it</i> takes great pride in offering our premium "first class" service, due to the high level of value and satisfaction it provides. The first class delivery service boasts not only express delivery times but provides parcel insurance as well, included in the price. Click on the link above to get started now.</p>
+                            </div>
+                        <div id="services_2" class= "services">
+                            <span class= "symbol" ><a href="pages/tracking.php"> &#9735;</a></span>
+                            <p> At <i>Drop.it</i>, we understand that is frustrating and inconvenient when a courier service cannot provide you with point-to-point location tracking of your deliveries. When you use <i>Drop.it</i>, you will have access to our point-to-point package tracking service with every delivery, free of charge.  One you have  signed in and have requested a delivery, please click the link seen above to see the current location of a delivery.</p>
+                        </div>
+                        <div id="services_3" class= "services">
+                            <span class= "symbol"><a href="pages/deliveries.php"> &#9745;</a></span>
+                            <p>Do you like to keep a log of your past deliveries? Are you interested in knowing how many packages we've delivered to you? If you click the link above you will find  a list of all our deliveries to you. From here, you are also able to submit complaints or provide us with a rating of our service. We would  greatly appreciate your feedback.</p>
+                    </div>
+                    </div>
+                    
+                
             <?php include "functions/functions.php"; 
             AddChat();?>
             <footer id="footer">

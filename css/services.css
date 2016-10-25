@@ -1,0 +1,23 @@
+.services {
+	text-align: center;
+    width: 30%;
+    float: left;
+    display: inline-block;
+    padding: 15px;
+}
+.symbol {
+    font-size: 150px;
+    
+}
+a:link{
+    color: grey;
+}
+a:visited{
+    color: grey;
+}
+a:hover{
+    color: black;
+}
+a:active{
+    color: black;
+}
