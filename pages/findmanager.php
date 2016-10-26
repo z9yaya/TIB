@@ -86,9 +86,7 @@ Emailer();
 				</div>
 				
                     </div>
-				<?php include "functions/functions.php"; 
-					AddChat();
-					include "functions/footer.php"?>
+					<?php include "../functions/footer.php"?>
 			</div>
     </body>
 </html>
