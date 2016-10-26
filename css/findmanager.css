@@ -12,10 +12,37 @@
 #contactemail
 {
     width: 400px;
+	margin-top: 20px;
+}
+
+#complaint
+{
+    height: 100px;
+    width: 400px;	
+}
+
+#submit_button
+{
+	margin-bottom: 25px;
 }
 
 .dropdown_number
 {
 	height: 37px ;
 	width: 105px;
+}
+
+.sign_title
+{
+    font-size: 30px;
+    font-family: Arial;
+    color: #607489;
+    position: relative;
+    bottom: 30px;
+    //right: 40px;
+}
+
+#signin_form .sign_title
+{
+    right: 0;
 }
