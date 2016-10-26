@@ -329,6 +329,26 @@ header{
     z-index: 2;
     position: relative;
 }
+
+#scrollToServices
+{
+    color: #ddd;
+    z-index: 2;
+    position: absolute;
+    font-size: 70px;
+    transform: rotate(90deg);
+    top:90vh;
+    left: calc(50vw - 20px);
+    cursor: pointer;
+    padding: 0px 10px;
+    transition: top 0.2s linear;
+}
+
+#scrollToServices:hover
+{
+    color: white;
+    top: 90.3vh
+}
 /*/START////////////////////////////////////////		PAGE CONTENT(<div id="content">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 #text_start
 {
@@ -346,6 +366,10 @@ header{
 	{
 	font-size: 21.5px;
 	}
+    #scrollToServices
+    {
+    font-size: 50px;
+    }
 }
 
 @media only screen and (min-width: 1920px)
@@ -354,6 +378,10 @@ header{
 	{
 		font-size: 38.34px;
 	}
+    #scrollToServices
+    {
+        font-size: 70px;
+    }
 }
 #content
 {
@@ -860,23 +888,54 @@ tbody tr:first-of-type
     font-family: Helvetica;
     font-size: 12px;
 	//position: absolute;
-	//clear: both;
-	text-align: right;
 	display:block;
 	width: 100%;
-	background-color: white;
+	background-color: rgb(44, 70, 98);
 	color: rgba(44, 70, 98, 0.77);
 	z-index: 2;
-	//left: 0px;
-	//top: 100vh;
     position: relative;
+    height: 180px;
 }
-#footer p
+#footer_container
 {
-	margin: 0px;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	margin-right: 20px;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+}
+#footer .menu
+{
+	margin: 7px 10px;
+    right: 0px;
+    position: static;
+}
+
+.footer_right
+{
+    float: right;
+    clear: right;
+    text-align: left;
+}
+.footer_left
+{
+    float: left;
+    clear: left;
+}
+
+#footer_container .intro
+{
+    position: static;
+    float: none;
+    margin-left: 33%;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.38);
+    user-select: none;
+    cursor: default;
+    transition: color 0.3s ease;
+}
+#footer:hover > #footer_container .intro,
+#footer_container .intro:hover
+{
+    color: white;
 }
 /*/END////////////////////////////////////////		FOOTER SECTION(<div id="footer"><p/></>)	////////////////////////////////////////////////////////////////////*/
 

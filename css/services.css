@@ -15,3 +15,9 @@ a.del:link{ color: grey;} a.del:visited{color: grey;} a.del:hover{color: black;}
 a.track:link{ color: grey;} a.track:visited{color: grey;} a.track:hover{color: black;}
 
 a.hist:link{ color: grey;} a.hist:visited{color: grey;} a.hist:hover{color: black;}
+
+.containerWidth
+{
+    min-height: 500px;
+    overflow: auto;
+}
