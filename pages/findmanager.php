@@ -12,6 +12,7 @@ Emailer();
         <script type="text/javascript" src="../js/script.js"></script>
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
+		<link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
          <link async href="../css/findmanager.css" rel="stylesheet" type="text/css"/>
 		 <link async href="../css/rating.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
@@ -35,8 +36,7 @@ Emailer();
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
                        
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-					<a id="findmanager" class="menu menu_blue selected" href="findmanager.php">CONTACT US</a>
-					
+										
                          <?php 
                             if(isset($_SESSION['position']))
                             {
