@@ -182,9 +182,7 @@ include '../functions/uploadfile.php';
 	  </div>
 	</div>
 	<?php AddChat();?>
-	<footer id="footer">
-        <p> Designed by Elias MG - 2016</p>
-	</footer>
+	<?php include "../functions/footer.php"?>
 	</div>
 </body>
 </html> 
