@@ -170,3 +170,9 @@ function ChangeTime(Today, Object)
     Object.type='time';
     
 }
+
+function ScrollingToServices()
+{
+        scrollTo(0, window.innerHeight);
+}
+    

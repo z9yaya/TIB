@@ -83,9 +83,7 @@ driverUpdate();
                     </div> 
 					</div>
 				</div>
-            <footer id="footer">
-                        <p>Done by Elias Mehari - 2016</p>
-					</footer>
+            <?php include "../functions/footer.php"?>
 			</div>
     </body>
 </html>

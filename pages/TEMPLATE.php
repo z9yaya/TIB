@@ -71,7 +71,7 @@ include '../functions/functions.php';
                         </div><!--REQUIRED-->
 					</div><!--REQUIRED-->
 				</div><!--REQUIRED-->
-                <?php AddChat();?>
+                <?phpinclude "../functions/footer.php" AddChat();?>
                 <footer id="footer">
                         <p> Designed by Yannick Mansuy - 2016</p>
 					</footer>

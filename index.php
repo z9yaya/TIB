@@ -80,10 +80,8 @@
                     
                 
             <?php include "functions/functions.php"; 
-            AddChat();?>
-            <footer id="footer">
-                    <p> Designed by Yannick Mansuy - 2016</p>
-                </footer>
+            AddChat();
+                include "functions/footer.php"?>
         </div>
                 <?php if (session_id() == '')
             {

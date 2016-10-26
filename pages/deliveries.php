@@ -323,9 +323,7 @@ include '../functions/functions.php';
 
 
         <br></div></div></div>
-	<footer id="footer"> <!-- This is the footer for the page -->
-                        <p> Designed by Michael Phong - 2016</p>
-					</footer>
+	<?php include "../functions/footer.php"?>
 			</div>
 				   	     			
     </body>

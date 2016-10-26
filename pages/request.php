@@ -48,6 +48,7 @@ registerRequest();
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
+                                     header("Location: ../index.php");
                                      echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
                                 }
                             }
@@ -107,9 +108,7 @@ registerRequest();
                             </div>
                         </div> 
 			</div> 
-            <footer id="footer">
-                        <p> Designed by Yannick Mansuy - 2016</p>
-					</footer>
+            <?php include "../functions/footer.php"?>
         </div>
     </body>
 </html>

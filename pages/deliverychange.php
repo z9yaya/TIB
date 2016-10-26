@@ -69,9 +69,7 @@ if (isset($_POST))
 				</div>
 			</div>
                 </div>
-                        <footer id="footer">
-                        <p>Done by Nicholas Bensein - 2016</p>
-					</footer>
+                        <?php include "../functions/footer.php"?>
 					</div>
     </body>
 </html>
