@@ -127,7 +127,8 @@ include '../functions/uploadfile.php';
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+                                     echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
 					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
 										
                                 }
@@ -181,10 +182,8 @@ include '../functions/uploadfile.php';
 		</div>
 	  </div>
 	</div>
-	<?php AddChat();?>
-	<footer id="footer">
-        <p> Designed by Elias MG - 2016</p>
-	</footer>
+	<?php AddChat();
+    include "../functions/footer.php"?>
 	</div>
 </body>
 </html> 

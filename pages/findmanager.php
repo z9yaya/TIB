@@ -12,6 +12,7 @@ Emailer();
         <script type="text/javascript" src="../js/script.js"></script>
         <meta charset="utf-8"/>
         <meta name=viewport content="width=device-width, initial-scale=1">
+		<link async href="../css/styles.css" rel="stylesheet" type="text/css"/>
          <link async href="../css/findmanager.css" rel="stylesheet" type="text/css"/>
 		 <link async href="../css/rating.css" rel="stylesheet" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
@@ -30,20 +31,22 @@ Emailer();
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else{ 
+																			header("Location: login.php?error=rating");
+                                                                            echo 'SIGN IN</a>';
+																		}?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                       
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-					<a id="findmanager" class="menu menu_blue selected" href="findmanager.php">CONTACT US</a>
-					
+
                          <?php 
                             if(isset($_SESSION['position']))
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
+                                     echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
+										
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
@@ -86,9 +89,7 @@ Emailer();
 				</div>
 				
                     </div>
-                <footer id="footer">
-                        <p> Designed by Michael Phong - 2016</p>
-					</footer>
+					<?php include "../functions/footer.php"?>
 			</div>
     </body>
 </html>

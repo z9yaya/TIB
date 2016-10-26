@@ -172,9 +172,7 @@
                         </div>
 					</div>
 			</div>
-			<footer id="footer">
-				<p> Designed by Yannick Mansuy - 2016</p>
-			</footer>
+			<?php include "../functions/footer.php"?>
 		</div>
     </body>
 </html>
