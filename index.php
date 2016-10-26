@@ -57,6 +57,7 @@
 							<p id="by_start">
 							ARTHUR C. NIELSEN</p>
 						</div>
+                        <div id="scrollToServices" onclick='ScrollingToServices()'>&#x276D;</div>
                     </div>
             </div>
                 <div id="serviceContainer" class="containerWidth">
