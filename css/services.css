@@ -1,0 +1,17 @@
+.services {
+	text-align: center;
+    width: 30%;
+    float: left;
+    display: inline-block;
+    padding: 15px;
+}
+.symbol
+{
+    font-size: 150px;
+}
+
+a.del:link{ color: grey;} a.del:visited{color: grey;} a.del:hover{color: black;}
+
+a.track:link{ color: grey;} a.track:visited{color: grey;} a.track:hover{color: black;}
+
+a.hist:link{ color: grey;} a.hist:visited{color: grey;} a.hist:hover{color: black;}

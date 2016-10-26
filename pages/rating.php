@@ -19,7 +19,11 @@ include '../functions/uploadfile.php';
                         $name = GrabData("users","name","email",  $email);
                         $name = $name[0]['name'];
                         $from_name= $name; //From name
-                		$file_to_attach = uploadFile();
+						$file_to_attach = "";
+					if ($_FILES["fileToUpload"]["error"] != 4)
+						{	
+							$file_to_attach = uploadFile();
+						}
 						if ($file_to_attach == "upload_error")
 						{
 							echo "<script>alert('Sorry, there was an error uploading your file. Please report this issue.');</script>";
