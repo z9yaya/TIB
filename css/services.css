@@ -5,19 +5,13 @@
     display: inline-block;
     padding: 15px;
 }
-.symbol {
+.symbol
+{
     font-size: 150px;
-    
 }
-a:link{
-    color: grey;
-}
-a:visited{
-    color: grey;
-}
-a:hover{
-    color: black;
-}
-a:active{
-    color: black;
-}
+
+a.del:link{ color: grey;} a.del:visited{color: grey;} a.del:hover{color: black;}
+
+a.track:link{ color: grey;} a.track:visited{color: grey;} a.track:hover{color: black;}
+
+a.hist:link{ color: grey;} a.hist:visited{color: grey;} a.hist:hover{color: black;}
