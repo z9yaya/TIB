@@ -181,8 +181,8 @@ include '../functions/uploadfile.php';
 		</div>
 	  </div>
 	</div>
-	<?php AddChat();?>
-	<?php include "../functions/footer.php"?>
+	<?php AddChat();
+    include "../functions/footer.php"?>
 	</div>
 </body>
 </html> 
