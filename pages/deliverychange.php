@@ -32,13 +32,34 @@ if (isset($_POST))
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else{ 
+																			header("Location: login.php?error=deliveries");
+                                                                            echo 'SIGN IN</a>';
+																		}?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-                    <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
-					
+
+                         <?php 
+                            if(isset($_SESSION['position']))
+                            {
+                                if ($_SESSION['position'] != 'driver')
+                                {
+                                     echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
+										
+                                }
+                                else if ($_SESSION['position'] == 'driver')
+                                {
+                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
+                                }
+                            }
+                            else
+                                    {
+                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
+                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
+                                    }
+                        ?>
 				</header>
 				
                     

@@ -31,19 +31,22 @@ Emailer();
                                                                         }
                                                                         if(isset($_SESSION['email']))
                                                                             echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
+                                                                        else{ 
+																			header("Location: login.php?error=rating");
+                                                                            echo 'SIGN IN</a>';
+																		}?>
 					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                       
 					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-										
+
                          <?php 
                             if(isset($_SESSION['position']))
                             {
                                 if ($_SESSION['position'] != 'driver')
                                 {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
+                                     echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
+					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
+										
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
