@@ -38,8 +38,9 @@
                                 }
                                 else if ($_SESSION['position'] == 'driver')
                                 {
-                                     echo '<a id="log" class="menu" href="pages/itinerary.php">ITINERARY</a>';
+                                    
                                      echo '<a id="log" class="menu" href="pages/driver.php">LOG</a>';
+                                     echo '<a id="log" class="menu" href="pages/itinerary.php">ITINERARY</a>';
                                 }
                             }
                             else
