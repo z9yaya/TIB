@@ -14,7 +14,41 @@
     <body>
         <div id="back_nav">
             <div id="wrapper" style="margin-bottom: 0;">
-				<?php include "../functions/header.php";?>
+				<header>
+					<a id="login" class="menu" href="pages/login.php"><?php 
+                                                                        if (session_id() == '')
+                                                                        {
+                                                                            session_start();
+                                                                        }
+                                                                        if(isset($_SESSION['email']))
+                                                                            echo 'SIGN OUT</a>';
+                                                                        else 
+                                                                            echo 'SIGN IN</a>';?>
+					<a id="header" class="intro" href="index.php">drop.it</a>
+                       
+					<a id="deliveries" class="menu" href="pages/deliveries.php">DELIVERIES</a>
+                         <?php 
+                            if(isset($_SESSION['position']))
+                            {
+                                if ($_SESSION['position'] != 'driver')
+                                {
+                                     echo '<a id="log" class="menu" href="pages/payment_page.php">PAY</a>
+                                     <a id="tracking" class="menu" href="pages/tracking.php">TRACKING</a>
+					                <a id="new" class="menu" href="pages/request.php">REQUEST</a>';	
+                                }
+                                else if ($_SESSION['position'] == 'driver')
+                                {
+                                     echo '<a id="log" class="menu" href="pages/itinerary.php">ITINERARY</a>';
+                                     echo '<a id="log" class="menu" href="pages/driver.php">LOG</a>';
+                                }
+                            }
+                            else
+                                    {
+                                         echo '<a id="tracking" class="menu" href="pages/tracking.php">TRACKING</a>
+                                        <a id="new" class="menu" href="pages/request.php">REQUEST</a>';	
+                                    }
+                        ?>
+                        </header>
                     <div id="content">
 						<div id="content_start">
 							<div id="text_start">
