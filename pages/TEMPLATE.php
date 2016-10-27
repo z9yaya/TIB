@@ -16,39 +16,7 @@ include '../functions/functions.php';
     <body>
         <div id="back_nav">
 			<div id="wrapper">
-				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
-                                                                        if (session_id() == '')
-                                                                        {
-                                                                            session_start();
-                                                                        }
-                                                                        if(isset($_SESSION['email']))
-                                                                            echo 'SIGN OUT</a>';
-                                                                        else 
-                                                                            echo 'SIGN IN</a>';?>
-					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                    <a id="rating" class="menu menu_blue" href="rating.php">RATING</a>
-					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-                         <?php 
-                            if(isset($_SESSION['position']))
-                            {
-                                if ($_SESSION['position'] != 'driver')
-                                {
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
-                                }
-                                else 
-                                {
-                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
-                                }
-                            }
-                            else
-                            {
-                                echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
-                            }
-                        ?>
-				</header>
+				<?php include "../functions/header.php";?>
 					<div id="content"><!--REQUIRED-->
                          <div id="form"><!--REQUIRED-->
                              <form class="form" id="request_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>

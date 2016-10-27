@@ -1,5 +1,5 @@
 <?php
-
+//functions.php by Yannick Mansuy
 ///function used to connect to create a new connection object to connect to the database
 function connect()
     {

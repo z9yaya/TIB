@@ -22,45 +22,7 @@ driverUpdate();
     <body>
         <div id="back_nav">
 			<div id="wrapper">
-				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
-																			if (session_id() == '')
-																			{
-																				session_start();
-																			}
-																			if(isset($_SESSION['email']))
-																				echo 'SIGN OUT</a>';
-																			else
-																			{
-																				header("Location: login.php?error=deliveries");
-																				echo 'SIGN IN</a>';
-																			}?>
-					
-						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-                       
-					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-                         <?php 
-                            if(isset($_SESSION['position']))
-                            {
-                                if ($_SESSION['position'] != 'driver')
-                                {
-                                    header("Location: ../index.php");
-                                     echo '<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';	
-                                }
-                                else if ($_SESSION['position'] == 'driver')
-                                {
-                                     echo '<a id="log" class="menu menu_blue selected" href="driver.php">LOG</a>';
-                                }
-                            }
-                            else
-                                    {
-                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
-                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
-                                    }
-                        ?>
-				</header>
-				
+				<?php include "../functions/header.php";?>
 				<div id="content" style="width:160px;">
                     <div id="form">
 					  <form class="form" id="driver_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>

@@ -26,7 +26,6 @@ if (!empty($_POST))
 <!DOCTYPE html>
 <html>
     <head>
-    <!--TITLE GOES HERE-->
         <title>Sign in -  drop.it</title>
         <link rel="SHORTCUT ICON" href="../images/icon.ico" />
         <link rel="icon" href="../images/icon.ico" type="image/ico" />
@@ -39,13 +38,7 @@ if (!empty($_POST))
     <body>
         <div id="back_nav">
 			<div id="wrapper">
-				<header>
-                    <a id="login_blue" class="menu menu_blue selected" href="login.php">SIGN IN</a>
-                    <a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-					<a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-                    <a id="request" class="menu menu_blue" href="request.php">REQUEST</a>
-				</header>
+				<?php include "../functions/header.php";?>
 					<div id="content">
                         <div id="form">
 							<form class="form" id="signin_form" method='POST' action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>>

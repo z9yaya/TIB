@@ -1,3 +1,5 @@
+//script.js by Yannick Mansuy
+
 var packageNumber = 1;
 //INPUT obj: input from a form
 //checks if an input is empty or not then returns true if it is.

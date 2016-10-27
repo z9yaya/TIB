@@ -1,4 +1,7 @@
-<?php include "../functions.php";
+<?php
+//fileCheck.php by Yannick Mansuy
+
+ include "../functions.php";
 //used to watch a file for any changes, when the last modified time of a file is within 10 seconds of the current time, this script sends a event to the browser using SSE, this also updates the database everytime it is ran to keep track of when a user had a conversation opened last.
 header('Content-Type: text/event-stream');
 header('Cache-Control: no-cache');  

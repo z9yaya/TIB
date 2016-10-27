@@ -24,45 +24,7 @@ if (isset($_POST))
     <body>
         <div id="back_nav">
 			<div id="wrapper">
-				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php"><?php 
-                                                                        if (session_id() == '')
-                                                                        {
-                                                                            session_start();
-                                                                        }
-                                                                        if(isset($_SESSION['email']))
-                                                                            echo 'SIGN OUT</a>';
-                                                                        else{ 
-																			header("Location: login.php?error=deliveries");
-                                                                            echo 'SIGN IN</a>';
-																		}?>
-					<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
-					<a id="deliveries" class="menu menu_blue" href="deliveries.php">DELIVERIES</a>
-
-                         <?php 
-                            if(isset($_SESSION['position']))
-                            {
-                                if ($_SESSION['position'] != 'driver')
-                                {
-                                     echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
-                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
-										
-                                }
-                                else if ($_SESSION['position'] == 'driver')
-                                {
-                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
-                                }
-                            }
-                            else
-                                    {
-                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
-                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
-                                    }
-                        ?>
-				</header>
-				
-                    
+				<?php include "../functions/header.php";?>
             <!-- In this for every "value=" is filled from the get info array so customers know what they entered previously and ID is placed into an invisible feild so that it cannot be incorrectly entered, this also makes it easier to set in functions based on this form -->
                     
 				<div id="content" style="width:160px;">

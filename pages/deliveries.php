@@ -45,47 +45,7 @@ include '../functions/functions.php';
     <body>
         <div id="back_nav"> <!-- This div holds the navigation menu -->
 			<div id="wrapper"> <!-- This wrapper allows for positioning of the navigation menu. -->
-				<header>
-					<a id="login_blue" class="menu menu_blue" href="login.php"><?php  //This code checks to see if a user has logged in correctly and starts a session. If not, will display errors.
-																			if (session_id() == '')
-																			{
-																				session_start();
-																			}
-																			if(isset($_SESSION['email']))
-																				echo 'SIGN OUT</a>';
-																			else
-																			{
-																				header("Location: login.php?error=deliveries");
-																				echo 'SIGN IN</a>';
-																			}?>
-					
-						<a id="header" class="intro intro_blue" href="../index.php">drop.it</a> <!-- This is the logo of the project and if clicked on will link to the homepage -->
-                       
-					<a id="deliveries" class="menu menu_blue selected" href="deliveries.php">DELIVERIES</a> <!-- Menu link to deliveries.php page -->
-					
-						<!-- php code that checks what type of user is logged in and displays the appropriate menu links -->
-                         <?php 
-                            if(isset($_SESSION['position']))
-                            {
-                                if ($_SESSION['position'] != 'driver')
-                                {
-                                    echo '<a id="log" class="menu menu_blue" href="payment_page.php">PAY</a>
-                                     <a id="tracking" class="menu menu_blue" href="tracking.php">TRACKING</a>
-					                <a id="new" class="menu menu_blue" href="request.php">REQUEST</a>';
-                                }
-                                else if ($_SESSION['position'] == 'driver')
-                                {
-                                     echo '<a id="log" class="menu menu_blue" href="driver.php">LOG</a>';
-                                }
-                            }
-                            else
-                                    {
-                                         echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
-                                        <a id="new" class="menu menu_blue" href="pages/request.php">REQUEST</a>';	
-                                    }
-                        ?>
-				
-				</header>		
+				<?php include "../functions/header.php";?>	
 					<div id="content" class="nowidth"> <!-- Content Div that holds all the unique content on the page -->
 					<div id="form">
 					

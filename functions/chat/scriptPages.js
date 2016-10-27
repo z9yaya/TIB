@@ -1,3 +1,5 @@
+//scriptPages.js by Yannick Mansuy
+
 //used to check if a file exists at the specified location
 //INPUT url: path of file eg: "root/folder/file.extension"
 //OUTPUT: true when the file is found and accessible or false when the file cannot be accessed

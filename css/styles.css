@@ -1,3 +1,5 @@
+/*styles.css by Yannick Mansuy*/
+
 /* * {
 	border : 1px solid black;
 	
@@ -69,129 +71,6 @@ header{
 .intro_blue{
 	color: rgba(44, 70, 98, 0.77);
 }
-
-@keyframes bump{
-	0%{
-		height:49px;
-	}
-	25%
-	{
-		height: 28px;
-		padding-top:12px;
-		
-	}
-	50%
-	{
-		height: 28px;
-		top: 14px;
-		
-	}
-	85%
-	{
-		height: 28px;
-		padding-bottom:24px;
-		
-	}
-	100%
-	{
-		top: 2px
-		height:49px;
-		padding-bottom: 0;
-	}
-}
-
-@keyframes appear {
-    0% 
-	{
-		height: 0px;
-		width: 0px;
-		font-size: 0pt;
-	}
-	 75% 
-	 {
-		 height: 55px;
-		width: 106px;
-		font-size: 43px;
-	}
-    100% 
-	{
-		height: 49px;
-		width: 100px;
-		font-size: 28pt;
-	}
-}
-//.header_moved
-{
-	top: 20px;
-	margin:0 0 0 0;
-	left: auto;
-	right: 5px;
-	height: 49px;
-	width: 100px;
-	animation-name: appear;
-    animation-duration: 0.5s;
-	animation-delay: 0s;
-	animation-iteration-count: 1;
-}
-
-@keyframes tab{
-	0%{
-		opacity: 0.3;
-	}
-	30%{
-		opacity: 1;
-		-moz-box-shadow: 0 0 20px #fff;
-		-webkit-box-shadow: 0 0 20px #fff;
-		box-shadow: 0px 0px 20px #fff;
-	}
-	50%{
-		opacity: 0.3;
-	}
-	70%{
-		opacity: 1;
-		-moz-box-shadow: 0 0 20px #fff;
-		-webkit-box-shadow: 0 0 20px #fff;
-		box-shadow: 0px 0px 20px #fff;
-	}
-	100%{
-		opacity: 0.5;
-	}
-}
-
-
-
-.tab_appear
-{
-	display: inline-block !important;
-	animation-name: tab;
-    animation-duration: 3.5s;
-	animation-timing-function: linear;
-}
-
-#new_tab
-{
-	display: none;
-	position: fixed;
-	bottom: 15px;
-	right: 15px;
-	z-index: 2;
-	text-decoration: none;
-	color: #333;
-	font-size: 15px;
-	font-weight: bold;
-	font-family: Helvetica;
-	border: 2px solid #333;
-	border-radius: 11px;
-	padding: 0 5px 2px 5px;
-	background-color: #f2f2f2;
-	opacity: 0.5;
-	text-align: center;
-}
-#new_tab:hover
-{
-	opacity: 1;
-}
-
 .intro_blue:hover {
 	color: rgb(44, 70, 98);}
 .intro:hover
@@ -210,7 +89,8 @@ header{
 	z-index: 1;
 }
 
-#nav a:hover/* , #nav a[id="current"] */ {
+#nav a:hover
+{
 	color: white;
 	background-color: #ec3e41;
 }
@@ -787,9 +667,6 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     margin-top: 39px;
 }
 
-
-
-
 #table_holder
 {
 	margin-top: 0;
@@ -799,16 +676,13 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
     color: #2c4662;
     background-image: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%);
     padding: 0px 200px 0px 200px;
-    margin-left: -200px;
-    
-    
+    margin-left: -200px;  
 }
 
 #table_holder table 
 {
 	border-collapse: collapse;
-    width: 600px;
-      
+    width: 600px;    
 }
 
 #table_holder a{
@@ -824,8 +698,6 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 #table_holder .delivery_location
 {
 	font-weight: bold;
-   
-
 }
 #table_holder .delivery_location
 {
@@ -845,14 +717,12 @@ label.button_white:hover > label.button_white[for="check_fragile"]::after ,
 #table_holder tr
 {
     height: 50px;
-    //border-bottom: 2px solid #f1f1f1; 
      color: rgba(44, 70, 98, 0.66);
 }
 
 #table_holder thead tr
 {
     height: 30px;
-    //border-bottom: 2px solid rgb(169, 169, 169);
     color: rgba(44, 70, 98, 0.4);
 }
 
@@ -887,7 +757,6 @@ tbody tr:first-of-type
     
     font-family: Helvetica;
     font-size: 12px;
-	//position: absolute;
 	display:block;
 	width: 100%;
 	background-color: rgb(44, 70, 98);
@@ -942,6 +811,8 @@ tbody tr:first-of-type
 /*/END////////////////////////////////////////		CONTENT WRAPPER(<div id="wrapper">CONTENT</>)	////////////////////////////////////////////////////////////////////*/
 
 /*/END////////////////////////////////////////		BODY SECTION(<body>CONTENT</>)	////////////////////////////////////////////////////////////////////*/
+
+/*/////////////////////////////////////////		CHAT SYSTEM	////////////////////////////////////////////////////////////////////*/
 #ChatSystem
 {
     width: 405px;
@@ -1183,6 +1054,7 @@ tbody tr:first-of-type
 {
     content: "Manager";
 }
+/*/END////////////////////////////////////////		CHAT SYSTEM	////////////////////////////////////////////////////////////////////*/
 
 /*/////////////////////////////////////////		DELIVERIES	////////////////////////////////////////////////////////////////////*/
 .Hide
@@ -1317,3 +1189,4 @@ tbody tr:first-of-type
 {
     width: auto !important;
 }
+/*/END////////////////////////////////////////		DELIVERIES	////////////////////////////////////////////////////////////////////*/

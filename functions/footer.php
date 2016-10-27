@@ -1,4 +1,7 @@
 <?php
+//header.php by Yannick Mansuy
+
+//This PHP file's function is to add the footer with appropriate links for each type of user
 if (explode("/",$_SERVER['REQUEST_URI'])[2] != "pages")
 {
 
