@@ -80,10 +80,15 @@ include '../functions/functions.php';
 												$drivers = GrabMoreData("SELECT DISTINCT driver FROM delivery", array(array('', "" )));
 												
 												foreach($drivers as $arr){
+													$temp = $arr['driver'];
 													
 													//Get their route for today
-													$new_arr = makeArray($arr['driver']);
-												
+													$new_arr = makeArray($temp);
+													if($temp){
+														echo "<span class='menu menu_blue'>".$temp."</span><br/>";
+													}else{
+														echo "<span class='menu menu_blue'>"."Unassigned"."</span><br/>";
+													}
 													//Display their route for today
 													echo makeTable($new_arr);
 													

@@ -4,8 +4,15 @@ function makeArray($driver){
 	
 	$date = time();
 	
-	$origin = GrabMoreData("SELECT  pickup, origin FROM delivery WHERE pickup<".($date+28800)." AND pickup>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
-	$dest = GrabMoreData("SELECT dropoff, destination FROM delivery WHERE dropoff<".($date+28800)." AND dropoff>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
+	//echo $date."<br/><br/>";
+	if($driver != NULL){
+		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+28800)." AND pickup>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
+		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+28800)." AND dropoff>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
+	}else{
+		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+28800)." AND pickup>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
+		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+28800)." AND dropoff>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
+	}
+	
 	if($origin || $dest){
 		array_multisort($origin);
 		array_multisort($dest);
@@ -49,6 +56,7 @@ function makeTable($arr){
 	$htmlData = $htmlData.'<th>Time</th>';
 	$htmlData = $htmlData.'<th>Location</th>';
 	$htmlData = $htmlData.'<th>Action</th>';
+	$htmlData = $htmlData.'<th>Delivery ID</th>';
 	
 	$keys = [[]];
 	$num = count($arr);
@@ -63,11 +71,13 @@ function makeTable($arr){
 		$htmlData = $htmlData."</td><td>";
 		$htmlData = $htmlData.$arr[$i][$keys[$i][1]];
 		$htmlData = $htmlData."</td><td>";
-		$htmlData = $htmlData.$keys[$i][0];
-		
+		$htmlData = $htmlData.(ucfirst($keys[$i][0]));
+		$htmlData = $htmlData."</td><td>";
+		$htmlData = $htmlData.$arr[$i]['ID'];
+		$htmlData = $htmlData."</td>";
 		$htmlData = $htmlData."</tr>";
 	}
-	$htmlData = $htmlData."</table></div>";
+	$htmlData = $htmlData."</table></div><br/><br/>";
 	
 	return $htmlData;
 }
