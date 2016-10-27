@@ -6,11 +6,11 @@ function makeArray($driver){
 	
 	//echo $date."<br/><br/>";
 	if($driver != NULL){
-		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+28800)." AND pickup>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
-		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+28800)." AND dropoff>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
+		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+21600)." AND pickup>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
+		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+21600)." AND dropoff>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
 	}else{
-		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+28800)." AND pickup>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
-		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+28800)." AND dropoff>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
+		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+21600)." AND pickup>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
+		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+21600)." AND dropoff>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
 	}
 	
 	if($origin || $dest){
