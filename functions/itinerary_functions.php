@@ -63,19 +63,20 @@ function makeTable($arr){
 	
 	for ($i = 1; $i < count($arr); $i++){
 		$keys[] = array_keys($arr[$i]);
+		if(arr[$i]){
+			$htmlData = $htmlData."<tr>";
 		
-		$htmlData = $htmlData."<tr>";
-		
-		$htmlData = $htmlData."<td>";
-		$htmlData=$htmlData.date("h:i A ", $arr[$i][$keys[$i][0]]);
-		$htmlData = $htmlData."</td><td>";
-		$htmlData = $htmlData.$arr[$i][$keys[$i][1]];
-		$htmlData = $htmlData."</td><td>";
-		$htmlData = $htmlData.(ucfirst($keys[$i][0]));
-		$htmlData = $htmlData."</td><td>";
-		$htmlData = $htmlData.$arr[$i]['ID'];
-		$htmlData = $htmlData."</td>";
-		$htmlData = $htmlData."</tr>";
+			$htmlData = $htmlData."<td>";
+			$htmlData = $htmlData.date("h:i A ", $arr[$i][$keys[$i][0]]);
+			$htmlData = $htmlData."</td><td>";
+			$htmlData = $htmlData.$arr[$i][$keys[$i][1]];
+			$htmlData = $htmlData."</td><td>";
+			$htmlData = $htmlData.(ucfirst($keys[$i][0]));
+			$htmlData = $htmlData."</td><td>";
+			$htmlData = $htmlData.$arr[$i]['ID'];
+			$htmlData = $htmlData."</td>";
+			$htmlData = $htmlData."</tr>";
+		}
 	}
 	$htmlData = $htmlData."</table></div><br/><br/>";
 	
