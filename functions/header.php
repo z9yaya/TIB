@@ -1,11 +1,13 @@
 <?php
-function SelectedButtons(Link)
+
+function SelectedButtons($Link)
 {
-    if(explode("/",$_SERVER['REQUEST_URI'])[3] == Link)
+    if(explode("/",$_SERVER['REQUEST_URI'])[3] == $Link)
     {
         echo " selected";
     }
 }
+
 if (explode("/",$_SERVER['REQUEST_URI'])[2] != "pages")
 {
 
@@ -44,14 +46,14 @@ if (explode("/",$_SERVER['REQUEST_URI'])[2] != "pages")
          echo '<a id="tracking" class="menu menu_blue" href="pages/tracking.php">TRACKING</a>
         <a id="new" class="menu menu_blue selected" href="pages/request.php">REQUEST</a>';	
     }
-    echo '</header>'
+    echo '</header>';
 
 }
 else if (explode("/",$_SERVER['REQUEST_URI'])[2] == "pages")
 {
      
    echo '<header>
-					<a id="login_blue" class="menu menu_blue'.SelectedButtons(Link).'" href="login.php">';
+					<a id="login_blue" class="menu menu_blue'.SelectedButtons('login').'" href="login.php">';
    if (session_id() == '')
     {
         session_start();
@@ -65,29 +67,29 @@ else if (explode("/",$_SERVER['REQUEST_URI'])[2] == "pages")
     }
     echo '<a id="header" class="intro intro_blue" href="../index.php">drop.it</a>
                        
-					<a id="deliveries" class="menu menu_blue'.SelectedButtons(Link).'" href="deliveries.php">DELIVERIES</a>';
+					<a id="deliveries" class="menu menu_blue'.SelectedButtons('deliveries').'" href="deliveries.php">DELIVERIES</a>';
     if(isset($_SESSION['position']))
     {
         if ($_SESSION['position'] != 'driver')
         {
-              echo '<a id="log" class="menu menu_blue'.SelectedButtons(Link).'" href="payment_page.php">PAY</a>
-             <a id="tracking" class="menu menu_blue'.SelectedButtons(Link).'" href="tracking.php">TRACKING</a>
-            <a id="new" class="menu menu_blue'.SelectedButtons(Link).'" href="request.php">REQUEST</a>';	
+              echo '<a id="log" class="menu menu_blue'.SelectedButtons('payment_page').'" href="payment_page.php">PAY</a>
+             <a id="tracking" class="menu menu_blue'.SelectedButtons('tracking').'" href="tracking.php">TRACKING</a>
+            <a id="new" class="menu menu_blue'.SelectedButtons('request').'" href="request.php">REQUEST</a>';	
         }
         else if ($_SESSION['position'] == 'driver')
         {
-             echo '<a id="log" class="menu menu_blue'.SelectedButtons(Link).'" href="driver.php">LOG</a>';
+             echo '<a id="log" class="menu menu_blue'.SelectedButtons('driver').'" href="driver.php">LOG</a>';
         }
         if ($_SESSION['position'] != 'customer')
         {
-            echo '<a id="itinerary" class="menu menu_blue'.SelectedButtons(Link).'" href="itinerary.php">ITINERARY</a>';
+            echo '<a id="itinerary" class="menu menu_blue'.SelectedButtons('itinerary').'" href="itinerary.php">ITINERARY</a>';
         }
     }
     else
     {
-         echo '<a id="tracking" class="menu menu_blue'.SelectedButtons(Link).'" href="pages/tracking.php">TRACKING</a>
-        <a id="new" class="menu menu_blue'.SelectedButtons(Link).'" href="pages/request.php">REQUEST</a>';	
+         echo '<a id="tracking" class="menu menu_blue'.SelectedButtons('tracking').'" href="pages/tracking.php">TRACKING</a>
+        <a id="new" class="menu menu_blue'.SelectedButtons('request').'" href="pages/request.php">REQUEST</a>';	
     }
-    echo '</header>'
+    echo '</header>';
 }
 ?>
