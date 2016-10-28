@@ -1,11 +1,10 @@
 <?php
 
-// takes a given 'driver' and returns and array containing all the route data that they must make within -1/+6 hrs of the current time.
 function makeArray($driver){
 	
-	$date = time(); //get time of now
+	$date = time();
 	
-	// grab the necessary data ~ time, location, order ID 
+	//echo $date."<br/><br/>";
 	if($driver != NULL){
 		$origin = GrabMoreData("SELECT  pickup, origin, ID FROM delivery WHERE pickup<".($date+21600)." AND pickup>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
 		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+21600)." AND dropoff>".($date-3600)." AND driver= :email", array(array(':email', $driver)));
@@ -14,35 +13,28 @@ function makeArray($driver){
 		$dest = GrabMoreData("SELECT dropoff, destination, ID FROM delivery WHERE dropoff<".($date+21600)." AND dropoff>".($date-3600)." AND driver IS :email", array(array(':email', $driver)));
 	}
 	
-	//Make sure there is actually data
 	if($origin || $dest){
-		
-		//sort by time
 		array_multisort($origin);
 		array_multisort($dest);
-		
-		// used to store maximum inexes of the arrays
 		$total = count($origin) + count($dest);
 		$origin_count = 0;
 		$dest_count = 0;
-		
-		$new_arr = array(array()); // new array
-		
+		$new_arr = array(array());
 		for ($i =0; $i < $total; $i++)
 		{
-			if($origin_count == count($origin)) 	// All of Origin has been added to the new array
+			if($origin_count == count($origin))
 			{
-				$new_arr[] = $dest[$dest_count];	
+				$new_arr[] = $dest[$dest_count];
 				$dest_count++;
-			}elseif($dest_count == count($dest))	// All of Destination has been added to the new array
+			}elseif($dest_count == count($dest))
 			{
 				$new_arr[] = $origin[$origin_count];
 				$origin_count++;
-			}elseif($origin[$origin_count]['pickup'] < $dest[$dest_count]['destination']) // Current Origin index < Current destination index
+			}elseif($origin[$origin_count]['pickup'] < $dest[$dest_count]['destination'])
 			{
 				$new_arr[] = $origin[$origin_count];
 				$origin_count++;
-			}elseif($origin[$origin_count]['pickup'] > $dest[$dest_count]['destination'])  // Current Origin index > Current destination index
+			}elseif($origin[$origin_count]['pickup'] > $dest[$dest_count]['destination'])
 			{
 				$new_arr[] = $dest[$dest_count];
 				$dest_count++;
@@ -50,25 +42,18 @@ function makeArray($driver){
 		}
 		return $new_arr;
 	}else{
-		return NULL; // only if there was initially NULL Data
+		return NULL;
 	}
 	
 }
 
 
-// Uses the data from makeArray and outups it in a table with usuable HTML
 function makeTable($arr){
-	
-	// catch for NULL data
 	if($arr == NULL){
 		return;
 	}
-	
-	
-	$htmlData = "<div id='table_holder'><table><tr>"; 	// initialise table
-	
-	// Headers of the table
-	$htmlData = $htmlData.'<th>Time</th>';				
+	$htmlData = "<div id='table_holder'><table><tr>";
+	$htmlData = $htmlData.'<th>Time</th>';
 	$htmlData = $htmlData.'<th>Location</th>';
 	$htmlData = $htmlData.'<th>Action</th>';
 	$htmlData = $htmlData.'<th>Delivery ID</th>';
@@ -76,28 +61,26 @@ function makeTable($arr){
 	$keys = [[]];
 	$num = count($arr);
 	
-	// Itterates through the given data
 	for ($i = 1; $i < count($arr); $i++){
-		$keys[] = array_keys($arr[$i]);	// needed to figure out if the current iten is from a Pickup or Dropoff
+		$keys[] = array_keys($arr[$i]);
 		if(arr[$i]){
-			$htmlData = $htmlData."<tr>"; //start row
+			$htmlData = $htmlData."<tr>";
 		
 			$htmlData = $htmlData."<td>";
-			$htmlData = $htmlData.date("h:i A ", $arr[$i][$keys[$i][0]]);	// Date
+			$htmlData = $htmlData.date("h:i A ", $arr[$i][$keys[$i][0]]);
 			$htmlData = $htmlData."</td><td>";
-			$htmlData = $htmlData.$arr[$i][$keys[$i][1]];	// Location
+			$htmlData = $htmlData.$arr[$i][$keys[$i][1]];
 			$htmlData = $htmlData."</td><td>";
-			$htmlData = $htmlData.(ucfirst($keys[$i][0]));	// Action of the package ~ Pickup or Dropoff
+			$htmlData = $htmlData.(ucfirst($keys[$i][0]));
 			$htmlData = $htmlData."</td><td>";
-			$htmlData = $htmlData.$arr[$i]['ID'];			// Delivery ID ~ so the driver knows what to update
+			$htmlData = $htmlData.$arr[$i]['ID'];
 			$htmlData = $htmlData."</td>";
-			
-			$htmlData = $htmlData."</tr>";	// End row
+			$htmlData = $htmlData."</tr>";
 		}
 	}
-	$htmlData = $htmlData."</table></div><br/><br/>";	// end Table
+	$htmlData = $htmlData."</table></div><br/><br/>";
 	
-	return $htmlData; // Return the HTML
+	return $htmlData;
 }
 
 

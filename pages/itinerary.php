@@ -45,23 +45,18 @@ include '../functions/functions.php';
 											}else{
 												// Manager
 												
-												// get list of all drivers
 												$drivers = GrabMoreData("SELECT DISTINCT driver FROM delivery", array(array('', "" )));
 												
-												// Loop through each of these drivers and create a new table for all of their routes
 												foreach($drivers as $arr){
 													$temp = $arr['driver'];
 													
-													//Get the route for today
+													//Get their route for today
 													$new_arr = makeArray($temp);
-													
-													//Special header for each Table ~ helps differentiates between drivers
 													if($temp){
 														echo "<span class='menu menu_blue'>".$temp."</span><br/>";
 													}else{
 														echo "<span class='menu menu_blue'>"."Unassigned"."</span><br/>";
 													}
-													
 													//Display their route for today
 													echo makeTable($new_arr);
 													
