@@ -1,6 +1,8 @@
 # drop.it (TIB)
 A web based Package Delivery system for a Bachelor of Information Technology unit built using PHP, Javascript and MySQL DBMS 
 
+[Live demo](https://tib.ptrmanagement.online)
+
 ## Screenshots
 
 ![Alt text](/git-assests/wall.jpg?raw=true "Showcase")
